@@ -48,3 +48,4 @@ GITHUB_USER="alvarolopez"
 DEFAULT_DATE_FORMAT = '%d %b %Y'
 LINKEDIN_USER = "lopezgarciaalvaro"
 GOOGLE_ANALYTICS = "UA-317422-7"
+DISQUS_SITENAME = "aloga"
