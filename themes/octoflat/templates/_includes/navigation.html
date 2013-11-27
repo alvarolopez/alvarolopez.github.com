@@ -1,0 +1,41 @@
+<ul class="nav">
+  {% for title, link in MENUITEMS %}
+    <li{% if page_name == title|lower %} class="active"{% endif %}><a href="{{ link }}">{{ title }}</a></li> 
+  {% endfor %}
+
+  {% if DISPLAY_PAGES_ON_MENU %}
+    {% for p in PAGES %}
+        <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+    {% endfor %}
+  {% else %}
+    {% if DISPLAY_CATEGORIES_ON_MENU %}
+        {% for cat, null in categories %}
+            <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+        {% endfor %}a
+    {% endif %}
+  {% endif %}
+</ul>
+<ul class="nav pull-right">
+  {% if GITHUB_USER %}
+    <li><a href="http://github.com/{{ github_user }}" title="Github Profile"><i class="icon-github-sign social-navbar"></i></a></li>
+  {% endif %}
+  {% if LINKEDIN_USER %}
+    <li><a href="http://linkedin.com/in/{{ LINKEDIN_USER }}" title="Linkedin Profile"><i class="icon-linkedin-sign social-navbar"></i></a></li>
+  {% endif %}
+  {% if TWITTER_USERNAME %}
+    <li><a href="http://twitter.com/{{ TWITTER_USERNAME }}" title="Twitter Profile"><i class="icon-twitter-sign social-navbar"></i></a></li>
+  {% endif %}
+  {% if GOOGLEPLUS_USER %}
+    <li><a href="http://plus.google.com/{{ GOOGLEPLUS_USER }}" title="Google+ Profile"><i class="icon-google-plus-sign social-navbar"></i></a></li>
+  {% endif %}
+  {% if FACEBOOK_USER %}
+    <li><a href="http://facebook.com/{{ FACEBOOK_USER }}" title="Facebook Profile"><i class="icon-facebook-sign social-navbar"></i></a></li>
+  {% endif %}
+  {% if EMAIL %}
+    <li><a href="mailto:{{ EMAIL }}" title="Email"><i class="icon-envelope-alt social-navbar"></i></a></li>
+  {% endif %}
+  {% if FEED_ALL_ATOM %}
+    <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" title="Atom Feed"><i class="icon-rss-sign social-navbar"></i></a></li>
+  {% endif %}
+
+</ul>

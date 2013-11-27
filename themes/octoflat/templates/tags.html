@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block title %}Tags{% endblock title %}
+
+{% block content %}
+    <script type="text/javascript" src="{{ SITEURL }}/theme/js/microTags.js"></script>
+    <script>
+      function tag_cloud_init() {
+        var el = document.getElementById("tagslist");
+        window._tagcloud = new µTags(el);
+      }
+      if (window.addEventListener) window.addEventListener("load", tag_cloud_init, false);
+      else if (window.attachEvent) window.attachEvent("onload", tag_cloud_init);
+      else window.onload = tag_cloud_init;
+    </script>
+    {% set title = "Tags" %}
+    {% include '_includes/header.html' %}
+    <section class="content">
+        <ul class="tagcloud">
+          {% for tag in tag_cloud %}
+          <li class="tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 }}</a></li>  
+          {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
+

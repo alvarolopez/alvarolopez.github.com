@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% set index=True %}
+{% include '_includes/header.html' %}
+<div class="blog-index">
+    {% if articles %}
+        {% for article in articles_page.object_list %}
+            <article>
+                {% include '_includes/article.html' %}
+            </article>
+            {% if not loop.last %}
+                <hr>
+            {% endif %}
+        {% endfor %}
+        {% include '_includes/pagination.html' %}
+    {% endif %}
+</div>
+{% endblock %}

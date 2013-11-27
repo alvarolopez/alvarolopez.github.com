@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title|striptags }}{% endblock %} 
+{% block content %}
+<div>
+  <article class="hentry" role="article">
+    {% include '_includes/article.html' %}
+    <footer>
+        <hr>
+        {% if category or article.tags or article.status != "draft" %}
+        <div class="row-fluid">
+          {% if category %}
+            <div class="span6">
+                <p class="meta">
+                    {% include '_includes/article_categories.html' %}
+                </p>
+            </div>
+            <div class="span6 social-sharing">
+                {% if TWITTER_USERNAME %}
+                <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="{{TWITTER_USERNAME}}">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+        <div class="row-fluid">
+            <div class="span12">
+                <p class="meta">
+                {# 
+                  {% if article.previous.url %}
+                    <a class="basic-alignment left" href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&laquo; {{page.previous.title}}</a>
+                  {% endif %}
+                  {% if page.next.url %}
+                    <a class="basic-alignment right" href="{{page.next.url}}" title="Next Post: {{page.next.title}}">{{page.next.title}} &raquo;</a>
+                  {% endif %}
+                #}
+                </p>
+            </div>
+        </div>
+
+    </footer>
+
+  </article>
+
+  {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite">{% include '_includes/disqus_script.html' %}</div>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}
+

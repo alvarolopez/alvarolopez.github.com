@@ -1,0 +1,31 @@
+{% if index %}
+  <div class="row-fluid">
+    <div class="span2">
+        {% include '_includes/article_date.html' %}
+        <div class="row-fluid">
+        {% if article.tags or article.category %}
+        <div class="row-fluid">
+            {% include '_includes/article_categories.html' %}
+        </div>
+        {% endif %}
+        </div>
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title|striptags }}</a></h1>
+      {{ article.summary }}
+    </div>
+  </div>
+{% else %}
+
+<header>
+  <div class="jumbotron">
+      {{ article.title|striptags }}
+      {% include '_includes/article_date.html' %}
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      {{ article.content }}
+    </div>
+  </div>
+{% endif %}

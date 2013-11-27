@@ -1,0 +1,14 @@
+{% if article.category %}
+<i class="icon-folder-open"></i>
+<a href="{{ SITEURL }}/{{ article.category.url }}"><span class="badge">{{ article.category }}</span></a>
+{% endif %}
+
+{% if index %}
+<br />
+{% endif %}
+{% if article.tags %}
+<i class="icon-tag"></i>
+{% for tag in article.tags %}
+<a href="{{ SITEURL }}/{{ tag.url }}"><span class="badge badge-tag">{{ tag }}</span></a>
+{% endfor %}
+{% endif %}
