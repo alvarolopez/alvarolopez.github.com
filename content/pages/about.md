@@ -1,5 +1,5 @@
 Title: About me
-Date: 2013-10-02 11:17
+Date: 2015-01-27 13:40
 
 ## Activity
 
@@ -16,14 +16,15 @@ title="Advandced Computing and e-Science Group"> Advanced Computing and e-Scienc
     <a href="https://ifca.github.io/keystone-voms">VOMS authentication module</a>
     for OpenStack and the
     <a href="https://github.com/IFCA/voms-auth-system-openstack">VOMS authentication plugin</a>
-    for novaclient.
-- I am an ATC for <a href="https://openstack.org">OpenStack</a>.
+    for novaclient. I also developed the <a
+    href="https://github.com/IFCA/caso/">cASO</a> accounting extractor, used to collect the
+    OpenStack records in EGI's Cloud Infrastructure.
+- I am an ATC for <a href="https://openstack.org">OpenStack</a>. I have been an ATC for other projects as well.
 - I help to maintain the <a href="https://occi.org">OCCI</a> interface for OpenStack. You can find the code <a href="https://github.com/tmetsch/occi-os">here</a> and in my <a href="https://github.com/tmetsch/occi-os">own repo</a>.
 
 
-
 ## Useful things
-- <a href="https://github.com/alvarolopez/ggus_report_generator" title="Generate GGUS reports">Script</a> for generating GGUS reports for NGI_IBERGRID.
+- <a href="https://github.com/alvarolopez/ggus_report_generator" title="Generate GGUS reports">Script</a> for generating GGUS reports for NGI_IBERGRID, that can be used for other NGIs as well.
 - For the EGI presentations I use this <a href="https://github.com/alvarolopez/egi_beamer_template" title="LaTeX (beamer) template for EGI presentations">beamer theme</a>.
 - My <a href="https://github.com/alvarolopez" title="alvarolopez's on Github">personal git repositories (on Github)</a>.
 
