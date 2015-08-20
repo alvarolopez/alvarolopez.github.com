@@ -1,4 +1,8 @@
 @import url("http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic");
+@import url("http://fonts.googleapis.com/css?family=Alegreya:400,400italic,700,700italic");
+@import url("http://fonts.googleapis.com/css?family=Quicksand:300,400");
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic);
+
 @font-face {
   font-family: "Flat-UI-Icons-16";
   src: url("../fonts/Flat-UI-Icons-16.eot");
@@ -179,7 +183,7 @@
 body {
   color: $text-color;
   background: $bg-color;
-  font: 18px/1.831 "Open Sans", sans-serif; }
+  font: 22px/1.2 "Merriweather", serif; }
 
 p {
   font-weight: 300; }
@@ -545,6 +549,7 @@ h6 {
   .demo-browser {
     background-image: url("../images/demo/browser-2x.png"); } }
 .navbar {
+  font-family: "Quicksand";
   font-size: 18px; }
   .navbar .brand {
     color: $tertiary-color;
@@ -2607,7 +2612,8 @@ body.vjs-full-window {
 }
 
 li {
-  font-weight: 300; }
+  font-weight: 300; 
+}
 
 hr { display: block; height: 1px;
     border: 0; border-top: 1px solid $primary-color;
