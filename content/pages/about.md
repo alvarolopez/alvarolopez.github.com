@@ -4,23 +4,40 @@ Date: 2015-01-27 13:40
 ## Activity
 
 I work for the
-<a href="http://www.csic.es" title="Consejo Superior de Investigaciones Científicas">Spanish National Research Council</a>
+[Spanish National Research Council](http://www.csic.es)
 at the
-<a href="http://www.ifca.es" title="IFCA web page">IFCA</a>'s
-<a href="http://www.ifca.es/en/advance_computing_and_e-science"
-title="Advandced Computing and e-Science Group"> Advanced Computing and e-Science Group</a>.
+[IFCA](http://www.ifca.es)'s
+[Advandced Computing and e-Science Group](http://www.ifca.es/en/advance_computing_and_e-science).
+
+### Current projects
+
+ - [EGI-Engage](http://www.egi.eu/)
+ - [INDIGO-Datacloud](http://indigo-datacloud.eu/)
+
+### Past projects
+
+ - [EGI-InSPIRE](http://www.egi.eu/)
+ - [EUFORIA](http://www.euforia-project.eu/EUFORIA/)
+ - [EUGEE-III](http://www.eu-egee.org/)
+ - [EUGEE-II](https://egee2.web.cern.ch/egee2/)
+ - [Int.Eu.Grid](http://www.interactive-grid.eu/)
 
 ## Cloud stuff
 
-- I am the maintainer of the
-    <a href="https://ifca.github.io/keystone-voms">VOMS authentication module</a>
-    for OpenStack and the
-    <a href="https://github.com/IFCA/voms-auth-system-openstack">VOMS authentication plugin</a>
-    for novaclient. I also developed the <a
-    href="https://github.com/IFCA/caso/">cASO</a> accounting extractor, used to collect the
-    OpenStack records in EGI's Cloud Infrastructure.
-- I am an ATC for <a href="https://openstack.org">OpenStack</a>. I have been an ATC for other projects as well.
-- I help to maintain the <a href="https://occi.org">OCCI</a> interface for OpenStack. You can find the code <a href="https://github.com/tmetsch/occi-os">here</a> and in my <a href="https://github.com/tmetsch/occi-os">own repo</a>.
+- I am the maintainer of several integration components used by the OpenStack
+  resource providers in the
+  [EGI Federated Cloud](https://www.egi.eu/infrastructure/cloud/):
+    - [VOMS authentication module](https://ifca.github.io/keystone-voms) for Keystone.
+    - [VOMS authentication plugin](https://github.com/IFCA/voms-auth-system-openstack).
+      for novaclient. I also developed the <a
+    - [cASO](https://github.com/IFCA/caso/), an accounting extractor, used to
+      collect the OpenStack records and send it to the EGI accounting
+      infrastructure.
+    - [ooi](http://github.com/openstack/ooi), an [OCCI](http://occi-wg.org/) interface for OpenStack (ooi stands for OpenStack OCCI Interface).
+- I am an ATC (Active Technical Contributor) for
+  [OpenStack](https://openstack.org), although not as much as I'd like. I have
+  been a contributor for other OpenStack projects as well.
+- I helped to maintain the [OCCI](https://occi-wg.org) interface for OpenStack.
 
 
 ## Useful things
