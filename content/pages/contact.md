@@ -1,10 +1,10 @@
 Title: Contact
 
-## Email
+## <span class="oi" data-glyph="envelope-closed"></span> Email
 
-<img src="/static/images/email.png" alt="email address"/>
+<img src="/images/email.png" alt="email address"/>
 
-## GPG key
+## <span class="oi" data-glyph="lock-locked"></span> GPG key
 
 My GPG key's (
 <a href="http://pgp.rediris.es:11371/pks/lookup?op=vindex&amp;search=0xC663E40450738AE3">`0x50738AE3`</a>
