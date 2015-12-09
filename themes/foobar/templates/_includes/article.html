@@ -1,0 +1,23 @@
+<article class="post">
+    <header class="post-header">  
+        <h2 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title|striptags }}</a></h2>
+        {% include '_includes/article_date.html' %}  
+        {% include '_includes/article_categories.html' %}
+    </header>
+
+    {% if index %}
+        <section class="post-excerpt">
+            {{ article.summary }}
+            <a class="read-more" href="{{ SITEURL }}/{{ article.url }}">&raquo;</a>
+        </section>
+    {% else %}
+        {{ article.content }}
+        {% if article.status != "draft" %}
+            <div class="span6 social-sharing">
+                {% if TWITTER_USERNAME %}
+                <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="{{TWITTER_USERNAME}}">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endif %}
+</article>

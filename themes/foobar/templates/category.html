@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block title %}Category: {{ category.name }}{% endblock %}
+
+{% block content %}
+{% set index=True %}
+    <header class="category-header">
+        <h1>Category: {{ category.name }}</h1>
+    </header>
+    <div class="blog-index">
+    {% if articles %}
+        {% for article in articles_page.object_list %}
+            {% include '_includes/article.html' %}
+        {% endfor %}
+        {% include '_includes/pagination.html' %}
+    {% endif %}
+    </div>
+{% endblock %}
+

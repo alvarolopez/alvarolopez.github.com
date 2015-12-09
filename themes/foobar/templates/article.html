@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title|striptags }}{% endblock %} 
+{% block content %}
+<div class="blog-index">
+    {% include '_includes/article.html' %}
+
+    {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
+    <section class="comments">
+        <h3>Comments</h3>
+        <div id="disqus_thread" aria-live="polite">{% include '_includes/disqus_script.html' %}</div>
+    </section>
+    {% endif %}
+</div>
+{% endblock %}
+

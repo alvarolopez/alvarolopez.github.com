@@ -1,0 +1,25 @@
+<div class="row-fluid">
+    <div class="span1">
+        <h1 class="date-time">
+             <time datetime="{{ article.date | strftime("%B %d") }}" pubdate>{{ article.date | strftime("%b %d") }}</time>
+        </h1>
+    </div>
+    <div class="span10">
+        <h1 class="link"><a href="{{ SITEURL }}/{{ article.url }}">{{article.title}}</a></h1>
+    </div>
+</div>
+
+{% if article.category %}
+<div class="row-fluid">
+    <div class="span1">
+    </div>
+    <div class="span10">
+
+        <footer class="archive">
+            {% include '_includes/article_categories.html' %}
+        </footer>
+
+    </div>
+</div>
+{% endif %}
+

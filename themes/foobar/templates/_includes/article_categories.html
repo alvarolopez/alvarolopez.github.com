@@ -1,0 +1,6 @@
+{% if article.category %}
+<span class="post-meta">
+    <span class="oi" data-glyph="folder" title="folder" aria-hidden="true"></span>
+    <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+</span>
+{% endif %}

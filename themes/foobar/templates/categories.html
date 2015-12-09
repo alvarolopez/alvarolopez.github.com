@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+    <header class="category-header">
+        <h1>Categories</h1>
+    </header>
+
+<div class="blog-index">
+    <ul class="category">
+      {% for category, n in categories %}
+        <li>
+            <span class="oi" data-glyph="folder" title="folder" aria-hidden="true"></span>
+            <a href="{{ category.url }}">{{ category }}</a>
+            ({{ n|count }} articles)
+        </li>
+      {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock %}

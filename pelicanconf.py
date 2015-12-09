@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Alvaro'
+AUTHOR = u'Alvaro Lopez'
 SITENAME = u'aloga'
 SITEURL = 'http://alvarolopez.github.io'
 SITESUBTITLE = ''
@@ -35,12 +35,10 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-THEME = "themes/octoflat"
-
+THEME = "themes/foobar"
 
 MENUITEMS = (
     ("Index", "/"),
-    ("Blog Archives", "/archives.html"),
 )
 
 
