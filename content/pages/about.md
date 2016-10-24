@@ -36,7 +36,7 @@ git repositories on Github](https://github.com/alvarolopez).
       infrastructure.
     - [ooi](http://github.com/openstack/ooi), an [OCCI](http://occi-wg.org/) interface for OpenStack (ooi stands for OpenStack OCCI Interface).
     - [VOMS authentication module](https://ifca.github.io/keystone-voms) for Keystone.
-    - [VOMS authentication plugin](https://github.com/IFCA/voms-auth-system-openstack).
+    - [VOMS authentication plugin](https://github.com/IFCA/voms-auth-system-openstack)
       for novaclient.
     - [Cloud BDII provider](https://github.com/EGI-FCTF/cloud-bdii-provider).
 - I am an ATC (Active Technical Contributor) for
