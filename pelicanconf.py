@@ -42,6 +42,7 @@ MENUITEMS = (
 )
 
 
+TWITTER_USERNAME="alvaretas"
 GITHUB_USER="alvarolopez"
 DEFAULT_DATE_FORMAT = '%d %b %Y'
 LINKEDIN_USER = "lopezgarciaalvaro"
