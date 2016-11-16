@@ -18,11 +18,20 @@ probably already know, the OpenStack Compute APIs are WSGI applications&lt;/p&gt
 easily decouple them so that you can deploy several API nodes and use all the
 advanced HTTP features of nginx (such as load balancing or SSL termination),
 thus horizontally scaling your controller quite easily.&lt;/p&gt;
+&lt;h3&gt;Update (2016-11-16)&lt;/h3&gt;
+&lt;p&gt;I've received some comments from &lt;a href="https://github.com/cgimeno"&gt;Carlos Gimeno&lt;/a&gt;
+(thanks!) about two missing bits in the steps below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It is required to install the &lt;code&gt;uwsgi-plugin-python&lt;/code&gt; alongside all the other
+  uWSGI packages.&lt;/li&gt;
+&lt;li&gt;It is needed to set the proper ownership to the vassals files, in our case
+  the user and group are &lt;code&gt;nova:nova&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3&gt;Preparation&lt;/h3&gt;
 &lt;p&gt;I assume that you have the OpenStack Compute APIs already configured and
 running on a server, so lets focus on installing the required extra packages:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;apt-get install nginx
-apt-get install uwsgi-core uwsgi-emperor
+apt-get install uwsgi-core uwsgi-emperor uwsgi-plugin-python
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -136,7 +145,8 @@ running them manually.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now, you can restart it and check that it is working.&lt;/p&gt;
+&lt;p&gt;You must change the ownership to &lt;code&gt;nova:nova&lt;/code&gt;, then you can restart it and check
+that it is working.&lt;/p&gt;
 &lt;h3&gt;Configure nginx&lt;/h3&gt;
 &lt;p&gt;Now it is time to configure nginx to distribute the requests to the relevant
 uWSGI processes. This is the usual nginx configuration for load balancing, so
@@ -185,7 +195,8 @@ straightforward.&lt;/p&gt;
 
 
 &lt;p&gt;Now we can create another uWSGI vassal for ooi. Put the following contents in a
-file called &lt;code&gt;/etc/uwsgi-emperor/vassals/ooi.ini&lt;/code&gt;:&lt;/p&gt;
+file called &lt;code&gt;/etc/uwsgi-emperor/vassals/ooi.ini&lt;/code&gt; (remember to change the
+ownership to &lt;code&gt;nova:nova&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[uwsgi]&lt;/span&gt;
 &lt;span class="na"&gt;plugin&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;python&lt;/span&gt;
 &lt;span class="na"&gt;chdir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;/usr/lib/cgi-bin/nova-uwsgi&lt;/span&gt;

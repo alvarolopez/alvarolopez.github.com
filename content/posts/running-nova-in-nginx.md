@@ -24,6 +24,16 @@ easily decouple them so that you can deploy several API nodes and use all the
 advanced HTTP features of nginx (such as load balancing or SSL termination),
 thus horizontally scaling your controller quite easily.
 
+### Update (2016-11-16)
+
+I've received some comments from [Carlos Gimeno](https://github.com/cgimeno)
+(thanks!) about two missing bits in the steps below:
+
+* It is required to install the `uwsgi-plugin-python` alongside all the other
+  uWSGI packages.
+* It is needed to set the proper ownership to the vassals files, in our case
+  the user and group are `nova:nova`
+
 ### Preparation
 
 I assume that you have the OpenStack Compute APIs already configured and
@@ -31,7 +41,7 @@ running on a server, so lets focus on installing the required extra packages:
 
     :::bash
     apt-get install nginx
-    apt-get install uwsgi-core uwsgi-emperor
+    apt-get install uwsgi-core uwsgi-emperor uwsgi-plugin-python
 
 Since we are going to run the API using uWSGI, we must stop (and disable) the
 `nova-api` service:
@@ -145,7 +155,8 @@ And now configure it as a vassals in `/etc/uwsgi-emperor/vassals/nova.ini`:
 		stats = /var/run/nova/nova.uwsgi.stats.sock
 		vacuum = true
 
-Now, you can restart it and check that it is working.
+You must change the ownership to `nova:nova`, then you can restart it and check
+that it is working.
 
 ### Configure nginx
 
@@ -199,7 +210,8 @@ First, create the required link as follows:
 	ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/ooi_api.py
 
 Now we can create another uWSGI vassal for ooi. Put the following contents in a
-file called `/etc/uwsgi-emperor/vassals/ooi.ini`:
+file called `/etc/uwsgi-emperor/vassals/ooi.ini` (remember to change the
+ownership to `nova:nova`:
 
 	:::ini
 	[uwsgi]

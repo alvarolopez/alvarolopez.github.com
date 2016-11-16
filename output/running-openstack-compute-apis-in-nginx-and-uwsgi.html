@@ -100,11 +100,20 @@ probably already know, the OpenStack Compute APIs are WSGI applications</p>
 easily decouple them so that you can deploy several API nodes and use all the
 advanced HTTP features of nginx (such as load balancing or SSL termination),
 thus horizontally scaling your controller quite easily.</p>
+<h3>Update (2016-11-16)</h3>
+<p>I've received some comments from <a href="https://github.com/cgimeno">Carlos Gimeno</a>
+(thanks!) about two missing bits in the steps below:</p>
+<ul>
+<li>It is required to install the <code>uwsgi-plugin-python</code> alongside all the other
+  uWSGI packages.</li>
+<li>It is needed to set the proper ownership to the vassals files, in our case
+  the user and group are <code>nova:nova</code></li>
+</ul>
 <h3>Preparation</h3>
 <p>I assume that you have the OpenStack Compute APIs already configured and
 running on a server, so lets focus on installing the required extra packages:</p>
 <div class="highlight"><pre>apt-get install nginx
-apt-get install uwsgi-core uwsgi-emperor
+apt-get install uwsgi-core uwsgi-emperor uwsgi-plugin-python
 </pre></div>
 
 
@@ -218,7 +227,8 @@ running them manually.</p>
 </pre></div>
 
 
-<p>Now, you can restart it and check that it is working.</p>
+<p>You must change the ownership to <code>nova:nova</code>, then you can restart it and check
+that it is working.</p>
 <h3>Configure nginx</h3>
 <p>Now it is time to configure nginx to distribute the requests to the relevant
 uWSGI processes. This is the usual nginx configuration for load balancing, so
@@ -267,7 +277,8 @@ straightforward.</p>
 
 
 <p>Now we can create another uWSGI vassal for ooi. Put the following contents in a
-file called <code>/etc/uwsgi-emperor/vassals/ooi.ini</code>:</p>
+file called <code>/etc/uwsgi-emperor/vassals/ooi.ini</code> (remember to change the
+ownership to <code>nova:nova</code>:</p>
 <div class="highlight"><pre><span class="k">[uwsgi]</span>
 <span class="na">plugin</span> <span class="o">=</span> <span class="s">python</span>
 <span class="na">chdir</span> <span class="o">=</span> <span class="s">/usr/lib/cgi-bin/nova-uwsgi</span>
