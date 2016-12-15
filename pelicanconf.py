@@ -44,6 +44,8 @@ MENUITEMS = (
 )
 
 
+RESEARCHGATE_USER="Alvaro_Lopez-Garcia"
+KEYBASE_USER="aloga"
 TWITTER_USERNAME="alvaretas"
 GITHUB_USER="alvarolopez"
 DEFAULT_DATE_FORMAT = '%d %b %Y'
