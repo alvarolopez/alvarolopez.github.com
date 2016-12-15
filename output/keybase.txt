@@ -1,0 +1,69 @@
+==================================================================
+https://keybase.io/aloga
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://alvarolopez.github.io
+  * I am aloga (https://keybase.io/aloga) on keybase.
+  * I have a public key with fingerprint 1C3F 3E63 CC6F B57D 7895  03A9 C663 E404 5073 8AE3
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0111fd9b6dcd655b239a0883e956ccfc2dedd10a4054ba48d21426cc22f0f871855b0a",
+            "fingerprint": "1c3f3e63cc6fb57d789503a9c663e40450738ae3",
+            "host": "keybase.io",
+            "key_id": "c663e40450738ae3",
+            "kid": "0111fd9b6dcd655b239a0883e956ccfc2dedd10a4054ba48d21426cc22f0f871855b0a",
+            "uid": "9767c83c4a066eef5e02378022250a19",
+            "username": "aloga"
+        },
+        "revoke": {
+            "sig_ids": [
+                "c6e5367d85a6aa065f226ad0cf4a8c4e70fad70c2824b925bea77fbe3ab5829a0f"
+            ]
+        },
+        "service": {
+            "hostname": "alvarolopez.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1481841348,
+    "expire_in": 157680000,
+    "prev": "91a3d635e9f74afc41344b697c69bb0d33ada3ed04449495efae0883395fc4ee",
+    "seqno": 13,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owGtkr1rFEEYxtcYFQPBXKuFMIrVEWfnew7EzlqwEVSOd2beuVvu3D13906TEBDS
+iJWNlSh2NmKZQktRBLtgLYIWipX/gbPnR2XpNsvOPs/vfeaZebB+OFvpvfVfVi83
+9z8fev/NZVevnHy3Q1wVtshgh0xw+cJpwKYdTopABoTmeR6DdSr4oKR0jFugxnC0
+UnkfPQsYQk5BUCkcCBNYLlj6w1ik0ejcJA8F0iexKEdYz+qibBM29zxyVNx7FZ3U
+QRsrKQfrleIoqJBUcwPIk3FcNZ0jhXPQ4GZRpbX0MVzG+4f+P+eeL3FWK+0N9wKo
+UohRImVcG8oYkxRy2wkbrEu4iUkN02oEZLdPalxUE+xKbYpRStyQwbWUGSVXOhgJ
+ChJPRsYUBOqjAOMFahohaOqZYcJZJh2C1tEhBycNS9uI5EZip3GLwi/hXUV/Ry+g
+rqbVDLc3R0U7nrtfjc3qqq18NU2ScdvOmkGK94q0W7POdBvd8Ddu6IoypKNKlgXW
+TVGVZJCnab4tOn4uTG5EzoXpE7wzK2ocFp1CamVoerpBuOgKy4EHxSXaqAVE33mE
+U1Z7ZZ2jgXMIwDFQIYQVVmIE7M6HW5nEiKTb4K2ySmzeJy2MEjN1WEI7r5Hsrt27
+tJr1VrKjR1a6O5ytHd/4c7HPv8ieXFw/cffg0fNPT3vjY+7Dhesf272X2ePT28/O
+/jizf/BQnPu+8frN3tfx/qmf
+=Awyj
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/aloga
+
+==================================================================
+
