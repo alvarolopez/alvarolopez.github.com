@@ -24,20 +24,26 @@
   {% endif %}
     
     <ul class="nav navbar-nav pull-right">
+      {% if KEYBASE_USER %}
+        <li><a href="https://keybase.io/{{ KEYBASE_USER }}" title="Keybase.io Profile"><span class="socicon-keybase"></span></a></li>
+      {% endif %}
       {% if GITHUB_USER %}
-        <li><a href="http://github.com/{{ GITHUB_USER }}" title="Github Profile"><span class="socicon-github"></span></a></li>
+        <li><a href="https://github.com/{{ GITHUB_USER }}" title="Github Profile"><span class="socicon-github"></span></a></li>
+      {% endif %}
+      {% if RESEARCHGATE_USER %}
+        <li><a href="https://www.researchgate.net/profile/{{ RESEARCHGATE_USER }}" title="ResearchGate Profile"><span class="socicon-researchgate"></span></a></li>
       {% endif %}
       {% if LINKEDIN_USER %}
-        <li><a href="http://linkedin.com/in/{{ LINKEDIN_USER }}" title="Linkedin Profile"><span class="socicon-linkedin"></span></a></li>
+        <li><a href="https://linkedin.com/in/{{ LINKEDIN_USER }}" title="Linkedin Profile"><span class="socicon-linkedin"></span></a></li>
       {% endif %}
       {% if TWITTER_USERNAME %}
-        <li><a href="http://twitter.com/{{ TWITTER_USERNAME }}" title="Twitter Profile"><span class="socicon-twitter"></span></a></li>
+        <li><a href="https://twitter.com/{{ TWITTER_USERNAME }}" title="Twitter Profile"><span class="socicon-twitter"></span></a></li>
       {% endif %}
       {% if GOOGLEPLUS_USER %}
-        <li><a href="http://plus.google.com/{{ GOOGLEPLUS_USER }}" title="Google+ Profile"><span class="socicon-google-plus"></span></a></li>
+        <li><a href="https://plus.google.com/{{ GOOGLEPLUS_USER }}" title="Google+ Profile"><span class="socicon-google-plus"></span></a></li>
       {% endif %}
       {% if FACEBOOK_USER %}
-        <li><a href="http://facebook.com/{{ FACEBOOK_USER }}" title="Facebook Profile"><span class="socicon-facebook"></span></a></li>
+        <li><a href="https://facebook.com/{{ FACEBOOK_USER }}" title="Facebook Profile"><span class="socicon-facebook"></span></a></li>
       {% endif %}
       {% if EMAIL %}
         <li><a href="mailto:{{ EMAIL }}" title="Email"><span class="socicon-mail"></span></a></li>
