@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>aloga - Alvaro Lopez</title><link>http://alvarolopez.github.io/</link><description></description><lastBuildDate>Tue, 25 Oct 2016 10:00:00 +0200</lastBuildDate><item><title>Running OpenStack Compute APIs in nginx and uWSGI</title><link>http://alvarolopez.github.io/running-openstack-compute-apis-in-nginx-and-uwsgi.html</link><description>&lt;p&gt;In this article I will explain how run the &lt;a href="https://www.openstack.org/software/releases/liberty/components/nova"&gt;OpenStack Compute
+(nova)&lt;/a&gt;
+APis behind &lt;a href="http://nginx.org/"&gt;nginx&lt;/a&gt;, instead of using the
+&lt;a href="http://eventlet.net/doc/modules/wsgi.html"&gt;Eventlet&lt;/a&gt; builtin WSGI server. This
+is a setup we have been using at &lt;a href="https://grid.ifca.es/"&gt;IFCA&lt;/a&gt; since long after
+using plain Eventlet and &lt;a href="https://apache.org/"&gt;Apache&lt;/a&gt; +
+&lt;a href="https://modwsgi.readthedocs.io/"&gt;mod_wsgi&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Unlike other HTTP servers like Apache, nginx does …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alvaro Lopez</dc:creator><pubDate>Tue, 25 Oct 2016 10:00:00 +0200</pubDate><guid isPermaLink="false">tag:alvarolopez.github.io,2016-10-25:/running-openstack-compute-apis-in-nginx-and-uwsgi.html</guid></item><item><title>Hello World</title><link>http://alvarolopez.github.io/hello-world.html</link><description>&lt;p&gt;This is just a dummy first post.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alvaro Lopez</dc:creator><pubDate>Thu, 17 Oct 2013 16:51:00 +0200</pubDate><guid isPermaLink="false">tag:alvarolopez.github.io,2013-10-17:/hello-world.html</guid><category>foo</category><category>bar</category><category>bazz</category><category>bazonk</category></item></channel></rss>
