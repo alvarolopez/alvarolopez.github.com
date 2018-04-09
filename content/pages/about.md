@@ -12,11 +12,14 @@ at the
 
 ### Current projects
 
- - [EGI-Engage](http://www.egi.eu/)
- - [INDIGO-Datacloud](http://indigo-datacloud.eu/)
+ - [DEEP-Hybrid-DataCloud](http://deep-hybrid-datacloud.eu/)
+ - [EOSC-Hub](http://eosc-hub.eu/)
+ - [AARC-II](http://aarc-project.eu/)
 
 ### Past projects
 
+ - [EGI-Engage](http://www.egi.eu/)
+ - [INDIGO-Datacloud](http://indigo-datacloud.eu/)
  - [EGI-InSPIRE](http://www.egi.eu/)
  - [EUFORIA](http://www.euforia-project.eu/EUFORIA/)
  - [EUGEE-III](http://www.eu-egee.org/)
@@ -39,9 +42,9 @@ git repositories on Github](https://github.com/alvarolopez).
     - [VOMS authentication plugin](https://github.com/IFCA/voms-auth-system-openstack)
       for novaclient.
     - [Cloud BDII provider](https://github.com/EGI-FCTF/cloud-bdii-provider).
-- I am an ATC (Active Technical Contributor) for
-  [OpenStack](https://openstack.org), although not as much as I'd like. I have
-  been a contributor for other OpenStack projects as well.
+- I am/was (depending on when you read it) an ATC (Active Technical
+  Contributor) for [OpenStack](https://openstack.org), although not as much as
+  I'd like. I have been a contributor for other OpenStack projects as well.
 - I helped to maintain the [OCCI](https://occi-wg.org) interface for OpenStack.
 
 
