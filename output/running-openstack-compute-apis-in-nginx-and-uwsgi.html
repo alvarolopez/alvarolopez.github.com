@@ -37,7 +37,7 @@
         <div class="container-fluid">
 <div class="collapse navbar-collapse" id="navbar-links">
     <ul class="nav navbar-nav">
-        <li><a href="/">Index</a></li> 
+        <li><a href="/notes.html">Notes</a></li> 
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -48,7 +48,7 @@
     </ul>
 
     <ul class="nav navbar-nav">
-        <li><a href="http://alvarolopez.github.io/pages/about-me.html">About me</a></li>
+        <li><a href="http://alvarolopez.github.io/">About me</a></li>
         <li><a href="http://alvarolopez.github.io/pages/contact.html">Contact</a></li>
     </ul>
     
@@ -114,14 +114,14 @@ thus horizontally scaling your controller quite easily.</p>
 <h3>Preparation</h3>
 <p>I assume that you have the OpenStack Compute APIs already configured and
 running on a server, so lets focus on installing the required extra packages:</p>
-<div class="highlight"><pre>apt-get install nginx
+<div class="highlight"><pre><span></span>apt-get install nginx
 apt-get install uwsgi-core uwsgi-emperor uwsgi-plugin-python
 </pre></div>
 
 
 <p>Since we are going to run the API using uWSGI, we must stop (and disable) the
 <code>nova-api</code> service:</p>
-<div class="highlight"><pre>service nova-api stop
+<div class="highlight"><pre><span></span>service nova-api stop
 <span class="nb">echo</span> manual &gt; /etc/init/SERVICE.override
 </pre></div>
 
@@ -130,7 +130,7 @@ apt-get install uwsgi-core uwsgi-emperor uwsgi-plugin-python
 <p>As we said, the nova APIs are WSGI applications, but we need some helper
 scripts that can be handled by uWSGI. Let's create the
 <code>/usr/lib/cgi-bin/nova-uwsgi/nova.wsgi</code> file with the following contents:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">eventlet</span>
 <span class="kn">from</span> <span class="nn">paste</span> <span class="kn">import</span> <span class="n">deploy</span>
@@ -152,7 +152,7 @@ scripts that can be handled by uWSGI. Let's create the
 <span class="n">utils</span><span class="o">.</span><span class="n">monkey_patch</span><span class="p">()</span>
 <span class="n">objects</span><span class="o">.</span><span class="n">register_all</span><span class="p">()</span>
 
-<span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">paste_conf</span> <span class="o">=</span> <span class="s2">&quot;/etc/nova/api-paste.ini&quot;</span>
 
 <span class="n">options</span> <span class="o">=</span> <span class="n">deploy</span><span class="o">.</span><span class="n">appconfig</span><span class="p">(</span><span class="s1">&#39;config:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">paste_conf</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
@@ -161,12 +161,12 @@ scripts that can be handled by uWSGI. Let's create the
 
 
 <p>Now create a links for the API, so that uWSGI is able to find it:</p>
-<div class="highlight"><pre>ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/osapi_compute.py
+<div class="highlight"><pre><span></span>ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/osapi_compute.py
 </pre></div>
 
 
 <p>The above script can be executed by a standalone uWSGI instance as follows:</p>
-<div class="highlight"><pre>uwsgi --http-socket :8080 --plugin python --chdir /usr/lib/cgi-bin/nova-uwsgi --module osapi_compute --master --processes 1
+<div class="highlight"><pre><span></span>uwsgi --http-socket :8080 --plugin python --chdir /usr/lib/cgi-bin/nova-uwsgi --module osapi_compute --master --processes <span class="m">1</span>
 </pre></div>
 
 
@@ -182,7 +182,7 @@ applications (that is, the different OpenStack Compute APIs) instead of
 running them manually.</p>
 <p>Lets configure the Emperor. First of all, configure the Emperor itself via its
 <code>/etc/wsgi/emperor.ini</code></p>
-<div class="highlight"><pre><span class="k">[uwsgi]</span>
+<div class="highlight"><pre><span></span><span class="k">[uwsgi]</span>
 
 <span class="c1"># try to autoload appropriate plugin if &quot;unknown&quot; option has been specified</span>
 <span class="na">autoload</span> <span class="o">=</span> <span class="s">true</span>
@@ -216,7 +216,7 @@ running them manually.</p>
 
 
 <p>And now configure it as a vassals in <code>/etc/uwsgi-emperor/vassals/nova.ini</code>:</p>
-<div class="highlight"><pre>    :::ini
+<div class="highlight"><pre><span></span>    :::ini
     [uwsgi]
     plugin = python
     chdir = /usr/lib/cgi-bin/nova-uwsgi
@@ -237,31 +237,31 @@ uWSGI processes. This is the usual nginx configuration for load balancing, so
 if you are familiar with nginx configuration you should be familiar with this
 configuration. Create a file called <code>/etc/nginx/sites-enabled/nova.conf</code> with
 the following contents. This setup uses SSL and you should use it too!</p>
-<div class="highlight"><pre><span class="nt">upstream</span> <span class="nt">nova</span> <span class="p">{</span>
-    <span class="n">server</span> <span class="n">unix</span><span class="o">:///</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nova</span><span class="o">/</span><span class="n">nova</span><span class="o">.</span><span class="n">uwsgi</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">upstream</span> <span class="nt">nova</span> <span class="p">{</span>
+    <span class="err">server</span> <span class="n">unix</span><span class="p">:</span><span class="o">///</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nova</span><span class="o">/</span><span class="n">nova</span><span class="o">.</span><span class="n">uwsgi</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nt">server</span> <span class="p">{</span>
-    <span class="n">listen</span> <span class="m">8774</span><span class="p">;</span>
-    <span class="n">server_name</span>  <span class="n">controller</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+    <span class="err">listen</span> <span class="err">8774</span><span class="p">;</span>
+    <span class="err">server_name</span>  <span class="err">controller.example.org</span><span class="p">;</span>
 
-    <span class="n">root</span> <span class="n">html</span><span class="p">;</span>
-    <span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="n">index</span><span class="o">.</span><span class="n">htm</span><span class="p">;</span>
+    <span class="err">root</span> <span class="err">html</span><span class="p">;</span>
+    <span class="err">index</span> <span class="err">index.html</span> <span class="err">index.htm</span><span class="p">;</span>
 
-    <span class="n">ssl</span> <span class="n">on</span><span class="p">;</span>
-    <span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">hostcert</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
-    <span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">hostkey</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+    <span class="err">ssl</span> <span class="err">on</span><span class="p">;</span>
+    <span class="err">ssl_certificate</span> <span class="err">/etc/ssl/certs/hostcert.pem</span><span class="p">;</span>
+    <span class="err">ssl_certificate_key</span> <span class="err">/etc/ssl/private/hostkey.pem</span><span class="p">;</span>
 
-    <span class="n">ssl_session_timeout</span> <span class="m">5</span><span class="n">m</span><span class="p">;</span>
+    <span class="err">ssl_session_timeout</span> <span class="err">5m</span><span class="p">;</span>
 
-    <span class="n">ssl_protocols</span> <span class="n">TLSv1</span> <span class="n">TLSv1</span><span class="o">.</span><span class="m">1</span> <span class="n">TLSv1</span><span class="o">.</span><span class="m">2</span><span class="p">;</span>
-    <span class="n">ssl_ciphers</span> <span class="s2">&quot;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK&quot;</span><span class="p">;</span>
-    <span class="n">ssl_prefer_server_ciphers</span> <span class="n">on</span><span class="p">;</span>
+    <span class="err">ssl_protocols</span> <span class="err">TLSv1</span> <span class="err">TLSv1.1</span> <span class="err">TLSv1.2</span><span class="p">;</span>
+    <span class="err">ssl_ciphers</span> <span class="err">&quot;</span><span class="n">ECDHE-RSA-AES128-GCM-SHA256</span><span class="p">:</span><span class="n">ECDHE-ECDSA-AES128-GCM-SHA256</span><span class="o">:</span><span class="n">ECDHE-RSA-AES256-GCM-SHA384</span><span class="o">:</span><span class="n">ECDHE-ECDSA-AES256-GCM-SHA384</span><span class="o">:</span><span class="n">DHE-RSA-AES128-GCM-SHA256</span><span class="o">:</span><span class="n">DHE-DSS-AES128-GCM-SHA256</span><span class="o">:</span><span class="n">kEDH</span><span class="o">+</span><span class="n">AESGCM</span><span class="o">:</span><span class="n">ECDHE-RSA-AES128-SHA256</span><span class="o">:</span><span class="n">ECDHE-ECDSA-AES128-SHA256</span><span class="o">:</span><span class="n">ECDHE-RSA-AES128-SHA</span><span class="o">:</span><span class="n">ECDHE-ECDSA-AES128-SHA</span><span class="o">:</span><span class="n">ECDHE-RSA-AES256-SHA384</span><span class="o">:</span><span class="n">ECDHE-ECDSA-AES256-SHA384</span><span class="o">:</span><span class="n">ECDHE-RSA-AES256-SHA</span><span class="o">:</span><span class="n">ECDHE-ECDSA-AES256-SHA</span><span class="o">:</span><span class="n">DHE-RSA-AES128-SHA256</span><span class="o">:</span><span class="n">DHE-RSA-AES128-SHA</span><span class="o">:</span><span class="n">DHE-DSS-AES128-SHA256</span><span class="o">:</span><span class="n">DHE-RSA-AES256-SHA256</span><span class="o">:</span><span class="n">DHE-DSS-AES256-SHA</span><span class="o">:</span><span class="n">DHE-RSA-AES256-SHA</span><span class="o">:!</span><span class="n">aNULL</span><span class="o">:!</span><span class="n">eNULL</span><span class="o">:!</span><span class="n">EXPORT</span><span class="o">:!</span><span class="n">DES</span><span class="o">:!</span><span class="n">RC4</span><span class="o">:!</span><span class="mi">3</span><span class="n">DES</span><span class="o">:!</span><span class="n">MD5</span><span class="o">:!</span><span class="n">PSK</span><span class="s2">&quot;;</span>
+<span class="s2">    ssl_prefer_server_ciphers on;</span>
 
-    <span class="n">location</span> <span class="o">/</span> <span class="err">{</span>
-        <span class="n">uwsgi_pass</span>  <span class="n">nova</span><span class="p">;</span>
-        <span class="n">uwsgi_param</span> <span class="n">SCRIPT_NAME</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-        <span class="n">include</span>     <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">uwsgi_params</span><span class="p">;</span>
+<span class="s2">    location / {</span>
+<span class="s2">        uwsgi_pass  nova;</span>
+<span class="s2">        uwsgi_param SCRIPT_NAME &quot;</span><span class="err">&quot;</span><span class="p">;</span>
+        <span class="err">include</span>     <span class="err">/etc/nginx/uwsgi_params</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="err">}</span>
 </pre></div>
@@ -274,14 +274,14 @@ want to run it) you can also deploy it using this setup. Assuming that you are
 using <a href="https://launchpad.net/ooi/">ooi</a> the setup will be quite
 straightforward.</p>
 <p>First, create the required link as follows:</p>
-<div class="highlight"><pre>ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/ooi_api.py
+<div class="highlight"><pre><span></span>ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/ooi_api.py
 </pre></div>
 
 
 <p>Now we can create another uWSGI vassal for ooi. Put the following contents in a
 file called <code>/etc/uwsgi-emperor/vassals/ooi.ini</code> (remember to change the
 ownership to <code>nova:nova</code>:</p>
-<div class="highlight"><pre><span class="k">[uwsgi]</span>
+<div class="highlight"><pre><span></span><span class="k">[uwsgi]</span>
 <span class="na">plugin</span> <span class="o">=</span> <span class="s">python</span>
 <span class="na">chdir</span> <span class="o">=</span> <span class="s">/usr/lib/cgi-bin/nova-uwsgi</span>
 <span class="na">module</span> <span class="o">=</span> <span class="s">ooi_api</span>
@@ -294,31 +294,31 @@ ownership to <code>nova:nova</code>:</p>
 
 
 <p>Then, add the following nginx configuration:</p>
-<div class="highlight"><pre><span class="nt">upstream</span> <span class="nt">ooi</span> <span class="p">{</span>
-    <span class="n">server</span> <span class="n">unix</span><span class="o">:///</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nova</span><span class="o">/</span><span class="n">ooi</span><span class="o">.</span><span class="n">uwsgi</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nt">upstream</span> <span class="nt">ooi</span> <span class="p">{</span>
+    <span class="err">server</span> <span class="n">unix</span><span class="p">:</span><span class="o">///</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nova</span><span class="o">/</span><span class="n">ooi</span><span class="o">.</span><span class="n">uwsgi</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nt">server</span> <span class="p">{</span>
-    <span class="n">listen</span> <span class="m">8787</span><span class="p">;</span>
-    <span class="n">server_name</span>  <span class="n">cloud</span><span class="o">.</span><span class="n">ifca</span><span class="o">.</span><span class="n">es</span><span class="p">;</span>
+    <span class="err">listen</span> <span class="err">8787</span><span class="p">;</span>
+    <span class="err">server_name</span>  <span class="err">cloud.ifca.es</span><span class="p">;</span>
 
-    <span class="n">root</span> <span class="n">html</span><span class="p">;</span>
-    <span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="n">index</span><span class="o">.</span><span class="n">htm</span><span class="p">;</span>
+    <span class="err">root</span> <span class="err">html</span><span class="p">;</span>
+    <span class="err">index</span> <span class="err">index.html</span> <span class="err">index.htm</span><span class="p">;</span>
 
-    <span class="n">ssl</span> <span class="n">on</span><span class="p">;</span>
-    <span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">hostcert</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
-    <span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">hostkey</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+    <span class="err">ssl</span> <span class="err">on</span><span class="p">;</span>
+    <span class="err">ssl_certificate</span> <span class="err">/etc/ssl/certs/hostcert.pem</span><span class="p">;</span>
+    <span class="err">ssl_certificate_key</span> <span class="err">/etc/ssl/private/hostkey.pem</span><span class="p">;</span>
 
-    <span class="n">ssl_session_timeout</span> <span class="m">5</span><span class="n">m</span><span class="p">;</span>
+    <span class="err">ssl_session_timeout</span> <span class="err">5m</span><span class="p">;</span>
 
-    <span class="n">ssl_protocols</span> <span class="n">TLSv1</span> <span class="n">TLSv1</span><span class="o">.</span><span class="m">1</span> <span class="n">TLSv1</span><span class="o">.</span><span class="m">2</span><span class="p">;</span>
-    <span class="n">ssl_ciphers</span> <span class="s2">&quot;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK&quot;</span><span class="p">;</span>
-    <span class="n">ssl_prefer_server_ciphers</span> <span class="n">on</span><span class="p">;</span>
+    <span class="err">ssl_protocols</span> <span class="err">TLSv1</span> <span class="err">TLSv1.1</span> <span class="err">TLSv1.2</span><span class="p">;</span>
+    <span class="err">ssl_ciphers</span> <span class="err">&quot;</span><span class="n">ECDHE-RSA-AES128-GCM-SHA256</span><span class="p">:</span><span class="n">ECDHE-ECDSA-AES128-GCM-SHA256</span><span class="o">:</span><span class="n">ECDHE-RSA-AES256-GCM-SHA384</span><span class="o">:</span><span class="n">ECDHE-ECDSA-AES256-GCM-SHA384</span><span class="o">:</span><span class="n">DHE-RSA-AES128-GCM-SHA256</span><span class="o">:</span><span class="n">DHE-DSS-AES128-GCM-SHA256</span><span class="o">:</span><span class="n">kEDH</span><span class="o">+</span><span class="n">AESGCM</span><span class="o">:</span><span class="n">ECDHE-RSA-AES128-SHA256</span><span class="o">:</span><span class="n">ECDHE-ECDSA-AES128-SHA256</span><span class="o">:</span><span class="n">ECDHE-RSA-AES128-SHA</span><span class="o">:</span><span class="n">ECDHE-ECDSA-AES128-SHA</span><span class="o">:</span><span class="n">ECDHE-RSA-AES256-SHA384</span><span class="o">:</span><span class="n">ECDHE-ECDSA-AES256-SHA384</span><span class="o">:</span><span class="n">ECDHE-RSA-AES256-SHA</span><span class="o">:</span><span class="n">ECDHE-ECDSA-AES256-SHA</span><span class="o">:</span><span class="n">DHE-RSA-AES128-SHA256</span><span class="o">:</span><span class="n">DHE-RSA-AES128-SHA</span><span class="o">:</span><span class="n">DHE-DSS-AES128-SHA256</span><span class="o">:</span><span class="n">DHE-RSA-AES256-SHA256</span><span class="o">:</span><span class="n">DHE-DSS-AES256-SHA</span><span class="o">:</span><span class="n">DHE-RSA-AES256-SHA</span><span class="o">:!</span><span class="n">aNULL</span><span class="o">:!</span><span class="n">eNULL</span><span class="o">:!</span><span class="n">EXPORT</span><span class="o">:!</span><span class="n">DES</span><span class="o">:!</span><span class="n">RC4</span><span class="o">:!</span><span class="mi">3</span><span class="n">DES</span><span class="o">:!</span><span class="n">MD5</span><span class="o">:!</span><span class="n">PSK</span><span class="s2">&quot;;</span>
+<span class="s2">    ssl_prefer_server_ciphers on;</span>
 
-    <span class="n">location</span> <span class="o">/</span> <span class="err">{</span>
-        <span class="n">uwsgi_pass</span> <span class="n">ooi</span><span class="p">;</span>
-        <span class="n">uwsgi_param</span> <span class="n">SCRIPT_NAME</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-        <span class="n">include</span>     <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">uwsgi_params</span><span class="p">;</span>
+<span class="s2">    location / {</span>
+<span class="s2">        uwsgi_pass ooi;</span>
+<span class="s2">        uwsgi_param SCRIPT_NAME &quot;</span><span class="err">&quot;</span><span class="p">;</span>
+        <span class="err">include</span>     <span class="err">/etc/nginx/uwsgi_params</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="err">}</span>
 </pre></div>

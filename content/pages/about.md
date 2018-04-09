@@ -1,13 +1,20 @@
 Title: About me
 Date: 2015-12-09 23:40
+URL:
+save_as: index.html
 
 ## Activity
 
 I work for the
 [Spanish National Research Council](http://www.csic.es)
-at the
-[IFCA](http://www.ifca.es)'s
+located at the
+[Institute of Physics of Cantabria (IFCA)](http://www.ifca.es) with the
 [Advandced Computing and e-Science Group](https://ifca.unican.es/en-us/research/advanced-computing-and-e-science).
+
+### Publications
+
+You can find my list of publications in my [Google Scholar](https://scholar.google.es/citations?hl=es&user=4iZCEnMAAAAJ&view_op=list_works&authuser=1&sortby=pubdate)
+profile. My [ORCID](https://orcid.org) record is [0000-0002-0013-4602](https://orcid.org/0000-0002-0013-4602).
 
 
 ### Current projects

@@ -40,8 +40,10 @@ RELATIVE_URLS = True
 THEME = "themes/foobar"
 
 MENUITEMS = (
-    ("Index", "/"),
+    ("Notes", "/notes.html"),
 )
+
+INDEX_SAVE_AS = 'notes.html'
 
 
 RESEARCHGATE_USER="Alvaro_Lopez-Garcia"

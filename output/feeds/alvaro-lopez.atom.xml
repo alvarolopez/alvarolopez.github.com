@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>aloga</title><link href="http://alvarolopez.github.io/" rel="alternate"></link><link href="http://alvarolopez.github.io/feeds/alvaro-lopez.atom.xml" rel="self"></link><id>http://alvarolopez.github.io/</id><updated>2016-10-25T10:00:00+02:00</updated><entry><title>Running OpenStack Compute APIs in nginx and uWSGI</title><link href="http://alvarolopez.github.io/running-openstack-compute-apis-in-nginx-and-uwsgi.html" rel="alternate"></link><updated>2016-10-25T10:00:00+02:00</updated><author><name>Alvaro Lopez</name></author><id>tag:alvarolopez.github.io,2016-10-25:running-openstack-compute-apis-in-nginx-and-uwsgi.html</id><summary type="html">&lt;p&gt;In this article I will explain how run the &lt;a href="https://www.openstack.org/software/releases/liberty/components/nova"&gt;OpenStack Compute
+<feed xmlns="http://www.w3.org/2005/Atom"><title>aloga - Alvaro Lopez</title><link href="http://alvarolopez.github.io/" rel="alternate"></link><link href="http://alvarolopez.github.io/feeds/alvaro-lopez.atom.xml" rel="self"></link><id>http://alvarolopez.github.io/</id><updated>2016-10-25T10:00:00+02:00</updated><entry><title>Running OpenStack Compute APIs in nginx and uWSGI</title><link href="http://alvarolopez.github.io/running-openstack-compute-apis-in-nginx-and-uwsgi.html" rel="alternate"></link><published>2016-10-25T10:00:00+02:00</published><updated>2016-10-25T10:00:00+02:00</updated><author><name>Alvaro Lopez</name></author><id>tag:alvarolopez.github.io,2016-10-25:/running-openstack-compute-apis-in-nginx-and-uwsgi.html</id><summary type="html">&lt;p&gt;In this article I will explain how run the &lt;a href="https://www.openstack.org/software/releases/liberty/components/nova"&gt;OpenStack Compute
+(nova)&lt;/a&gt;
+APis behind &lt;a href="http://nginx.org/"&gt;nginx&lt;/a&gt;, instead of using the
+&lt;a href="http://eventlet.net/doc/modules/wsgi.html"&gt;Eventlet&lt;/a&gt; builtin WSGI server. This
+is a setup we have been using at &lt;a href="https://grid.ifca.es/"&gt;IFCA&lt;/a&gt; since long after
+using plain Eventlet and &lt;a href="https://apache.org/"&gt;Apache&lt;/a&gt; +
+&lt;a href="https://modwsgi.readthedocs.io/"&gt;mod_wsgi&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Unlike other HTTP servers like Apache, nginx does …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In this article I will explain how run the &lt;a href="https://www.openstack.org/software/releases/liberty/components/nova"&gt;OpenStack Compute
 (nova)&lt;/a&gt;
 APis behind &lt;a href="http://nginx.org/"&gt;nginx&lt;/a&gt;, instead of using the
 &lt;a href="http://eventlet.net/doc/modules/wsgi.html"&gt;Eventlet&lt;/a&gt; builtin WSGI server. This
@@ -30,14 +37,14 @@ thus horizontally scaling your controller quite easily.&lt;/p&gt;
 &lt;h3&gt;Preparation&lt;/h3&gt;
 &lt;p&gt;I assume that you have the OpenStack Compute APIs already configured and
 running on a server, so lets focus on installing the required extra packages:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;apt-get install nginx
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install nginx
 apt-get install uwsgi-core uwsgi-emperor uwsgi-plugin-python
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Since we are going to run the API using uWSGI, we must stop (and disable) the
 &lt;code&gt;nova-api&lt;/code&gt; service:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;service nova-api stop
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;service nova-api stop
 &lt;span class="nb"&gt;echo&lt;/span&gt; manual &amp;gt; /etc/init/SERVICE.override
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -46,7 +53,7 @@ apt-get install uwsgi-core uwsgi-emperor uwsgi-plugin-python
 &lt;p&gt;As we said, the nova APIs are WSGI applications, but we need some helper
 scripts that can be handled by uWSGI. Let's create the
 &lt;code&gt;/usr/lib/cgi-bin/nova-uwsgi/nova.wsgi&lt;/code&gt; file with the following contents:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;eventlet&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;paste&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt;
@@ -68,7 +75,7 @@ scripts that can be handled by uWSGI. Let's create the
 &lt;span class="n"&gt;utils&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;monkey_patch&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register_all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
-&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rsplit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vm"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rsplit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;paste_conf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/etc/nova/api-paste.ini&amp;quot;&lt;/span&gt;
 
 &lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;appconfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;config:&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;paste_conf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -77,12 +84,12 @@ scripts that can be handled by uWSGI. Let's create the
 
 
 &lt;p&gt;Now create a links for the API, so that uWSGI is able to find it:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/osapi_compute.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/osapi_compute.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The above script can be executed by a standalone uWSGI instance as follows:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;uwsgi --http-socket :8080 --plugin python --chdir /usr/lib/cgi-bin/nova-uwsgi --module osapi_compute --master --processes 1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;uwsgi --http-socket :8080 --plugin python --chdir /usr/lib/cgi-bin/nova-uwsgi --module osapi_compute --master --processes &lt;span class="m"&gt;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -98,7 +105,7 @@ applications (that is, the different OpenStack Compute APIs) instead of
 running them manually.&lt;/p&gt;
 &lt;p&gt;Lets configure the Emperor. First of all, configure the Emperor itself via its
 &lt;code&gt;/etc/wsgi/emperor.ini&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[uwsgi]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[uwsgi]&lt;/span&gt;
 
 &lt;span class="c1"&gt;# try to autoload appropriate plugin if &amp;quot;unknown&amp;quot; option has been specified&lt;/span&gt;
 &lt;span class="na"&gt;autoload&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
@@ -132,7 +139,7 @@ running them manually.&lt;/p&gt;
 
 
 &lt;p&gt;And now configure it as a vassals in &lt;code&gt;/etc/uwsgi-emperor/vassals/nova.ini&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    :::ini
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    :::ini
     [uwsgi]
     plugin = python
     chdir = /usr/lib/cgi-bin/nova-uwsgi
@@ -153,31 +160,31 @@ uWSGI processes. This is the usual nginx configuration for load balancing, so
 if you are familiar with nginx configuration you should be familiar with this
 configuration. Create a file called &lt;code&gt;/etc/nginx/sites-enabled/nova.conf&lt;/code&gt; with
 the following contents. This setup uses SSL and you should use it too!&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;upstream&lt;/span&gt; &lt;span class="nt"&gt;nova&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="o"&gt;:///&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;upstream&lt;/span&gt; &lt;span class="nt"&gt;nova&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;server&lt;/span&gt; &lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;///&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="nt"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;listen&lt;/span&gt; &lt;span class="m"&gt;8774&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;server_name&lt;/span&gt;  &lt;span class="n"&gt;controller&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;listen&lt;/span&gt; &lt;span class="err"&gt;8774&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;server_name&lt;/span&gt;  &lt;span class="err"&gt;controller.example.org&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;htm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;root&lt;/span&gt; &lt;span class="err"&gt;html&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;index&lt;/span&gt; &lt;span class="err"&gt;index.html&lt;/span&gt; &lt;span class="err"&gt;index.htm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="n"&gt;ssl&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;ssl_certificate&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;certs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hostcert&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;ssl_certificate_key&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;private&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hostkey&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl_certificate&lt;/span&gt; &lt;span class="err"&gt;/etc/ssl/certs/hostcert.pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl_certificate_key&lt;/span&gt; &lt;span class="err"&gt;/etc/ssl/private/hostkey.pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="n"&gt;ssl_session_timeout&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl_session_timeout&lt;/span&gt; &lt;span class="err"&gt;5m&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="n"&gt;ssl_protocols&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;ssl_ciphers&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;ssl_prefer_server_ciphers&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl_protocols&lt;/span&gt; &lt;span class="err"&gt;TLSv1&lt;/span&gt; &lt;span class="err"&gt;TLSv1.1&lt;/span&gt; &lt;span class="err"&gt;TLSv1.2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl_ciphers&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-GCM-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-GCM-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;kEDH&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;AESGCM&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES256-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;aNULL&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;eNULL&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;EXPORT&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;DES&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;RC4&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="n"&gt;DES&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;MD5&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;PSK&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
+&lt;span class="s2"&gt;    ssl_prefer_server_ciphers on;&lt;/span&gt;
 
-    &lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-        &lt;span class="n"&gt;uwsgi_pass&lt;/span&gt;  &lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="n"&gt;uwsgi_param&lt;/span&gt; &lt;span class="n"&gt;SCRIPT_NAME&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="n"&gt;include&lt;/span&gt;     &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nginx&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;uwsgi_params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="s2"&gt;    location / {&lt;/span&gt;
+&lt;span class="s2"&gt;        uwsgi_pass  nova;&lt;/span&gt;
+&lt;span class="s2"&gt;        uwsgi_param SCRIPT_NAME &amp;quot;&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="err"&gt;include&lt;/span&gt;     &lt;span class="err"&gt;/etc/nginx/uwsgi_params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -190,14 +197,14 @@ want to run it) you can also deploy it using this setup. Assuming that you are
 using &lt;a href="https://launchpad.net/ooi/"&gt;ooi&lt;/a&gt; the setup will be quite
 straightforward.&lt;/p&gt;
 &lt;p&gt;First, create the required link as follows:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/ooi_api.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/ooi_api.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now we can create another uWSGI vassal for ooi. Put the following contents in a
 file called &lt;code&gt;/etc/uwsgi-emperor/vassals/ooi.ini&lt;/code&gt; (remember to change the
 ownership to &lt;code&gt;nova:nova&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[uwsgi]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[uwsgi]&lt;/span&gt;
 &lt;span class="na"&gt;plugin&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;python&lt;/span&gt;
 &lt;span class="na"&gt;chdir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;/usr/lib/cgi-bin/nova-uwsgi&lt;/span&gt;
 &lt;span class="na"&gt;module&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;ooi_api&lt;/span&gt;
@@ -210,31 +217,31 @@ ownership to &lt;code&gt;nova:nova&lt;/code&gt;:&lt;/p&gt;
 
 
 &lt;p&gt;Then, add the following nginx configuration:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;upstream&lt;/span&gt; &lt;span class="nt"&gt;ooi&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="o"&gt;:///&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ooi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;upstream&lt;/span&gt; &lt;span class="nt"&gt;ooi&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;server&lt;/span&gt; &lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;///&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ooi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="nt"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;listen&lt;/span&gt; &lt;span class="m"&gt;8787&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;server_name&lt;/span&gt;  &lt;span class="n"&gt;cloud&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifca&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;es&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;listen&lt;/span&gt; &lt;span class="err"&gt;8787&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;server_name&lt;/span&gt;  &lt;span class="err"&gt;cloud.ifca.es&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;htm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;root&lt;/span&gt; &lt;span class="err"&gt;html&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;index&lt;/span&gt; &lt;span class="err"&gt;index.html&lt;/span&gt; &lt;span class="err"&gt;index.htm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="n"&gt;ssl&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;ssl_certificate&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;certs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hostcert&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;ssl_certificate_key&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;private&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hostkey&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl_certificate&lt;/span&gt; &lt;span class="err"&gt;/etc/ssl/certs/hostcert.pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl_certificate_key&lt;/span&gt; &lt;span class="err"&gt;/etc/ssl/private/hostkey.pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="n"&gt;ssl_session_timeout&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl_session_timeout&lt;/span&gt; &lt;span class="err"&gt;5m&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="n"&gt;ssl_protocols&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;ssl_ciphers&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;ssl_prefer_server_ciphers&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl_protocols&lt;/span&gt; &lt;span class="err"&gt;TLSv1&lt;/span&gt; &lt;span class="err"&gt;TLSv1.1&lt;/span&gt; &lt;span class="err"&gt;TLSv1.2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="err"&gt;ssl_ciphers&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-GCM-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-GCM-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;kEDH&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;AESGCM&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES256-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;aNULL&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;eNULL&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;EXPORT&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;DES&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;RC4&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="n"&gt;DES&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;MD5&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;PSK&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
+&lt;span class="s2"&gt;    ssl_prefer_server_ciphers on;&lt;/span&gt;
 
-    &lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-        &lt;span class="n"&gt;uwsgi_pass&lt;/span&gt; &lt;span class="n"&gt;ooi&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="n"&gt;uwsgi_param&lt;/span&gt; &lt;span class="n"&gt;SCRIPT_NAME&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="n"&gt;include&lt;/span&gt;     &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nginx&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;uwsgi_params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="s2"&gt;    location / {&lt;/span&gt;
+&lt;span class="s2"&gt;        uwsgi_pass ooi;&lt;/span&gt;
+&lt;span class="s2"&gt;        uwsgi_param SCRIPT_NAME &amp;quot;&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="err"&gt;include&lt;/span&gt;     &lt;span class="err"&gt;/etc/nginx/uwsgi_params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Hello World</title><link href="http://alvarolopez.github.io/hello-world.html" rel="alternate"></link><updated>2013-10-17T16:51:00+02:00</updated><author><name>Alvaro Lopez</name></author><id>tag:alvarolopez.github.io,2013-10-17:hello-world.html</id><summary type="html">&lt;p&gt;This is just a dummy first post.&lt;/p&gt;</summary><category term="foo"></category><category term="bar"></category><category term="bazz"></category><category term="bazonk"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Hello World</title><link href="http://alvarolopez.github.io/hello-world.html" rel="alternate"></link><published>2013-10-17T16:51:00+02:00</published><updated>2013-10-17T16:51:00+02:00</updated><author><name>Alvaro Lopez</name></author><id>tag:alvarolopez.github.io,2013-10-17:/hello-world.html</id><summary type="html">&lt;p&gt;This is just a dummy first post.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is just a dummy first post.&lt;/p&gt;</content><category term="foo"></category><category term="bar"></category><category term="bazz"></category><category term="bazonk"></category></entry></feed>
