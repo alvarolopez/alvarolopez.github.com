@@ -6,59 +6,47 @@ I hereby claim:
 
   * I am an admin of https://alvarolopez.github.io
   * I am aloga (https://keybase.io/aloga) on keybase.
-  * I have a public key with fingerprint 1C3F 3E63 CC6F B57D 7895  03A9 C663 E404 5073 8AE3
+  * I have a public key ASBegRFzfc7UMjOVSxMVRl_H7oIf1rf9Shl95dtOSH6oOQo
 
 To do so, I am signing this object:
 
 {
-    "body": {
-        "key": {
-            "eldest_kid": "0111fd9b6dcd655b239a0883e956ccfc2dedd10a4054ba48d21426cc22f0f871855b0a",
-            "fingerprint": "1c3f3e63cc6fb57d789503a9c663e40450738ae3",
-            "host": "keybase.io",
-            "key_id": "c663e40450738ae3",
-            "kid": "0111fd9b6dcd655b239a0883e956ccfc2dedd10a4054ba48d21426cc22f0f871855b0a",
-            "uid": "9767c83c4a066eef5e02378022250a19",
-            "username": "aloga"
-        },
-        "revoke": {
-            "sig_ids": [
-                "c6e5367d85a6aa065f226ad0cf4a8c4e70fad70c2824b925bea77fbe3ab5829a0f"
-            ]
-        },
-        "service": {
-            "hostname": "alvarolopez.github.io",
-            "protocol": "https:"
-        },
-        "type": "web_service_binding",
-        "version": 1
+  "body": {
+    "key": {
+      "eldest_kid": "01019382d473512673a7a6afec895b1c5b01f79af23cb2748afc0f8931c83c66457f0a",
+      "host": "keybase.io",
+      "kid": "01205e8111737dced43233954b1315465fc7ee821fd6b7fd4a197de5db4e487ea8390a",
+      "uid": "9767c83c4a066eef5e02378022250a19",
+      "username": "aloga"
     },
-    "ctime": 1481841348,
-    "expire_in": 157680000,
-    "prev": "91a3d635e9f74afc41344b697c69bb0d33ada3ed04449495efae0883395fc4ee",
-    "seqno": 13,
-    "tag": "signature"
+    "merkle_root": {
+      "ctime": 1525814938,
+      "hash": "8c22ccfacac7d826ff27ddb087201502ddc2959b4ab2f6dec22f050aa38d4f683ee427ef251e090765f721f0ff510080d9f491e72e39ae0b0c6f221f3bb24949",
+      "hash_meta": "ada71ed2b61260fada265ac5f04a96911dbf0debbb1cfa71679f2c0a49430b6f",
+      "seqno": 2518350
+    },
+    "service": {
+      "entropy": "LavWZtAStWxQyELP7DOmAF56",
+      "hostname": "alvarolopez.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.47"
+  },
+  "ctime": 1525814946,
+  "expire_in": 504576000,
+  "prev": "e7746990c99eb37650d7b566ed469eb046c61fcc0351b2160a8f3b22fc6449f6",
+  "seqno": 32,
+  "tag": "signature"
 }
 
 which yields the signature:
 
------BEGIN PGP MESSAGE-----
-Version: GnuPG v1
-
-owGtkr1rFEEYxtcYFQPBXKuFMIrVEWfnew7EzlqwEVSOd2beuVvu3D13906TEBDS
-iJWNlSh2NmKZQktRBLtgLYIWipX/gbPnR2XpNsvOPs/vfeaZebB+OFvpvfVfVi83
-9z8fev/NZVevnHy3Q1wVtshgh0xw+cJpwKYdTopABoTmeR6DdSr4oKR0jFugxnC0
-UnkfPQsYQk5BUCkcCBNYLlj6w1ik0ejcJA8F0iexKEdYz+qibBM29zxyVNx7FZ3U
-QRsrKQfrleIoqJBUcwPIk3FcNZ0jhXPQ4GZRpbX0MVzG+4f+P+eeL3FWK+0N9wKo
-UohRImVcG8oYkxRy2wkbrEu4iUkN02oEZLdPalxUE+xKbYpRStyQwbWUGSVXOhgJ
-ChJPRsYUBOqjAOMFahohaOqZYcJZJh2C1tEhBycNS9uI5EZip3GLwi/hXUV/Ry+g
-rqbVDLc3R0U7nrtfjc3qqq18NU2ScdvOmkGK94q0W7POdBvd8Ddu6IoypKNKlgXW
-TVGVZJCnab4tOn4uTG5EzoXpE7wzK2ocFp1CamVoerpBuOgKy4EHxSXaqAVE33mE
-U1Z7ZZ2jgXMIwDFQIYQVVmIE7M6HW5nEiKTb4K2ySmzeJy2MEjN1WEI7r5Hsrt27
-tJr1VrKjR1a6O5ytHd/4c7HPv8ieXFw/cffg0fNPT3vjY+7Dhesf272X2ePT28/O
-/jizf/BQnPu+8frN3tfx/qmf
-=Awyj
------END PGP MESSAGE-----
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgXoERc33O1DIzlUsTFUZfx+6CH9a3/UoZfeXbTkh+qDkKp3BheWxvYWTESpcCIMQg53RpkMmes3ZQ17Vm7UaesEbGH8wDUbIWCo87IvxkSfbEIJ1TP7Ov5j7auJLki5Rt/ugP9XuvX/nVKeIxkC9hVUw2AgHCo3NpZ8RAGgY6ezJM2SEJM9HHi06f5ZxTbGVm9hMNwOkk+dbuzuY7dP+SWiZ/Ak4DRWiw6l/n6c2N5zpRfb3HOoTLRmw6A6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIKjpnXMrsxhdgfQzLYHIxf3LJNJpU+DYNES4AkSpTwrUo3RhZ80CAqd2ZXJzaW9uAQ==
 
 And finally, I am proving ownership of this host by posting or
 appending to this document.
@@ -66,4 +54,3 @@ appending to this document.
 View my publicly-auditable identity here: https://keybase.io/aloga
 
 ==================================================================
-
