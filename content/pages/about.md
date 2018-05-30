@@ -19,9 +19,11 @@ profile. My [ORCID](https://orcid.org) record is [0000-0002-0013-4602](https://o
 
 ### Current projects
 
- - [DEEP-Hybrid-DataCloud](http://deep-hybrid-datacloud.eu/)
- - [EOSC-Hub](http://eosc-hub.eu/)
- - [AARC-II](http://aarc-project.eu/)
+ [![DEEP-Hybrid-DataCloud](/static/deep.png "DEEP-Hybrid-DataCloud logo")](http://deep-hybrid-datacloud.eu/)
+ &nbsp; &nbsp;
+ [![EOSC-Hub](/static/eosc.png "EOSC logo")](http://eosc-hub.eu/)
+ &nbsp; &nbsp;
+ [![AARC-II](/static/aarc.png "AARC logo")](http://aarc-project.eu/)
 
 ### Past projects
 
