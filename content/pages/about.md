@@ -13,8 +13,14 @@ located at the
 
 ### Publications
 
-You can find my list of publications in my [Google Scholar](https://scholar.google.es/citations?hl=es&user=4iZCEnMAAAAJ&view_op=list_works&authuser=1&sortby=pubdate)
-profile. My [ORCID](https://orcid.org) record is [0000-0002-0013-4602](https://orcid.org/0000-0002-0013-4602).
+You can find my list of publications in my
+[Google Scholar](https://scholar.google.es/citations?hl=es&user=4iZCEnMAAAAJ&view_op=list_works&authuser=1&sortby=pubdate)
+profile. My
+[ORCID](https://orcid.org) record is
+[0000-0002-0013-4602](https://orcid.org/0000-0002-0013-4602).
+I have a
+[profile at DIGITAL.CSIC](https://digital.csic.es/cris/rp/rp06835)
+where my open access publications, conference proceedings, etc. are deposited (this is ongoing work).
 
 
 ### Current projects
