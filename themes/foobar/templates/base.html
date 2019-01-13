@@ -19,8 +19,9 @@
   <meta name="HandheldFriendly" content="True">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/css/skeleton.css">
   
+  <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="/theme/css/screen.css">
   <link rel="stylesheet" href="/theme/font/css/open-iconic.css">
   <link rel="stylesheet" href="/theme/font/css/socicon.css">
@@ -38,20 +39,19 @@
 </head>
 
 <body>
-    <nav role="navigation"  class="navbar navbar-default">
-        <div class="container-fluid">
-          {% include '_includes/navigation.html' %}
-        </div>
-    </nav>
-    <header role="banner" class="site-head">
+    <header role="banner">
         {% include '_includes/header.html' %}
     </header>
+    
+    <nav role="navigation" class="navbar">
+        {% include '_includes/navigation.html' %}
+    </nav>
 
-    <main class="content" role="main">
+    <main role="main">
         {% block content %}{% endblock %}    
     </main>
     
-    <footer class="footer-page" role="contentinfo">
+    <footer role="contentinfo">
         {% include '_includes/footer.html' %}
     </footer>
     
