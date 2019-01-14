@@ -40,11 +40,17 @@ RELATIVE_URLS = True
 THEME = "themes/foobar"
 
 MENUITEMS = (
+    ("Publications", "/publications.html"),
     ("Notes", "/notes.html"),
 )
 
 INDEX_SAVE_AS = 'notes.html'
 
+PLUGIN_PATHS = ["plugins"]
+PLUGINS = ["pelican_bibtex"]
+DIRECT_TEMPLATES = ["publications"]
+
+PUBLICATIONS_SRC = 'content/pubs.bib'
 
 RESEARCHGATE_USER="Alvaro_Lopez-Garcia"
 KEYBASE_USER="aloga"
