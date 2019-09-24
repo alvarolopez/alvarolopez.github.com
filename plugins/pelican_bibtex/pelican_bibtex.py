@@ -11,6 +11,7 @@ websites.
 # Author: Vlad Niculae <vlad@vene.ro>
 # Unlicense (see UNLICENSE for details)
 
+import functools
 import re
 
 import logging
@@ -138,7 +139,7 @@ def add_publications(generator):
 
     formatted_entries = plain_style.format_entries(bibdata_all.entries.values())
 
-    bib_sorted = sorted(formatted_entries, cmp=sort_by_year)
+    bib_sorted = sorted(formatted_entries, key=functools.cmp_to_key(sort_by_year))
 
     for formatted_entry in bib_sorted:
         key = formatted_entry.key
