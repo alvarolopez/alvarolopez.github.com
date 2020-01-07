@@ -14,8 +14,9 @@
   <meta name="HandheldFriendly" content="True">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/css/skeleton.css">
   
+  <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="/theme/css/screen.css">
   <link rel="stylesheet" href="/theme/font/css/open-iconic.css">
   <link rel="stylesheet" href="/theme/font/css/socicon.css">
@@ -33,43 +34,54 @@
 </head>
 
 <body>
-    <nav role="navigation"  class="navbar navbar-default">
-        <div class="container-fluid">
-<div class="collapse navbar-collapse" id="navbar-links">
-    <ul class="nav navbar-nav">
-        <li><a href="/notes.html">Notes</a></li> 
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="http://alvarolopez.github.io/category/misc.html">misc</a></li>
-                <li class="active"><a href="http://alvarolopez.github.io/category/openstack.html">OpenStack</a></li>
-            </ul>
-        </li>
-    </ul>
-
-    <ul class="nav navbar-nav">
-        <li><a href="http://alvarolopez.github.io/">About me</a></li>
-        <li><a href="http://alvarolopez.github.io/pages/contact.html">Contact</a></li>
-    </ul>
-    
-    <ul class="nav navbar-nav pull-right">
-        <li><a href="https://keybase.io/aloga" title="Keybase.io Profile"><span class="socicon-keybase"></span></a></li>
-        <li><a href="https://github.com/alvarolopez" title="Github Profile"><span class="socicon-github"></span></a></li>
-        <li><a href="https://www.researchgate.net/profile/Alvaro_Lopez-Garcia" title="ResearchGate Profile"><span class="socicon-researchgate"></span></a></li>
-        <li><a href="https://linkedin.com/in/lopezgarciaalvaro" title="Linkedin Profile"><span class="socicon-linkedin"></span></a></li>
-        <li><a href="https://twitter.com/alvaretas" title="Twitter Profile"><span class="socicon-twitter"></span></a></li>
-        <li><a href="http://alvarolopez.github.io/feeds/all.atom.xml" title="Atom Feed"><span class="socicon-rss"></span></a></li>
-    </ul>
-</div>        </div>
-    </nav>
-    <header role="banner" class="site-head">
-    <div class="site-head-content">
+    <header role="banner">
+    <div class="content site-head">
         <h1 class="blog-title">aloga</h1>
     </div>
     </header>
+    
+    <nav role="navigation" class="navbar">
+<div class="container" id="navbar-links">
+<div class="row">
+    <div class="eight columns">
+        <ul class="navbar-list">
+            <li class="navbar-item"><a class="navbar-link" href="http://alvarolopez.github.io/">About me</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="http://alvarolopez.github.io/pages/contact.html">Contact</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/publications.html">Publications</a></li> 
+            <li class="navbar-item"><a class="navbar-link" href="/notes.html">Notes</a></li> 
+            <li class="navbar-item">
+                <div class="popover-wrapper">
+                    <a class="navbar-link" href="#">Categories</a>
+                    <div class="push popover-content">
+                        <ul class="popover-list">
+                            <li class="popover-item ">
+                                <a class="popover-link" href="http://alvarolopez.github.io/categories.html">All categories</a>
+                            </li>
+                            <li class="popover-item ">
+                                <a class="popover-link" href="http://alvarolopez.github.io/category/misc.html">misc</a></li>
+                            <li class="popover-item active">
+                                <a class="popover-link" href="http://alvarolopez.github.io/category/openstack.html">OpenStack</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="four columns">
+        <ul class="navbar-list-social">
+            <li class="navbar-item-social"><a class="navbar-link-social" href="https://keybase.io/aloga" title="Keybase.io Profile"><span class="socicon-keybase"></span></a></li>
+            <li class="navbar-item-social"><a class="navbar-link-social" href="https://github.com/alvarolopez" title="Github Profile"><span class="socicon-github"></span></a></li>
+            <li class="navbar-item-social"><a class="navbar-link-social" href="https://www.researchgate.net/profile/Alvaro_Lopez-Garcia" title="ResearchGate Profile"><span class="socicon-researchgate"></span></a></li>
+            <li class="navbar-item-social"><a class="navbar-link-social" href="https://linkedin.com/in/lopezgarciaalvaro" title="Linkedin Profile"><span class="socicon-linkedin"></span></a></li>
+            <li class="navbar-item-social"><a class="navbar-link-social" href="https://twitter.com/alvaretas" title="Twitter Profile"><span class="socicon-twitter"></span></a></li>
+            <li class="navbar-item-social"><a class="navbar-link-social" href="http://alvarolopez.github.io/feeds/all.atom.xml" title="Atom Feed"><span class="socicon-rss"></span></a></li>
+        </ul>
+    </div>
+</div>
+</div>    </nav>
 
-    <main class="content" role="main">
-<div class="blog-index">
+    <main role="main">
+<div class="container">
 <article class="post">
     <header class="post-header">  
         <h2 class="post-title"><a href="http://alvarolopez.github.io/running-openstack-compute-apis-in-nginx-and-uwsgi.html">Running OpenStack Compute APIs in nginx and uWSGI</a></h2>
@@ -122,7 +134,7 @@ apt-get install uwsgi-core uwsgi-emperor uwsgi-plugin-python
 <p>Since we are going to run the API using uWSGI, we must stop (and disable) the
 <code>nova-api</code> service:</p>
 <div class="highlight"><pre><span></span>service nova-api stop
-<span class="nb">echo</span> manual &gt; /etc/init/SERVICE.override
+<span class="nb">echo</span> manual <span class="p">&amp;</span>gt<span class="p">;</span> /etc/init/SERVICE.override
 </pre></div>
 
 
@@ -216,16 +228,16 @@ running them manually.</p>
 
 
 <p>And now configure it as a vassals in <code>/etc/uwsgi-emperor/vassals/nova.ini</code>:</p>
-<div class="highlight"><pre><span></span>    :::ini
-    [uwsgi]
-    plugin = python
-    chdir = /usr/lib/cgi-bin/nova-uwsgi
-    module = osapi_compute
-    master = true
-    processes = 25
-    socket = /var/run/nova/nova.uwsgi.sock
-    stats = /var/run/nova/nova.uwsgi.stats.sock
-    vacuum = true
+<div class="highlight"><pre><span></span><span class="w">    </span><span class="o">::</span><span class="err">:</span><span class="n">ini</span><span class="w"></span>
+<span class="w">    </span><span class="o">[</span><span class="n">uwsgi</span><span class="o">]</span><span class="w"></span>
+<span class="w">    </span><span class="n">plugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">python</span><span class="w"></span>
+<span class="w">    </span><span class="n">chdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="n">bin</span><span class="o">/</span><span class="n">nova</span><span class="o">-</span><span class="n">uwsgi</span><span class="w"></span>
+<span class="w">    </span><span class="k">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">osapi_compute</span><span class="w"></span>
+<span class="w">    </span><span class="n">master</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"></span>
+<span class="w">    </span><span class="n">processes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
+<span class="w">    </span><span class="n">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="nf">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nova</span><span class="o">/</span><span class="n">nova</span><span class="p">.</span><span class="n">uwsgi</span><span class="p">.</span><span class="n">sock</span><span class="w"></span>
+<span class="w">    </span><span class="n">stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="nf">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nova</span><span class="o">/</span><span class="n">nova</span><span class="p">.</span><span class="n">uwsgi</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">sock</span><span class="w"></span>
+<span class="w">    </span><span class="n">vacuum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"></span>
 </pre></div>
 
 
@@ -326,48 +338,16 @@ ownership to <code>nova:nova</code>:</p>
                 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="alvaretas">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
             </div>
 </article>
-    <section class="comments">
-        <h3>Comments</h3>
-        <div id="disqus_thread" aria-live="polite">	<script type="text/javascript">
-	  var disqus_shortname = 'aloga';
-	  (function() {
-	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	   })();
-	</script>
-</div>
-    </section>
 </div>
     
     </main>
     
-    <footer class="footer-page" role="contentinfo">
-<p>
+    <footer role="contentinfo">
+<div class ="content footer-page">
     My opinions are mine, and only mine.  <br />
     Copyright &copy; Alvaro Lopez -
     <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p>
-    </footer>
+</div>    </footer>
     
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-317422-7']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
-	<script type="text/javascript">
-	  var disqus_shortname = 'aloga';
-	  (function() {
-	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	   })();
-	</script>
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="/theme/js/bootstrap.js"></script></body>
+</body>
 </html>
