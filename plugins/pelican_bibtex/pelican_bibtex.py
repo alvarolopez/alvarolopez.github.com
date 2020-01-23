@@ -11,6 +11,7 @@ websites.
 # Author: Vlad Niculae <vlad@vene.ro>
 # Unlicense (see UNLICENSE for details)
 
+import collections
 import functools
 import re
 
@@ -97,6 +98,21 @@ class Style(plain.Style):
         ]
 
 
+Publication = collections.namedtuple(
+    "Publication",
+    ("key",
+     "year",
+     "authors",
+     "title",
+     "journal",
+     "text",
+     "bibtex",
+     "pdf",
+     "slides",
+     "poster")
+)
+
+
 def add_publications(generator):
     """
     Populates context with a list of BibTeX publications.
@@ -160,7 +176,7 @@ def add_publications(generator):
         Writer().write_stream(bibdata_this, bib_buf)
         text = formatted_entry.text.render(html_backend)
 
-        publications.append((key,
+        publications.append(Publication(key,
                              year,
                              authors,
                              title,
