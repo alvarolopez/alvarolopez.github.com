@@ -1,6 +1,5 @@
 Title: Running OpenStack Compute APIs in nginx and uWSGI
 Date: 2016-10-25 10:00
-Category: OpenStack
 
 In this article I will explain how run the [OpenStack Compute
 (nova)](https://www.openstack.org/software/releases/liberty/components/nova)

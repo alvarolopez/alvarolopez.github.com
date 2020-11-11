@@ -1,0 +1,57 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="referrer" content="origin" />
+  
+  <meta property="og:site_name" content="{{ SITENAME }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ AUTHOR }}" />
+  <meta property="og:description" content="{{ SITESUBTITLE }}" />
+  <meta property="og:url" content="{{ SITEURL }}" />
+  
+  <meta name="author" content="{{ AUTHOR }}">
+
+  <title>{{ SITENAME }} - {% block title %}Home{% endblock %}</title>
+
+  {% if FEED_ALL_ATOM %}
+  <link type="application/atom+xml" rel="alternate"
+        title="{{ SITENAME }} Atom Feed" 
+        href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" />
+  {% endif %}
+
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+  <link rel="icon" href="{{ SITEURL }}/favicon.png">
+  
+  <link rel="canonical" href="{{ SITEURL }}" />
+
+  {% if EXTRA_HEADER %}
+    {{ EXTRA_HEADER }}
+  {% endif %}
+
+
+</head>
+
+<body>
+    <header role="banner">
+        {% include '_includes/header.html' %}
+    </header>
+    
+    <main class="index">
+        <section role="main" class="content">
+        {% block content %}{% endblock %}    
+        </section>
+
+        <aside>
+            <nav role="navigation" class="navbar">
+                {% include '_includes/navigation.html' %}
+            </nav>
+        </aside>
+    </main>
+
+    <footer role="contentinfo">
+        {% include '_includes/footer.html' %}
+    </footer>
+
+</body>
+</html>

@@ -16,8 +16,18 @@ EXTRA_PATH_METADATA = {'static/keybase.txt': {'path': 'keybase.txt'},}
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
 TRANSLATION_FEED_ATOM = None
+
+ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+CATEGORY_FEED_ATOM = ''
+CATEGORY_SAVE_AS = ''
+CATEGORIES_SAVE_AS = ''
+TAG_SAVE_AS = ''
+TAGS_SAVE_AS = ''
+AUTHORS_SAVE_AS = ''
+AUTHOR_SAVE_AS = ''
+DISPLAY_CATEGORIES_ON_MENU = False
 
 LOCALE = "C"
 
@@ -32,23 +42,24 @@ LOCALE = "C"
 #SOCIAL = (('You can add links in your config file', '#'),
 #          ('Another social link', '#'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 0
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-THEME = "themes/foobar"
+THEME = "themes/getback"
 
 MENUITEMS = (
     ("Publications", "/publications.html"),
-    ("Notes", "/notes.html"),
+    ("Notes (not a blog)", "/notes.html"),
 )
 
 INDEX_SAVE_AS = 'notes.html'
 
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = ["pelican_bibtex"]
-DIRECT_TEMPLATES = ["publications"]
+DIRECT_TEMPLATES = ['index', 'publications']
+#DIRECT_TEMPLATES = ["publications"]
 
 PUBLICATIONS_SRC = 'content/pubs.bib'
 

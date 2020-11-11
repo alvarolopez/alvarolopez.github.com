@@ -1,0 +1,18 @@
+<article class="post">
+    {% if index %}
+        <span class="post-meta">
+            <time datetime="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>
+        </span>
+        <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title|striptags }}</a>
+    {% else %}
+    <header class="title">  
+        <h2>{{ article.title|striptags }}</h2>
+        <span class="post-meta">
+            Published on <time datetime="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>
+        </span>
+    </header>
+    <div class="post-content">
+        {{ article.content }}
+    </div>
+    {% endif %}
+</article>

@@ -1,0 +1,132 @@
+html {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #080808;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.index {
+    max-width: 920px;
+    margin: 0 auto 0 auto;
+    padding: 1rem 0 0 0;
+    padding-bottom:0;
+}
+
+.site-head {
+    text-align: center;
+}
+
+.blog-title {
+    font-size: 2.2em;
+}
+
+.blog-description {
+    font-size: 1.8em;
+}
+
+.index {
+    display: flex;
+    flex-direction: row;
+}
+
+.index .content {
+    padding-right: 2em;
+    width: 750px;
+}
+
+.content aside {
+    width: 40%;
+}
+
+footer {
+    font-size: 0.7em;
+    line-height: 1.7em;
+}
+
+footer .footer-page {
+    color: #aaaaaa;
+    background: #f1f1f1;
+    position: relative;
+    margin: 5em 0 0 0;
+    padding: 2em 0 2em 0;
+    text-align: center;
+}
+
+.page .title {
+    text-align: center;
+
+}
+
+.page h1 {
+    font-size: 1.8em;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li ul{
+    list-style-type: none;
+    margin-left: 1em;
+    padding: 0;
+}
+
+.blog-index article {
+    margin-bottom: 1rem;
+}
+
+.blog-index article .post-meta {
+    display: block;
+}
+
+.post header h2 {
+    margin-bottom: 0px;
+}
+
+article .post-content {
+}
+
+
+code, tt {
+    padding: 1px 3px;
+    font-family: Inconsolata, monospace, sans-serif;
+    font-size: 0.85em;
+    white-space: pre-wrap;
+    border: 1px solid #E3EDF3;
+    background: #F7FAFB;
+    border-radius: 2px;
+}
+
+pre {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+pre {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1.6em 0;
+    border: 1px solid #E3EDF3;
+    width: 100%;
+    padding: 10px;
+    font-family: Inconsolata, monospace, sans-serif;
+    font-size: 0.9em;
+    overflow: auto;
+    background: #F7FAFB;
+    border-radius: 3px;
+}
+
+pre code, tt {
+    font-size: inherit;
+    background: transparent;
+    border: none;
+    padding: 0;
+}

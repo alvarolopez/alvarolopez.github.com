@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Notes (not a blog){% endblock %} 
+{% block content %}
+{% set title = "Notes (not a blog)" %}
+{% set index=True %}
+    <div class="blog-index">
+    <header class="title">  
+        <h1>{{ title }}</h1>
+    </header>
+    {% if articles %}
+        {% for article in articles_page.object_list %}
+            {% include '_includes/article.html' %}
+        {% endfor %}
+        {% include '_includes/pagination.html' %}
+    {% endif %}
+    </div>
+{% endblock %}
