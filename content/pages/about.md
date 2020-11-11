@@ -3,38 +3,49 @@ Date: 2015-12-09 23:40
 URL:
 save_as: index.html
 
-## Activity
-
 I work for the
 [Spanish National Research Council](http://www.csic.es)
 located at the
 [Institute of Physics of Cantabria (IFCA)](http://www.ifca.es) with the
 [Advandced Computing and e-Science Group](https://ifca.unican.es/en-us/research/advanced-computing-and-e-science).
 
+This page is kept deliberately simple. This means no complicated Javascript
+(the only script used is on the [publications page](/publications.html), no
+large images, no fancy effects. There are no tracking cookies, no analytics, no
+social media buttons, or any kind of fingerprinting scripts. We do not need any
+of that to build websites
+([check this](https://drewdevault.com/2018/09/04/Conservative-web-development.html) and
+[this](http://motherfuckingwebsite.com/)).
+
 ### Publications
 
-You can find my list of publications in my
-[Google Scholar](https://scholar.google.es/citations?hl=es&user=4iZCEnMAAAAJ&view_op=list_works&authuser=1&sortby=pubdate)
-profile. My
-[ORCID](https://orcid.org) record is
-[0000-0002-0013-4602](https://orcid.org/0000-0002-0013-4602).
-I have a
-[profile at DIGITAL.CSIC](https://digital.csic.es/cris/rp/rp06835)
-where my open access publications, conference proceedings, etc. are deposited (this is ongoing work).
+You can find my list of publications [here](/publications.html) or in any of my public profiles:
 
+ * [Google Scholar](https://scholar.google.es/citations?hl=es&user=4iZCEnMAAAAJ&view_op=list_works&authuser=1&sortby=pubdate).
+ * [ORCID 0000-0002-0013-4602](https://orcid.org/0000-0002-0013-4602).
+ * [Publons](https://publons.com/researcher/2066875/alvaro-lopez-garcia/).
+ * [DBLP](https://dblp.uni-trier.de/pid/135/6079.html).
+ * [Profile at DIGITAL.CSIC](https://digital.csic.es/cris/rp/rp06835), where my open access publications, conference proceedings, etc. are deposited (this is ongoing work).
+
+## Projects
+
+I have participated in several research projects, these are the most relevant ones.
 
 ### Current projects
 
- [![DEEP-Hybrid-DataCloud](/static/deep.png "DEEP-Hybrid-DataCloud logo")](http://deep-hybrid-datacloud.eu/)
+ [![EOSC-Synergy](/static/eosc-synergy.png "EOSC Synergy logo")](http://eosc-synergy.eu/)
  &nbsp; &nbsp;
- [![EOSC-Hub](/static/eosc.png "EOSC logo")](http://eosc-hub.eu/)
- &nbsp; &nbsp;
- [![AARC-II](/static/aarc.png "AARC logo")](http://aarc-project.eu/)
+ [![EOSC-Hub](/static/eosc-hub.png "EOSC Hub logo")](http://eosc-hub.eu/)
 
 ### Past projects
 
+ [![DEEP-Hybrid-DataCloud](/static/deep.png "DEEP-Hybrid-DataCloud logo")](http://deep-hybrid-datacloud.eu/)
+ &nbsp; &nbsp;
+ [![INDIGO-Datacloud](static/indigo.png "INDIGO-DataCloud logo")](http://indigo-datacloud.eu/)
+ &nbsp; &nbsp;
+ [![AARC-II](/static/aarc.png "AARC logo")](http://aarc-project.eu/)
+
  - [EGI-Engage](http://www.egi.eu/)
- - [INDIGO-Datacloud](http://indigo-datacloud.eu/)
  - [EGI-InSPIRE](http://www.egi.eu/)
  - [EUFORIA](http://www.euforia-project.eu/EUFORIA/)
  - [EUGEE-III](http://www.eu-egee.org/)
