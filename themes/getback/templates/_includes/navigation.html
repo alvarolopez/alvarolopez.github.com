@@ -29,6 +29,14 @@
 
     <h2>Social links</h2>
     <dl class="social-links">
+      {% if ORCID %}
+        <dt>ORCID</dt>
+        <dd><a href="https://orcid.org/{{ ORCID }}" title="ORCID: Open Researcher and Contributor ID">{{ ORCID }}</a></dd>
+      {% endif %}
+      {% if RESEARCHGATE_USER %}
+        <dt>Researchgate</dt>
+        <dd><a href="https://www.researchgate.net/profile/{{ RESEARCHGATE_USER }}" title="ResearchGate Profile">{{ RESEARCHGATE_USER }}</a></dd>
+      {% endif %}
       {% if KEYBASE_USER %}
         <dt>Keybase</dt>
         <dd><a href="https://keybase.io/{{ KEYBASE_USER }}" title="Keybase.io Profile">{{ KEYBASE_USER }}</a></dd>
@@ -36,10 +44,6 @@
       {% if GITHUB_USER %}
         <dt>Github</dt>
         <dd><a href="https://github.com/{{ GITHUB_USER }}" title="Github Profile">{{ GITHUB_USER }}</a></dd>
-      {% endif %}
-      {% if RESEARCHGATE_USER %}
-        <dt>Researchgate</dt>
-        <dd><a href="https://www.researchgate.net/profile/{{ RESEARCHGATE_USER }}" title="ResearchGate Profile">{{ RESEARCHGATE_USER }}</a></dd>
       {% endif %}
       {% if LINKEDIN_USER %}
         <dt>Linkedin</dt>
