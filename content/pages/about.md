@@ -3,19 +3,18 @@ Date: 2015-12-09 23:40
 URL:
 save_as: index.html
 
-I work for the
+I am a distributed computing permanent researcher at the
 [Spanish National Research Council](http://www.csic.es)
 located at the
 [Institute of Physics of Cantabria (IFCA)](http://www.ifca.es) with the
-[Advandced Computing and e-Science Group](https://ifca.unican.es/en-us/research/advanced-computing-and-e-science).
+[Advanced Computing and e-Science Group](https://ifca.unican.es/en-us/research/advanced-computing-and-e-science).
 
-This page is kept deliberately simple. This means no complicated Javascript
+This page is kept deliberately simple. This means no complicated JavaScript
 (the only script used is on the [publications page](/publications.html), no
 large images, no fancy effects. There are no tracking cookies, no analytics, no
 social media buttons, or any kind of fingerprinting scripts. We do not need any
 of that to build websites
-([check this](https://drewdevault.com/2018/09/04/Conservative-web-development.html) and
-[this](http://motherfuckingwebsite.com/)).
+([check this](https://drewdevault.com/2018/09/04/Conservative-web-development.html)).
 
 ### Publications
 
@@ -35,12 +34,20 @@ I have participated in several research projects, these are the most relevant on
 
  [![EOSC-Synergy](/static/eosc-synergy.png "EOSC Synergy logo")](http://eosc-synergy.eu/)
  &nbsp; &nbsp;
- [![EOSC-Hub](/static/eosc-hub.png "EOSC Hub logo")](http://eosc-hub.eu/)
+ [![EGI-ACE](/static/egi-ace.png "EGI ACE logo")](https://www.egi.eu/projects/egi-ace/)
+
+ [![PTI Salud Global](static/salud-global.png "PTI Salud Global logo")](https://pti-saludglobal-covid19.corp.csic.es/)
+ &nbsp; &nbsp;
+ [![PTI Teledetect](static/teledetect.png "PTI Teledetect")](https://pti-teledetect.csic.es/)
+
+ - [Distancia COVID](https://distancia-covid.csic.es/)
 
 ### Past projects
 
- [![DEEP-Hybrid-DataCloud](/static/deep.png "DEEP-Hybrid-DataCloud logo")](http://deep-hybrid-datacloud.eu/)
+ [![EOSC-Hub](/static/eosc-hub.png "EOSC Hub logo")](http://eosc-hub.eu/)
  &nbsp; &nbsp;
+ [![DEEP-Hybrid-DataCloud](/static/deep.png "DEEP-Hybrid-DataCloud logo")](http://deep-hybrid-datacloud.eu/)
+
  [![INDIGO-Datacloud](static/indigo.png "INDIGO-DataCloud logo")](http://indigo-datacloud.eu/)
  &nbsp; &nbsp;
  [![AARC-II](/static/aarc.png "AARC logo")](http://aarc-project.eu/)
