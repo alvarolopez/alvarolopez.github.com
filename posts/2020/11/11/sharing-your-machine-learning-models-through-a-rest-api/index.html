@@ -1,0 +1,304 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="referrer" content="origin" />
+  
+  <meta property="og:site_name" content="aloga" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Alvaro Lopez" />
+  <meta property="og:description" content="" />
+  <meta property="og:url" content="http://alvarolopez.github.io" />
+  
+  <meta name="author" content="Alvaro Lopez">
+
+  <title>aloga - Sharing your machine learning models through a REST API</title>
+
+  <link type="application/atom+xml" rel="alternate"
+        title="aloga Atom Feed" 
+        href="http://alvarolopez.github.io/feeds/all.atom.xml" />
+
+  <link rel="stylesheet" type="text/css" href="/theme/pigments.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+  <link rel="icon" href="http://alvarolopez.github.io/favicon.png">
+  
+  <link rel="canonical" href="http://alvarolopez.github.io" />
+
+
+
+</head>
+
+<body>
+    <header role="banner">
+    <div class="site-head">
+        <h1 class="blog-title">aloga</h1>
+    </div>
+    </header>
+    
+    <main class="index">
+        <section role="main" class="content">
+<article class="post">
+    <header class="title">  
+        <h2>Sharing your machine learning models through a REST API</h2>
+        <span class="post-meta">
+            Published on <time datetime="2020-11-11T10:00:00+01:00" pubdate>11 Nov 2020</time>
+        </span>
+    </header>
+    <div class="post-content">
+        <p>Note: This blog post was originally published in <a href="https://www.kdnuggets.com/2020/02/sharing-machine-learning-models-common-api.html">KDNuggets</a>.</p>
+<p>Data scientists building machine learning models do not have an easy and common
+way to share their developed applications with their colleagues or with anybody
+interested in using them. The whole model (i.e. the code and any configuration
+assets needed) can be shared, but this requires that the receptors of the model
+need to have enough knowledge to execute it. In most cases we just want to
+share the model to show its functionality (to other colleagues or to a company
+interested in our predictive model), therefore there is no need to share the
+whole experiment.</p>
+<p>The most straightforward way of doing so, in the connected world where we all
+work, is to expose the model through an HTTP endpoint, so that potential users
+can access it remotely through the network. This might sound simple, but
+developing a proper and correct REST API is not an easy task. Data scientists
+need to have knowledge on API programming, networking, REST semantics,
+security, etc. Moreover, if every scientists comes up with an implementation,
+we would end up with a myriad of different and non-interoperable APIs leading
+doing more or less the same job, leading to a fragmented ecosystem.</p>
+<p>Enter <a href="https://deepaas.readthedocs.io/">DEEPaaS API</a>: a machine learning, deep
+learning and artificial intelligence REST API framework built using <a href="https://docs.aiohttp.org/">aiohttp</a>.
+DEEPaaS is an software component that allows to expose the functionality of a
+Python model (implemented with the framework of your choice) through an HTTP
+endpoint. It requires no modification to the original code, and has methods to
+customize it to the scientist's choice (input parameters, expected output,
+etc.)</p>
+<p>The DEEPaaS API follows the <a href="https://www.openapis.org/">OpenAPI Specification
+(OAS)</a>, therefore it allows humans and computers to
+discover and understand the capabilities of the underlying model, its input
+parameters and output values, without inspecting the model's source code.</p>
+<p>Lets see how it works with a walk-through example.</p>
+<h1>Plugging a model into DEEPaaS</h1>
+<p>In order to better illustrate how to integrate a model with DEEPaaS we will use
+one of the most known examples from <a href="https://scikit-learn.org/">scikit-learn</a>:
+a <a href="https://scikit-learn.org/stable/modules/svm.html">Support Vector Machine</a>
+trained against the <a href="https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html#sphx-glr-auto-examples-datasets-plot-iris-dataset-py">IRIS
+dataset</a>.
+In this naïve example we are defining two different functions, one for training
+and one for performing a prediction, as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">dump</span><span class="p">,</span> <span class="n">load</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+
+<span class="k">def</span> <span class="nf">train</span><span class="p">():</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="s1">&#39;iris.joblib&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;iris.joblib&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;labels&quot;</span><span class="p">:</span> <span class="n">prediction</span><span class="o">.</span><span class="n">tolist</span><span class="p">()}</span>
+</code></pre></div>
+
+<p>As you can see, the training function persists into disk the trained model,
+following the <a href="https://scikit-learn.org/stable/tutorial/basic/tutorial.html#model-persistence">scikit-learn's
+tutorial</a>.
+The next action is to define the input parameters for your train and predict
+calls. Since this example is quite simple, we are only defining input
+parameters for the prediction call. Normally you would need to make it in
+a different file, so that it does not interfere with your code, but for the
+sake of simplicity we are adding this special function alongside our IRIS SVM:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">dump</span><span class="p">,</span> <span class="n">load</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">webargs</span> <span class="kn">import</span> <span class="n">fields</span><span class="p">,</span> <span class="n">validate</span>
+
+<span class="k">def</span> <span class="nf">train</span><span class="p">():</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="s1">&#39;iris.joblib&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;iris.joblib&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;labels&quot;</span><span class="p">:</span> <span class="n">prediction</span><span class="o">.</span><span class="n">tolist</span><span class="p">()}</span>
+
+<span class="k">def</span> <span class="nf">get_predict_args</span><span class="p">():</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">List</span><span class="p">(</span>
+            <span class="n">fields</span><span class="o">.</span><span class="n">Float</span><span class="p">(),</span>
+            <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Data to make a prediction. The IRIS dataset expects &quot;</span>
+                        <span class="s2">&quot;for values containing the Sepal Length, Sepal Width, &quot;</span>
+                        <span class="s2">&quot;Petal Length and Petal Width.&quot;</span><span class="p">,</span>
+            <span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="o">.</span><span class="n">Length</span><span class="p">(</span><span class="n">equal</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">args</span>
+</code></pre></div>
+
+<p>The last step in order to integrate it with DEEPaaS API you need to make it
+installable (you should be doing so) and define an entry point using <a href="https://docs.python.org/3.8/distutils/setupscript.html">Python's
+setuptools</a>. This entry
+point will be used by DEEPaaS to know that to load and how to plug the
+different functions to the defined endpoints. We are currently using the
+<code>deepaas.model.v2</code> entry point namespace, therefore we can create the
+<code>setup.py</code> file as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;test-iris-with-deepaas&#39;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;This is an SVM trained with the IRIS dataset&#39;</span><span class="p">,</span>
+    <span class="n">author</span><span class="o">=</span><span class="s1">&#39;Álvaro López&#39;</span><span class="p">,</span>
+    <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;aloga@ifca.unican.es&#39;</span><span class="p">,</span>
+    <span class="n">py_modules</span><span class="o">=</span><span class="s2">&quot;iris-deepaas.py&quot;</span><span class="p">,</span>
+    <span class="n">dependencies</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;joblib&#39;</span><span class="p">,</span> <span class="s1">&#39;scikit-learn&#39;</span><span class="p">],</span>
+    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;deepaas.v2.model&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;iris=iris-deepaas&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<h1>Installing and running DEEPaaS</h1>
+<p>Once you have your code ready, you simply need to install both your module and
+the DEEPaaS API so that it detects it and exposes its functionality through the
+API. In order to do so in an easy way, lets create a virtualenv and install
+everything inside:</p>
+<div class="highlight"><pre><span></span><code>$ virtualenv env --python<span class="o">=</span>python3
+    <span class="o">(</span>...<span class="o">)</span>
+$ <span class="nb">source</span> env/bin/activate
+<span class="o">(</span>env<span class="o">)</span> $ pip3 install .
+    <span class="o">(</span>...<span class="o">)</span>
+<span class="o">(</span>env<span class="o">)</span> $ pip3 install deepaas
+    <span class="o">(</span>...<span class="o">)</span>
+<span class="o">(</span>env<span class="o">)</span> $ deepaas-run
+
+         <span class="c1">##         ###</span>
+         <span class="c1">##       ######  ##</span>
+     .#####   <span class="c1">#####   #######.  .#####.</span>
+    <span class="c1">##   ## ## //   ##  //  ##  ##   ##</span>
+    <span class="c1">##. .##  ###  ###   // ###  ##   ##</span>
+      <span class="c1">## ##    ####     ####    #####.</span>
+              Hybrid-DataCloud  <span class="c1">##</span>
+
+
+Welcome to the DEEPaaS API API endpoint. You can directly browse to the
+API documentation endpoint to check the API using the builtint Swagger UI
+or you can use any of our endpoints.
+
+    API documentation: http://127.0.0.1:5000/ui
+    API specification: http://127.0.0.1:5000/swagger.json
+          V2 endpoint: http://127.0.0.1:5000/v2
+
+-------------------------------------------------------------------------
+
+<span class="m">2020</span>-02-04 <span class="m">13</span>:10:50.027 <span class="m">21186</span> INFO deepaas <span class="o">[</span>-<span class="o">]</span> Starting DEEPaaS version <span class="m">1</span>.0.0
+<span class="m">2020</span>-02-04 <span class="m">13</span>:10:50.231 <span class="m">21186</span> INFO deepaas.api <span class="o">[</span>-<span class="o">]</span> Serving loaded V2 models: <span class="o">[</span><span class="s1">&#39;iris-deepaas&#39;</span><span class="o">]</span>
+</code></pre></div>
+
+<h1>Accessing the API and making trainings and predictions</h1>
+<p>If everything was OK now you should be able to point your browser to the URL
+printed in the console (<code>http://127.0.0.1:5000/ui</code>) and get a nice looking
+<a href="https://swagger.io/tools/swagger-ui/">Swagger UI</a> that will allow you to
+interact with your model.</p>
+<p>Since this was a simple example, we have not shipped a trained model, so the
+first thing to do is to perform a training. This will call the <code>train()</code>
+function and save the trained SVM for later use. You can do it from the UI, or
+from a command line with:</p>
+<div class="highlight"><pre><span></span><code>curl -s -X POST <span class="s2">&quot;http://127.0.0.1:5000/v2/models/iris-deepaas/train/&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> <span class="p">|</span> python -mjson.tool
+<span class="o">{</span>
+    <span class="s2">&quot;date&quot;</span>: <span class="s2">&quot;2020-02-04 13:14:49.655061&quot;</span>,
+    <span class="s2">&quot;uuid&quot;</span>: <span class="s2">&quot;16a3141af5674a45b61cba124443c18f&quot;</span>,
+    <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;running&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>The training will be done asynchronously, so that the API does not block. You
+can check its status from the UI, or with the following call:</p>
+<div class="highlight"><pre><span></span><code>curl -s -X GET <span class="s2">&quot;http://127.0.0.1:5000/v2/models/iris-deepaas/train/&quot;</span> <span class="p">|</span> python -mjson.tool
+<span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&quot;date&quot;</span>: <span class="s2">&quot;2020-02-04 13:14:49.655061&quot;</span>,
+        <span class="s2">&quot;uuid&quot;</span>: <span class="s2">&quot;16a3141af5674a45b61cba124443c18f&quot;</span>,
+        <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;done&quot;</span>
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+
+<p>Now that the model is trained, we can perform a prediction. The IRIS dataset
+consists of 3 different types of irises' (Setosa, Versicolour, and Virginica)
+petal and sepal length. The samples have four columns that correspond to the
+Sepal Length, Sepal Width, Petal Length and Petal Width. In our example lets
+try to get the results for the <code>[5.1. 3.5, 1.4, 0.2]</code> observation, and get the
+results. Once again, you can make it from the UI or from the command line as
+follows:</p>
+<div class="highlight"><pre><span></span><code>curl -s -X POST <span class="s2">&quot;http://127.0.0.1:5000/v2/models/iris-deepaas/predict/?data=5.1&amp;data=3.5&amp;data=1.4&amp;data=0.2&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> <span class="p">|</span> python -mjson.tool
+<span class="o">{</span>
+    <span class="s2">&quot;predictions&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;labels&quot;</span>: <span class="o">[</span>
+            <span class="m">0</span>
+        <span class="o">]</span>
+    <span class="o">}</span>,
+    <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;OK&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>As you can see, the results contains the prediction that our SVM performed. In
+this case, the label for the input data was <code>0</code>, that is, indeed, the correct
+one.</p>
+<h1>Conclusions</h1>
+<p>In this simple example we have shown how a machine learning practitioner can
+expose any Python-based model through a REST API relying on the DEEPaaS API,
+rather than developing their own home-brew API. By doing so, data scientist
+can focus on their work, without worrying about writing and developing complex
+REST applications. Moreover, by using a common API, different modules will
+share the same interface, making it easier to be deployed in production and
+utilized by different programmers.</p>
+    </div>
+</article>    
+        </section>
+
+        <aside>
+            <nav role="navigation" class="navbar">
+    <h2>Menu</h2>
+    <ul>
+        <li class=""><a href="http://alvarolopez.github.io/">About me</a></li>
+        <li class=""><a href="http://alvarolopez.github.io/pages/contact.html">Contact</a></li>
+        <li class=""><a href="/publications.html">Publications</a></li> 
+        <li class=""><a href="/notes.html">Notes (not a blog)</a></li> 
+        <li>
+            <a href="http://alvarolopez.github.io/feeds/all.atom.xml" title="Atom Feed">Atom feed</a>
+        </li>
+    </ul>
+
+    <h2>Social links</h2>
+    <dl class="social-links">
+        <dt>ORCID</dt>
+        <dd><a href="https://orcid.org/0000-0002-0013-4602" title="ORCID: Open Researcher and Contributor ID">0000-0002-0013-4602</a></dd>
+        <dt>Researchgate</dt>
+        <dd><a href="https://www.researchgate.net/profile/Alvaro_Lopez-Garcia" title="ResearchGate Profile">Alvaro_Lopez-Garcia</a></dd>
+        <dt>Keybase</dt>
+        <dd><a href="https://keybase.io/aloga" title="Keybase.io Profile">aloga</a></dd>
+        <dt>Github</dt>
+        <dd><a href="https://github.com/alvarolopez" title="Github Profile">alvarolopez</a></dd>
+        <dt>Linkedin</dt>
+        <dd><a href="https://linkedin.com/in/lopezgarciaalvaro" title="Linkedin Profile">lopezgarciaalvaro</a></dd>
+        <dt>Twitter</dt>
+        <dd><a href="https://twitter.com/alvaretas" title="Twitter Profile">@alvaretas</a></dd>
+    </dl>            </nav>
+        </aside>
+    </main>
+
+    <footer role="contentinfo">
+<div class="footer-page">
+    My opinions are mine, and only mine.  <br />
+    Copyright &copy; Alvaro Lopez -
+    <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</div>    </footer>
+
+</body>
+</html>

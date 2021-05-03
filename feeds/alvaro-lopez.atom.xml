@@ -1,5 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>aloga - Alvaro Lopez</title><link href="http://alvarolopez.github.io/" rel="alternate"></link><link href="http://alvarolopez.github.io/feeds/alvaro-lopez.atom.xml" rel="self"></link><id>http://alvarolopez.github.io/</id><updated>2016-10-25T10:00:00+02:00</updated><subtitle></subtitle><entry><title>Running OpenStack Compute APIs in nginx and uWSGI</title><link href="http://alvarolopez.github.io/running-openstack-compute-apis-in-nginx-and-uwsgi.html" rel="alternate"></link><published>2016-10-25T10:00:00+02:00</published><updated>2016-10-25T10:00:00+02:00</updated><author><name>Alvaro Lopez</name></author><id>tag:alvarolopez.github.io,2016-10-25:/running-openstack-compute-apis-in-nginx-and-uwsgi.html</id><summary type="html">&lt;p&gt;In this article I will explain how run the &lt;a href="https://www.openstack.org/software/releases/liberty/components/nova"&gt;OpenStack Compute
+<feed xmlns="http://www.w3.org/2005/Atom"><title>aloga - Alvaro Lopez</title><link href="http://alvarolopez.github.io/" rel="alternate"></link><link href="http://alvarolopez.github.io/feeds/alvaro-lopez.atom.xml" rel="self"></link><id>http://alvarolopez.github.io/</id><updated>2021-03-23T00:00:00+01:00</updated><subtitle></subtitle><entry><title>Working remotely: Asynchronous vs synchronous communications</title><link href="http://alvarolopez.github.io/posts/2021/03/23/working-remotely-asynchronous-vs-synchronous-communications/" rel="alternate"></link><published>2021-03-23T00:00:00+01:00</published><updated>2021-03-23T00:00:00+01:00</updated><author><name>Alvaro Lopez</name></author><id>tag:alvarolopez.github.io,2021-03-23:/posts/2021/03/23/working-remotely-asynchronous-vs-synchronous-communications/</id><summary type="html">&lt;p&gt;I am normally involved in several research projects, collaborating with people
+across Europe. This means that I am used to work with distributed teams
+scattered in different countries, with different working hours and (sometimes)
+different time zones.&lt;/p&gt;
+&lt;p&gt;Until today the main means of communication in this highly distributed
+environment has …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am normally involved in several research projects, collaborating with people
+across Europe. This means that I am used to work with distributed teams
+scattered in different countries, with different working hours and (sometimes)
+different time zones.&lt;/p&gt;
+&lt;p&gt;Until today the main means of communication in this highly distributed
+environment has been the email (and by extension, mailing lists). This has been
+working almost perfectly, complementing email communication with online
+meetings and instant messaging when needed.&lt;/p&gt;
+&lt;p&gt;Email exchange is a form of asynchronous communication. You write an email
+whenver you want, the recipient replies to it whenever possible. This can be
+within a few minutes, hours, or days; but it is something at the receiver's
+discretion to choose the most appropriate moment to write a reply to your
+message. Similarly, senders are expeted to write emails whenever they can or
+they want, and they should not expect an immediate reply.  The sender should
+understand that email is async, not being impatient if a rely is not within a
+few moments.&lt;/p&gt;
+&lt;p&gt;All of this means that, assuming that you do not have annoying notifications
+enabled, there is not a single distraction when receiving an email, until you
+explicitly check your inbox.&lt;/p&gt;
+&lt;p&gt;This has an important consequence: email (and async) communications do not
+interrupt your work. You can focus your attention on complex tasks without any
+distraction at all. A context switch from one task to a completely different
+one is a costly process, and getting back to the initial point requires a lot
+of effort (this has been quantified). When you are working (at least when I am
+working) you need interruption-tight slots of time to get things properly
+done.&lt;/p&gt;
+&lt;p&gt;Asynchronous communication also means that you can elaborate responses with
+time, reflect on your thoughts and write a proper respose. You can work on them
+offline, find references, start composing a message and complete it later on,
+and similar things.&lt;/p&gt;
+&lt;p&gt;Recently (well, not so recently actually) Slack and alike (Mattermost, Teams,
+Skype, Gitter and so on and so forth) entered the scene. These supercharged
+chat systems promised to kill the email, but rather they have killed our
+productivity and our capacity of concentration. Synchronous communication means
+that you expect to get the recipient's attention within a few moments, if you
+do not get it you start feeling frustrated. Rings, bells, whistles, flashes
+are used and abused in order to get your focus, distracting you from your
+current task, just to ask you a thing that 99% of the times is not so urgent.
+Emails are sent to remind you that you missed a message. All these systems
+are designed to capture your attention and to reward you whenever they got it,
+regardless if you are a receiver (removing that large bubble with a count of
+unread messages feels good, you get a new dopamine shot), or a sender (getting
+a reply within a few seconds).&lt;/p&gt;
+&lt;p&gt;This does not mean that synchronous communication should not be used, as it is
+perfect for some things like holding meetings (I tend to prefer text meetings
+rather than teleconferences, but it seems that I am alone in this), carry out
+some work that requires synchronous communication (debugging remote systems
+that require manual actions), or to make a break on your work; but they cannot
+simply replace good old plain text email.&lt;/p&gt;
+&lt;p&gt;Moreover, email is just email. It is always the same. You can have several
+accounts, but in the end you probably will end up using a Mail User Agent (MUA)
+where you go to check your email. Instant messaging is a different thing. I am
+now sitting in my laptop, and just checked the number of applications that I
+have enabled: IRC, Skype, Mattermost (with 2 teams), Slack (2 teams) and
+Microsoft Teams. In the past, much to my dismay, I had to use 2 more Slack
+channels and Gitter.&lt;/p&gt;
+&lt;p&gt;Email is not a synchronous way of communication, and you should not expect it
+to behave like that.  Interruption at work is unavoidable, but it should not
+been the default and your first option when communicating. Urgent things
+deserve an interruption, normal communications do not. If in doubt, just send
+an email.&lt;/p&gt;
+&lt;p&gt;Some more readings:
+&lt;a href="https://pace.dev/blog/2020/02/18/evil-ux-patterns-for-attention-seeking-apps-by-david-hernandez.html"&gt;Evil UX patterns for attention seeking apps.&lt;/a&gt;
+and
+&lt;a href="https://www.wired.co.uk/article/slack-ruining-work"&gt;Wired: How Slack ruined work&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Sharing your machine learning models through a REST API</title><link href="http://alvarolopez.github.io/posts/2020/11/11/sharing-your-machine-learning-models-through-a-rest-api/" rel="alternate"></link><published>2020-11-11T10:00:00+01:00</published><updated>2020-11-11T10:00:00+01:00</updated><author><name>Alvaro Lopez</name></author><id>tag:alvarolopez.github.io,2020-11-11:/posts/2020/11/11/sharing-your-machine-learning-models-through-a-rest-api/</id><summary type="html">&lt;p&gt;Note: This blog post was originally published in &lt;a href="https://www.kdnuggets.com/2020/02/sharing-machine-learning-models-common-api.html"&gt;KDNuggets&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Data scientists building machine learning models do not have an easy and common
+way to share their developed applications with their colleagues or with anybody
+interested in using them. The whole model (i.e. the code and any configuration
+assets needed …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Note: This blog post was originally published in &lt;a href="https://www.kdnuggets.com/2020/02/sharing-machine-learning-models-common-api.html"&gt;KDNuggets&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Data scientists building machine learning models do not have an easy and common
+way to share their developed applications with their colleagues or with anybody
+interested in using them. The whole model (i.e. the code and any configuration
+assets needed) can be shared, but this requires that the receptors of the model
+need to have enough knowledge to execute it. In most cases we just want to
+share the model to show its functionality (to other colleagues or to a company
+interested in our predictive model), therefore there is no need to share the
+whole experiment.&lt;/p&gt;
+&lt;p&gt;The most straightforward way of doing so, in the connected world where we all
+work, is to expose the model through an HTTP endpoint, so that potential users
+can access it remotely through the network. This might sound simple, but
+developing a proper and correct REST API is not an easy task. Data scientists
+need to have knowledge on API programming, networking, REST semantics,
+security, etc. Moreover, if every scientists comes up with an implementation,
+we would end up with a myriad of different and non-interoperable APIs leading
+doing more or less the same job, leading to a fragmented ecosystem.&lt;/p&gt;
+&lt;p&gt;Enter &lt;a href="https://deepaas.readthedocs.io/"&gt;DEEPaaS API&lt;/a&gt;: a machine learning, deep
+learning and artificial intelligence REST API framework built using &lt;a href="https://docs.aiohttp.org/"&gt;aiohttp&lt;/a&gt;.
+DEEPaaS is an software component that allows to expose the functionality of a
+Python model (implemented with the framework of your choice) through an HTTP
+endpoint. It requires no modification to the original code, and has methods to
+customize it to the scientist's choice (input parameters, expected output,
+etc.)&lt;/p&gt;
+&lt;p&gt;The DEEPaaS API follows the &lt;a href="https://www.openapis.org/"&gt;OpenAPI Specification
+(OAS)&lt;/a&gt;, therefore it allows humans and computers to
+discover and understand the capabilities of the underlying model, its input
+parameters and output values, without inspecting the model's source code.&lt;/p&gt;
+&lt;p&gt;Lets see how it works with a walk-through example.&lt;/p&gt;
+&lt;h1&gt;Plugging a model into DEEPaaS&lt;/h1&gt;
+&lt;p&gt;In order to better illustrate how to integrate a model with DEEPaaS we will use
+one of the most known examples from &lt;a href="https://scikit-learn.org/"&gt;scikit-learn&lt;/a&gt;:
+a &lt;a href="https://scikit-learn.org/stable/modules/svm.html"&gt;Support Vector Machine&lt;/a&gt;
+trained against the &lt;a href="https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html#sphx-glr-auto-examples-datasets-plot-iris-dataset-py"&gt;IRIS
+dataset&lt;/a&gt;.
+In this naïve example we are defining two different functions, one for training
+and one for performing a prediction, as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;joblib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;svm&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;datasets&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;train&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;clf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;svm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SVC&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datasets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load_iris&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;return_X_y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;clf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;iris.joblib&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;clf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;iris.joblib&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;numpy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reshape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;prediction&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;clf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;labels&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;prediction&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tolist&lt;/span&gt;&lt;span class="p"&gt;()}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see, the training function persists into disk the trained model,
+following the &lt;a href="https://scikit-learn.org/stable/tutorial/basic/tutorial.html#model-persistence"&gt;scikit-learn's
+tutorial&lt;/a&gt;.
+The next action is to define the input parameters for your train and predict
+calls. Since this example is quite simple, we are only defining input
+parameters for the prediction call. Normally you would need to make it in
+a different file, so that it does not interfere with your code, but for the
+sake of simplicity we are adding this special function alongside our IRIS SVM:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;joblib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;svm&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;datasets&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;webargs&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;validate&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;train&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;clf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;svm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SVC&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datasets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load_iris&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;return_X_y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;clf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;clf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;iris.joblib&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;clf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;iris.joblib&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;numpy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reshape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;prediction&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;clf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;labels&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;prediction&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tolist&lt;/span&gt;&lt;span class="p"&gt;()}&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_predict_args&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Float&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+            &lt;span class="n"&gt;required&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Data to make a prediction. The IRIS dataset expects &amp;quot;&lt;/span&gt;
+                        &lt;span class="s2"&gt;&amp;quot;for values containing the Sepal Length, Sepal Width, &amp;quot;&lt;/span&gt;
+                        &lt;span class="s2"&gt;&amp;quot;Petal Length and Petal Width.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;validate&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;validate&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;equal&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The last step in order to integrate it with DEEPaaS API you need to make it
+installable (you should be doing so) and define an entry point using &lt;a href="https://docs.python.org/3.8/distutils/setupscript.html"&gt;Python's
+setuptools&lt;/a&gt;. This entry
+point will be used by DEEPaaS to know that to load and how to plug the
+different functions to the defined endpoints. We are currently using the
+&lt;code&gt;deepaas.model.v2&lt;/code&gt; entry point namespace, therefore we can create the
+&lt;code&gt;setup.py&lt;/code&gt; file as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;distutils.core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
+
+&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test-iris-with-deepaas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1.0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;This is an SVM trained with the IRIS dataset&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Álvaro López&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;author_email&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;aloga@ifca.unican.es&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;py_modules&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;iris-deepaas.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;joblib&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;scikit-learn&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="n"&gt;entry_points&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;deepaas.v2.model&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;iris=iris-deepaas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1&gt;Installing and running DEEPaaS&lt;/h1&gt;
+&lt;p&gt;Once you have your code ready, you simply need to install both your module and
+the DEEPaaS API so that it detects it and exposes its functionality through the
+API. In order to do so in an easy way, lets create a virtualenv and install
+everything inside:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ virtualenv env --python&lt;span class="o"&gt;=&lt;/span&gt;python3
+    &lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;
+$ &lt;span class="nb"&gt;source&lt;/span&gt; env/bin/activate
+&lt;span class="o"&gt;(&lt;/span&gt;env&lt;span class="o"&gt;)&lt;/span&gt; $ pip3 install .
+    &lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;env&lt;span class="o"&gt;)&lt;/span&gt; $ pip3 install deepaas
+    &lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;env&lt;span class="o"&gt;)&lt;/span&gt; $ deepaas-run
+
+         &lt;span class="c1"&gt;##         ###&lt;/span&gt;
+         &lt;span class="c1"&gt;##       ######  ##&lt;/span&gt;
+     .#####   &lt;span class="c1"&gt;#####   #######.  .#####.&lt;/span&gt;
+    &lt;span class="c1"&gt;##   ## ## //   ##  //  ##  ##   ##&lt;/span&gt;
+    &lt;span class="c1"&gt;##. .##  ###  ###   // ###  ##   ##&lt;/span&gt;
+      &lt;span class="c1"&gt;## ##    ####     ####    #####.&lt;/span&gt;
+              Hybrid-DataCloud  &lt;span class="c1"&gt;##&lt;/span&gt;
+
+
+Welcome to the DEEPaaS API API endpoint. You can directly browse to the
+API documentation endpoint to check the API using the builtint Swagger UI
+or you can use any of our endpoints.
+
+    API documentation: http://127.0.0.1:5000/ui
+    API specification: http://127.0.0.1:5000/swagger.json
+          V2 endpoint: http://127.0.0.1:5000/v2
+
+-------------------------------------------------------------------------
+
+&lt;span class="m"&gt;2020&lt;/span&gt;-02-04 &lt;span class="m"&gt;13&lt;/span&gt;:10:50.027 &lt;span class="m"&gt;21186&lt;/span&gt; INFO deepaas &lt;span class="o"&gt;[&lt;/span&gt;-&lt;span class="o"&gt;]&lt;/span&gt; Starting DEEPaaS version &lt;span class="m"&gt;1&lt;/span&gt;.0.0
+&lt;span class="m"&gt;2020&lt;/span&gt;-02-04 &lt;span class="m"&gt;13&lt;/span&gt;:10:50.231 &lt;span class="m"&gt;21186&lt;/span&gt; INFO deepaas.api &lt;span class="o"&gt;[&lt;/span&gt;-&lt;span class="o"&gt;]&lt;/span&gt; Serving loaded V2 models: &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;iris-deepaas&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1&gt;Accessing the API and making trainings and predictions&lt;/h1&gt;
+&lt;p&gt;If everything was OK now you should be able to point your browser to the URL
+printed in the console (&lt;code&gt;http://127.0.0.1:5000/ui&lt;/code&gt;) and get a nice looking
+&lt;a href="https://swagger.io/tools/swagger-ui/"&gt;Swagger UI&lt;/a&gt; that will allow you to
+interact with your model.&lt;/p&gt;
+&lt;p&gt;Since this was a simple example, we have not shipped a trained model, so the
+first thing to do is to perform a training. This will call the &lt;code&gt;train()&lt;/code&gt;
+function and save the trained SVM for later use. You can do it from the UI, or
+from a command line with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -s -X POST &lt;span class="s2"&gt;&amp;quot;http://127.0.0.1:5000/v2/models/iris-deepaas/train/&amp;quot;&lt;/span&gt; -H  &lt;span class="s2"&gt;&amp;quot;accept: application/json&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; python -mjson.tool
+&lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;date&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;2020-02-04 13:14:49.655061&amp;quot;&lt;/span&gt;,
+    &lt;span class="s2"&gt;&amp;quot;uuid&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;16a3141af5674a45b61cba124443c18f&amp;quot;&lt;/span&gt;,
+    &lt;span class="s2"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;running&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The training will be done asynchronously, so that the API does not block. You
+can check its status from the UI, or with the following call:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -s -X GET &lt;span class="s2"&gt;&amp;quot;http://127.0.0.1:5000/v2/models/iris-deepaas/train/&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; python -mjson.tool
+&lt;span class="o"&gt;[&lt;/span&gt;
+    &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;date&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;2020-02-04 13:14:49.655061&amp;quot;&lt;/span&gt;,
+        &lt;span class="s2"&gt;&amp;quot;uuid&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;16a3141af5674a45b61cba124443c18f&amp;quot;&lt;/span&gt;,
+        &lt;span class="s2"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;done&amp;quot;&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now that the model is trained, we can perform a prediction. The IRIS dataset
+consists of 3 different types of irises' (Setosa, Versicolour, and Virginica)
+petal and sepal length. The samples have four columns that correspond to the
+Sepal Length, Sepal Width, Petal Length and Petal Width. In our example lets
+try to get the results for the &lt;code&gt;[5.1. 3.5, 1.4, 0.2]&lt;/code&gt; observation, and get the
+results. Once again, you can make it from the UI or from the command line as
+follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -s -X POST &lt;span class="s2"&gt;&amp;quot;http://127.0.0.1:5000/v2/models/iris-deepaas/predict/?data=5.1&amp;amp;data=3.5&amp;amp;data=1.4&amp;amp;data=0.2&amp;quot;&lt;/span&gt; -H  &lt;span class="s2"&gt;&amp;quot;accept: application/json&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; python -mjson.tool
+&lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;predictions&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;labels&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;[&lt;/span&gt;
+            &lt;span class="m"&gt;0&lt;/span&gt;
+        &lt;span class="o"&gt;]&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;,
+    &lt;span class="s2"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;OK&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see, the results contains the prediction that our SVM performed. In
+this case, the label for the input data was &lt;code&gt;0&lt;/code&gt;, that is, indeed, the correct
+one.&lt;/p&gt;
+&lt;h1&gt;Conclusions&lt;/h1&gt;
+&lt;p&gt;In this simple example we have shown how a machine learning practitioner can
+expose any Python-based model through a REST API relying on the DEEPaaS API,
+rather than developing their own home-brew API. By doing so, data scientist
+can focus on their work, without worrying about writing and developing complex
+REST applications. Moreover, by using a common API, different modules will
+share the same interface, making it easier to be deployed in production and
+utilized by different programmers.&lt;/p&gt;</content></entry><entry><title>Running OpenStack Compute APIs in nginx and uWSGI</title><link href="http://alvarolopez.github.io/posts/2016/10/25/running-openstack-compute-apis-in-nginx-and-uwsgi/" rel="alternate"></link><published>2016-10-25T10:00:00+02:00</published><updated>2016-10-25T10:00:00+02:00</updated><author><name>Alvaro Lopez</name></author><id>tag:alvarolopez.github.io,2016-10-25:/posts/2016/10/25/running-openstack-compute-apis-in-nginx-and-uwsgi/</id><summary type="html">&lt;p&gt;In this article I will explain how run the &lt;a href="https://www.openstack.org/software/releases/liberty/components/nova"&gt;OpenStack Compute
 (nova)&lt;/a&gt;
 APis behind &lt;a href="http://nginx.org/"&gt;nginx&lt;/a&gt;, instead of using the
 &lt;a href="http://eventlet.net/doc/modules/wsgi.html"&gt;Eventlet&lt;/a&gt; builtin WSGI server. This
@@ -37,23 +322,21 @@ thus horizontally scaling your controller quite easily.&lt;/p&gt;
 &lt;h3&gt;Preparation&lt;/h3&gt;
 &lt;p&gt;I assume that you have the OpenStack Compute APIs already configured and
 running on a server, so lets focus on installing the required extra packages:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install nginx
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;apt-get install nginx
 apt-get install uwsgi-core uwsgi-emperor uwsgi-plugin-python
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Since we are going to run the API using uWSGI, we must stop (and disable) the
 &lt;code&gt;nova-api&lt;/code&gt; service:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;service nova-api stop
-&lt;span class="nb"&gt;echo&lt;/span&gt; manual &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt; /etc/init/SERVICE.override
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;service nova-api stop
+&lt;span class="nb"&gt;echo&lt;/span&gt; manual &amp;gt; /etc/init/SERVICE.override
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Configure uWSGI&lt;/h3&gt;
 &lt;p&gt;As we said, the nova APIs are WSGI applications, but we need some helper
 scripts that can be handled by uWSGI. Let's create the
 &lt;code&gt;/usr/lib/cgi-bin/nova-uwsgi/nova.wsgi&lt;/code&gt; file with the following contents:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;eventlet&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;paste&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt;
@@ -80,18 +363,15 @@ scripts that can be handled by uWSGI. Let's create the
 
 &lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;appconfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;config:&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;paste_conf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;application&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loadapp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;config:&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;paste_conf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now create a links for the API, so that uWSGI is able to find it:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/osapi_compute.py
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/osapi_compute.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The above script can be executed by a standalone uWSGI instance as follows:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;uwsgi --http-socket :8080 --plugin python --chdir /usr/lib/cgi-bin/nova-uwsgi --module osapi_compute --master --processes &lt;span class="m"&gt;1&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uwsgi --http-socket :8080 --plugin python --chdir /usr/lib/cgi-bin/nova-uwsgi --module osapi_compute --master --processes &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;If you point to the &lt;code&gt;http://&amp;lt;server&amp;gt;:8080&lt;/code&gt; URL you should see the nova endpoint
 advertising its API versions. Don't forget to stop this process whenever you're
@@ -105,7 +385,7 @@ applications (that is, the different OpenStack Compute APIs) instead of
 running them manually.&lt;/p&gt;
 &lt;p&gt;Lets configure the Emperor. First of all, configure the Emperor itself via its
 &lt;code&gt;/etc/wsgi/emperor.ini&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[uwsgi]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[uwsgi]&lt;/span&gt;
 
 &lt;span class="c1"&gt;# try to autoload appropriate plugin if &amp;quot;unknown&amp;quot; option has been specified&lt;/span&gt;
 &lt;span class="na"&gt;autoload&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
@@ -135,11 +415,10 @@ running them manually.&lt;/p&gt;
 &lt;span class="na"&gt;emperor-tyrant&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
 
 &lt;span class="na"&gt;cap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;setgid,setuid&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;And now configure it as a vassals in &lt;code&gt;/etc/uwsgi-emperor/vassals/nova.ini&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ini&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ini&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;plugin&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;chdir&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;cgi&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
@@ -149,8 +428,7 @@ running them manually.&lt;/p&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nf"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nf"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stats&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;vacuum&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;true&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;You must change the ownership to &lt;code&gt;nova:nova&lt;/code&gt;, then you can restart it and check
 that it is working.&lt;/p&gt;
@@ -160,35 +438,34 @@ uWSGI processes. This is the usual nginx configuration for load balancing, so
 if you are familiar with nginx configuration you should be familiar with this
 configuration. Create a file called &lt;code&gt;/etc/nginx/sites-enabled/nova.conf&lt;/code&gt; with
 the following contents. This setup uses SSL and you should use it too!&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;upstream&lt;/span&gt; &lt;span class="nt"&gt;nova&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;server&lt;/span&gt; &lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;///&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;upstream&lt;/span&gt; &lt;span class="n"&gt;nova&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;///&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="nt"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;listen&lt;/span&gt; &lt;span class="err"&gt;8774&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;server_name&lt;/span&gt;  &lt;span class="err"&gt;controller.example.org&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;8774&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;server_name&lt;/span&gt;  &lt;span class="n"&gt;controller&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="err"&gt;root&lt;/span&gt; &lt;span class="err"&gt;html&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;index&lt;/span&gt; &lt;span class="err"&gt;index.html&lt;/span&gt; &lt;span class="err"&gt;index.htm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;htm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="err"&gt;ssl&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;ssl_certificate&lt;/span&gt; &lt;span class="err"&gt;/etc/ssl/certs/hostcert.pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;ssl_certificate_key&lt;/span&gt; &lt;span class="err"&gt;/etc/ssl/private/hostkey.pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_certificate&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;certs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hostcert&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_certificate_key&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;private&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hostkey&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="err"&gt;ssl_session_timeout&lt;/span&gt; &lt;span class="err"&gt;5m&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_session_timeout&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="err"&gt;ssl_protocols&lt;/span&gt; &lt;span class="err"&gt;TLSv1&lt;/span&gt; &lt;span class="err"&gt;TLSv1.1&lt;/span&gt; &lt;span class="err"&gt;TLSv1.2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;ssl_ciphers&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-GCM-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-GCM-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;kEDH&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;AESGCM&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES256-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;aNULL&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;eNULL&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;EXPORT&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;DES&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;RC4&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="n"&gt;DES&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;MD5&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;PSK&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
-&lt;span class="s2"&gt;    ssl_prefer_server_ciphers on;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_protocols&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_ciphers&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_prefer_server_ciphers&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-&lt;span class="s2"&gt;    location / {&lt;/span&gt;
-&lt;span class="s2"&gt;        uwsgi_pass  nova;&lt;/span&gt;
-&lt;span class="s2"&gt;        uwsgi_param SCRIPT_NAME &amp;quot;&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="err"&gt;include&lt;/span&gt;     &lt;span class="err"&gt;/etc/nginx/uwsgi_params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;uwsgi_pass&lt;/span&gt;  &lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;uwsgi_param&lt;/span&gt; &lt;span class="n"&gt;SCRIPT_NAME&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;include&lt;/span&gt;     &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nginx&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;uwsgi_params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Restart your services, and you should be done.&lt;/p&gt;
 &lt;h3&gt;Extra: OpenStack OCCI Interface&lt;/h3&gt;
@@ -197,14 +474,13 @@ want to run it) you can also deploy it using this setup. Assuming that you are
 using &lt;a href="https://launchpad.net/ooi/"&gt;ooi&lt;/a&gt; the setup will be quite
 straightforward.&lt;/p&gt;
 &lt;p&gt;First, create the required link as follows:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/ooi_api.py
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/ooi_api.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now we can create another uWSGI vassal for ooi. Put the following contents in a
 file called &lt;code&gt;/etc/uwsgi-emperor/vassals/ooi.ini&lt;/code&gt; (remember to change the
 ownership to &lt;code&gt;nova:nova&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[uwsgi]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[uwsgi]&lt;/span&gt;
 &lt;span class="na"&gt;plugin&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;python&lt;/span&gt;
 &lt;span class="na"&gt;chdir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;/usr/lib/cgi-bin/nova-uwsgi&lt;/span&gt;
 &lt;span class="na"&gt;module&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;ooi_api&lt;/span&gt;
@@ -213,35 +489,34 @@ ownership to &lt;code&gt;nova:nova&lt;/code&gt;:&lt;/p&gt;
 &lt;span class="na"&gt;socket&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;/var/run/nova/ooi.uwsgi.sock&lt;/span&gt;
 &lt;span class="na"&gt;stats&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;/var/run/nova/ooi.uwsgi.stats.sock&lt;/span&gt;
 &lt;span class="na"&gt;vacuum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Then, add the following nginx configuration:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;upstream&lt;/span&gt; &lt;span class="nt"&gt;ooi&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;server&lt;/span&gt; &lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;///&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ooi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;upstream&lt;/span&gt; &lt;span class="n"&gt;ooi&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;unix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;///&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nova&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ooi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;uwsgi&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="nt"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;listen&lt;/span&gt; &lt;span class="err"&gt;8787&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;server_name&lt;/span&gt;  &lt;span class="err"&gt;cloud.ifca.es&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;8787&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;server_name&lt;/span&gt;  &lt;span class="n"&gt;cloud&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ifca&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;es&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="err"&gt;root&lt;/span&gt; &lt;span class="err"&gt;html&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;index&lt;/span&gt; &lt;span class="err"&gt;index.html&lt;/span&gt; &lt;span class="err"&gt;index.htm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;htm&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="err"&gt;ssl&lt;/span&gt; &lt;span class="err"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;ssl_certificate&lt;/span&gt; &lt;span class="err"&gt;/etc/ssl/certs/hostcert.pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;ssl_certificate_key&lt;/span&gt; &lt;span class="err"&gt;/etc/ssl/private/hostkey.pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_certificate&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;certs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hostcert&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_certificate_key&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;private&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hostkey&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="err"&gt;ssl_session_timeout&lt;/span&gt; &lt;span class="err"&gt;5m&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_session_timeout&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="err"&gt;ssl_protocols&lt;/span&gt; &lt;span class="err"&gt;TLSv1&lt;/span&gt; &lt;span class="err"&gt;TLSv1.1&lt;/span&gt; &lt;span class="err"&gt;TLSv1.2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;ssl_ciphers&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-GCM-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-GCM-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES128-GCM-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;kEDH&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;AESGCM&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-SHA384&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-RSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;ECDHE-ECDSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES128-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES128-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES256-SHA256&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-DSS-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;DHE-RSA-AES256-SHA&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;aNULL&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;eNULL&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;EXPORT&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;DES&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;RC4&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="n"&gt;DES&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;MD5&lt;/span&gt;&lt;span class="o"&gt;:!&lt;/span&gt;&lt;span class="n"&gt;PSK&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
-&lt;span class="s2"&gt;    ssl_prefer_server_ciphers on;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_protocols&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;TLSv1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_ciphers&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;ssl_prefer_server_ciphers&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-&lt;span class="s2"&gt;    location / {&lt;/span&gt;
-&lt;span class="s2"&gt;        uwsgi_pass ooi;&lt;/span&gt;
-&lt;span class="s2"&gt;        uwsgi_param SCRIPT_NAME &amp;quot;&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-        &lt;span class="err"&gt;include&lt;/span&gt;     &lt;span class="err"&gt;/etc/nginx/uwsgi_params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;uwsgi_pass&lt;/span&gt; &lt;span class="n"&gt;ooi&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;uwsgi_param&lt;/span&gt; &lt;span class="n"&gt;SCRIPT_NAME&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;include&lt;/span&gt;     &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nginx&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;uwsgi_params&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="err"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Hello World</title><link href="http://alvarolopez.github.io/hello-world.html" rel="alternate"></link><published>2013-10-17T16:51:00+02:00</published><updated>2013-10-17T16:51:00+02:00</updated><author><name>Alvaro Lopez</name></author><id>tag:alvarolopez.github.io,2013-10-17:/hello-world.html</id><summary type="html">&lt;p&gt;This is just a dummy first post.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is just a dummy first post.&lt;/p&gt;</content><category term="foo"></category><category term="bar"></category><category term="bazz"></category><category term="bazonk"></category></entry></feed>
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Hello World</title><link href="http://alvarolopez.github.io/posts/2013/10/17/hello-world/" rel="alternate"></link><published>2013-10-17T16:51:00+02:00</published><updated>2013-10-17T16:51:00+02:00</updated><author><name>Alvaro Lopez</name></author><id>tag:alvarolopez.github.io,2013-10-17:/posts/2013/10/17/hello-world/</id><summary type="html">&lt;p&gt;This is just a dummy first post.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is just a dummy first post.&lt;/p&gt;</content><category term="foo"></category><category term="bar"></category><category term="bazz"></category><category term="bazonk"></category></entry></feed>

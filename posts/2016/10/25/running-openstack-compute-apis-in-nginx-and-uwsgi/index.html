@@ -1,0 +1,320 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="referrer" content="origin" />
+  
+  <meta property="og:site_name" content="aloga" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Alvaro Lopez" />
+  <meta property="og:description" content="" />
+  <meta property="og:url" content="http://alvarolopez.github.io" />
+  
+  <meta name="author" content="Alvaro Lopez">
+
+  <title>aloga - Running OpenStack Compute APIs in nginx and uWSGI</title>
+
+  <link type="application/atom+xml" rel="alternate"
+        title="aloga Atom Feed" 
+        href="http://alvarolopez.github.io/feeds/all.atom.xml" />
+
+  <link rel="stylesheet" type="text/css" href="/theme/pigments.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+  <link rel="icon" href="http://alvarolopez.github.io/favicon.png">
+  
+  <link rel="canonical" href="http://alvarolopez.github.io" />
+
+
+
+</head>
+
+<body>
+    <header role="banner">
+    <div class="site-head">
+        <h1 class="blog-title">aloga</h1>
+    </div>
+    </header>
+    
+    <main class="index">
+        <section role="main" class="content">
+<article class="post">
+    <header class="title">  
+        <h2>Running OpenStack Compute APIs in nginx and uWSGI</h2>
+        <span class="post-meta">
+            Published on <time datetime="2016-10-25T10:00:00+02:00" pubdate>25 Oct 2016</time>
+        </span>
+    </header>
+    <div class="post-content">
+        <p>In this article I will explain how run the <a href="https://www.openstack.org/software/releases/liberty/components/nova">OpenStack Compute
+(nova)</a>
+APis behind <a href="http://nginx.org/">nginx</a>, instead of using the
+<a href="http://eventlet.net/doc/modules/wsgi.html">Eventlet</a> builtin WSGI server. This
+is a setup we have been using at <a href="https://grid.ifca.es/">IFCA</a> since long after
+using plain Eventlet and <a href="https://apache.org/">Apache</a> +
+<a href="https://modwsgi.readthedocs.io/">mod_wsgi</a>.</p>
+<p>Unlike other HTTP servers like Apache, nginx does not have direct WSGI support.
+However, it can act as an application gateway, as it offers a number of
+built-in interfaces to pass the incoming requests to other HTTP servers,
+lightweight application servers and web frameworks. One of those is uWSGI, and
+that is what we are going to use to actually run the OpenStack APIs.
+<a href="https://uwsgi-docs.readthedocs.org">uWSGI</a> is one of the most common
+application servers implementing the WSGI protocol (but not only) and, as you
+probably already know, the OpenStack Compute APIs are WSGI applications</p>
+<p>This basic setup will run uWSGI and nginx in the same server, but you can
+easily decouple them so that you can deploy several API nodes and use all the
+advanced HTTP features of nginx (such as load balancing or SSL termination),
+thus horizontally scaling your controller quite easily.</p>
+<h3>Update (2016-11-16)</h3>
+<p>I've received some comments from <a href="https://github.com/cgimeno">Carlos Gimeno</a>
+(thanks!) about two missing bits in the steps below:</p>
+<ul>
+<li>It is required to install the <code>uwsgi-plugin-python</code> alongside all the other
+  uWSGI packages.</li>
+<li>It is needed to set the proper ownership to the vassals files, in our case
+  the user and group are <code>nova:nova</code></li>
+</ul>
+<h3>Preparation</h3>
+<p>I assume that you have the OpenStack Compute APIs already configured and
+running on a server, so lets focus on installing the required extra packages:</p>
+<div class="highlight"><pre><span></span><code>apt-get install nginx
+apt-get install uwsgi-core uwsgi-emperor uwsgi-plugin-python
+</code></pre></div>
+
+<p>Since we are going to run the API using uWSGI, we must stop (and disable) the
+<code>nova-api</code> service:</p>
+<div class="highlight"><pre><span></span><code>service nova-api stop
+<span class="nb">echo</span> manual &gt; /etc/init/SERVICE.override
+</code></pre></div>
+
+<h3>Configure uWSGI</h3>
+<p>As we said, the nova APIs are WSGI applications, but we need some helper
+scripts that can be handled by uWSGI. Let's create the
+<code>/usr/lib/cgi-bin/nova-uwsgi/nova.wsgi</code> file with the following contents:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">eventlet</span>
+<span class="kn">from</span> <span class="nn">paste</span> <span class="kn">import</span> <span class="n">deploy</span>
+
+<span class="kn">from</span> <span class="nn">oslo_config</span> <span class="kn">import</span> <span class="n">cfg</span>
+<span class="kn">from</span> <span class="nn">oslo_log</span> <span class="kn">import</span> <span class="n">log</span> <span class="k">as</span> <span class="n">logging</span>
+
+<span class="kn">from</span> <span class="nn">nova</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">nova</span> <span class="kn">import</span> <span class="n">objects</span>
+<span class="kn">from</span> <span class="nn">nova</span> <span class="kn">import</span> <span class="n">service</span>
+<span class="kn">from</span> <span class="nn">nova</span> <span class="kn">import</span> <span class="n">utils</span>
+
+<span class="c1">#eventlet.monkey_patch()</span>
+
+<span class="n">CONF</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">CONF</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">parse_args</span><span class="p">([])</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">CONF</span><span class="p">,</span> <span class="s2">&quot;nova&quot;</span><span class="p">)</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">monkey_patch</span><span class="p">()</span>
+<span class="n">objects</span><span class="o">.</span><span class="n">register_all</span><span class="p">()</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">paste_conf</span> <span class="o">=</span> <span class="s2">&quot;/etc/nova/api-paste.ini&quot;</span>
+
+<span class="n">options</span> <span class="o">=</span> <span class="n">deploy</span><span class="o">.</span><span class="n">appconfig</span><span class="p">(</span><span class="s1">&#39;config:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">paste_conf</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">deploy</span><span class="o">.</span><span class="n">loadapp</span><span class="p">(</span><span class="s1">&#39;config:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">paste_conf</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Now create a links for the API, so that uWSGI is able to find it:</p>
+<div class="highlight"><pre><span></span><code>ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/osapi_compute.py
+</code></pre></div>
+
+<p>The above script can be executed by a standalone uWSGI instance as follows:</p>
+<div class="highlight"><pre><span></span><code>uwsgi --http-socket :8080 --plugin python --chdir /usr/lib/cgi-bin/nova-uwsgi --module osapi_compute --master --processes <span class="m">1</span>
+</code></pre></div>
+
+<p>If you point to the <code>http://&lt;server&gt;:8080</code> URL you should see the nova endpoint
+advertising its API versions. Don't forget to stop this process whenever you're
+done testing it.</p>
+<p>However, the above is not appropriate for a production environment. uWSGI
+implements a more convenient module, called "Emperor", where a special uWSGI
+instance will control several application instances (called vassals) according
+to some specific events (like sudden application termination).  Therefore, we
+will rely on the uWSGI emperor mode for spawning all our configured
+applications (that is, the different OpenStack Compute APIs) instead of
+running them manually.</p>
+<p>Lets configure the Emperor. First of all, configure the Emperor itself via its
+<code>/etc/wsgi/emperor.ini</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">[uwsgi]</span>
+
+<span class="c1"># try to autoload appropriate plugin if &quot;unknown&quot; option has been specified</span>
+<span class="na">autoload</span> <span class="o">=</span> <span class="s">true</span>
+
+<span class="c1"># enable master process manager</span>
+<span class="na">master</span> <span class="o">=</span> <span class="s">true</span>
+
+<span class="c1"># spawn 2 uWSGI emperor worker processes</span>
+<span class="na">workers</span> <span class="o">=</span> <span class="s">2</span>
+
+<span class="c1"># automatically kill workers on master&#39;s death</span>
+<span class="na">no-orphans</span> <span class="o">=</span> <span class="s">true</span>
+
+<span class="c1"># place timestamps into log</span>
+<span class="na">log-date</span> <span class="o">=</span> <span class="s">true</span>
+
+<span class="c1"># user identifier of uWSGI processes</span>
+<span class="na">uid</span> <span class="o">=</span> <span class="s">www-data</span>
+
+<span class="c1"># group identifier of uWSGI processes</span>
+<span class="na">gid</span> <span class="o">=</span> <span class="s">www-data</span>
+
+<span class="c1"># vassals directory</span>
+<span class="na">emperor</span> <span class="o">=</span> <span class="s">/etc/uwsgi-emperor/vassals</span>
+
+<span class="c1"># let the emperor change uids and gids</span>
+<span class="na">emperor-tyrant</span> <span class="o">=</span> <span class="s">true</span>
+
+<span class="na">cap</span> <span class="o">=</span> <span class="s">setgid,setuid</span>
+</code></pre></div>
+
+<p>And now configure it as a vassals in <code>/etc/uwsgi-emperor/vassals/nova.ini</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="o">::</span><span class="err">:</span><span class="n">ini</span><span class="w"></span>
+<span class="w">    </span><span class="o">[</span><span class="n">uwsgi</span><span class="o">]</span><span class="w"></span>
+<span class="w">    </span><span class="n">plugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">python</span><span class="w"></span>
+<span class="w">    </span><span class="n">chdir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="n">bin</span><span class="o">/</span><span class="n">nova</span><span class="o">-</span><span class="n">uwsgi</span><span class="w"></span>
+<span class="w">    </span><span class="k">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">osapi_compute</span><span class="w"></span>
+<span class="w">    </span><span class="n">master</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"></span>
+<span class="w">    </span><span class="n">processes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
+<span class="w">    </span><span class="n">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="nf">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nova</span><span class="o">/</span><span class="n">nova</span><span class="p">.</span><span class="n">uwsgi</span><span class="p">.</span><span class="n">sock</span><span class="w"></span>
+<span class="w">    </span><span class="n">stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="nf">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nova</span><span class="o">/</span><span class="n">nova</span><span class="p">.</span><span class="n">uwsgi</span><span class="p">.</span><span class="n">stats</span><span class="p">.</span><span class="n">sock</span><span class="w"></span>
+<span class="w">    </span><span class="n">vacuum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"></span>
+</code></pre></div>
+
+<p>You must change the ownership to <code>nova:nova</code>, then you can restart it and check
+that it is working.</p>
+<h3>Configure nginx</h3>
+<p>Now it is time to configure nginx to distribute the requests to the relevant
+uWSGI processes. This is the usual nginx configuration for load balancing, so
+if you are familiar with nginx configuration you should be familiar with this
+configuration. Create a file called <code>/etc/nginx/sites-enabled/nova.conf</code> with
+the following contents. This setup uses SSL and you should use it too!</p>
+<div class="highlight"><pre><span></span><code><span class="n">upstream</span> <span class="n">nova</span> <span class="p">{</span>
+    <span class="n">server</span> <span class="n">unix</span><span class="p">:</span><span class="o">///</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nova</span><span class="o">/</span><span class="n">nova</span><span class="o">.</span><span class="n">uwsgi</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="mi">8774</span><span class="p">;</span>
+    <span class="n">server_name</span>  <span class="n">controller</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">;</span>
+
+    <span class="n">root</span> <span class="n">html</span><span class="p">;</span>
+    <span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="n">index</span><span class="o">.</span><span class="n">htm</span><span class="p">;</span>
+
+    <span class="n">ssl</span> <span class="n">on</span><span class="p">;</span>
+    <span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">hostcert</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+    <span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">hostkey</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+
+    <span class="n">ssl_session_timeout</span> <span class="mi">5</span><span class="n">m</span><span class="p">;</span>
+
+    <span class="n">ssl_protocols</span> <span class="n">TLSv1</span> <span class="n">TLSv1</span><span class="o">.</span><span class="mi">1</span> <span class="n">TLSv1</span><span class="o">.</span><span class="mi">2</span><span class="p">;</span>
+    <span class="n">ssl_ciphers</span> <span class="s2">&quot;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK&quot;</span><span class="p">;</span>
+    <span class="n">ssl_prefer_server_ciphers</span> <span class="n">on</span><span class="p">;</span>
+
+    <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+        <span class="n">uwsgi_pass</span>  <span class="n">nova</span><span class="p">;</span>
+        <span class="n">uwsgi_param</span> <span class="n">SCRIPT_NAME</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+        <span class="n">include</span>     <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">uwsgi_params</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Restart your services, and you should be done.</p>
+<h3>Extra: OpenStack OCCI Interface</h3>
+<p>If by change you are running an <a href="http://occi-wg.org/">OCCI</a> interface (or you
+want to run it) you can also deploy it using this setup. Assuming that you are
+using <a href="https://launchpad.net/ooi/">ooi</a> the setup will be quite
+straightforward.</p>
+<p>First, create the required link as follows:</p>
+<div class="highlight"><pre><span></span><code>ln -sf /usr/lib/cgi-bin/nova-uwsgi/nova.wsgi /usr/lib/cgi-bin/nova-uwsgi/ooi_api.py
+</code></pre></div>
+
+<p>Now we can create another uWSGI vassal for ooi. Put the following contents in a
+file called <code>/etc/uwsgi-emperor/vassals/ooi.ini</code> (remember to change the
+ownership to <code>nova:nova</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[uwsgi]</span>
+<span class="na">plugin</span> <span class="o">=</span> <span class="s">python</span>
+<span class="na">chdir</span> <span class="o">=</span> <span class="s">/usr/lib/cgi-bin/nova-uwsgi</span>
+<span class="na">module</span> <span class="o">=</span> <span class="s">ooi_api</span>
+<span class="na">master</span> <span class="o">=</span> <span class="s">true</span>
+<span class="na">processes</span> <span class="o">=</span> <span class="s">4</span>
+<span class="na">socket</span> <span class="o">=</span> <span class="s">/var/run/nova/ooi.uwsgi.sock</span>
+<span class="na">stats</span> <span class="o">=</span> <span class="s">/var/run/nova/ooi.uwsgi.stats.sock</span>
+<span class="na">vacuum</span> <span class="o">=</span> <span class="s">true</span>
+</code></pre></div>
+
+<p>Then, add the following nginx configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="n">upstream</span> <span class="n">ooi</span> <span class="p">{</span>
+    <span class="n">server</span> <span class="n">unix</span><span class="p">:</span><span class="o">///</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">nova</span><span class="o">/</span><span class="n">ooi</span><span class="o">.</span><span class="n">uwsgi</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="mi">8787</span><span class="p">;</span>
+    <span class="n">server_name</span>  <span class="n">cloud</span><span class="o">.</span><span class="n">ifca</span><span class="o">.</span><span class="n">es</span><span class="p">;</span>
+
+    <span class="n">root</span> <span class="n">html</span><span class="p">;</span>
+    <span class="n">index</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="n">index</span><span class="o">.</span><span class="n">htm</span><span class="p">;</span>
+
+    <span class="n">ssl</span> <span class="n">on</span><span class="p">;</span>
+    <span class="n">ssl_certificate</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">hostcert</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+    <span class="n">ssl_certificate_key</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">hostkey</span><span class="o">.</span><span class="n">pem</span><span class="p">;</span>
+
+    <span class="n">ssl_session_timeout</span> <span class="mi">5</span><span class="n">m</span><span class="p">;</span>
+
+    <span class="n">ssl_protocols</span> <span class="n">TLSv1</span> <span class="n">TLSv1</span><span class="o">.</span><span class="mi">1</span> <span class="n">TLSv1</span><span class="o">.</span><span class="mi">2</span><span class="p">;</span>
+    <span class="n">ssl_ciphers</span> <span class="s2">&quot;ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK&quot;</span><span class="p">;</span>
+    <span class="n">ssl_prefer_server_ciphers</span> <span class="n">on</span><span class="p">;</span>
+
+    <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+        <span class="n">uwsgi_pass</span> <span class="n">ooi</span><span class="p">;</span>
+        <span class="n">uwsgi_param</span> <span class="n">SCRIPT_NAME</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+        <span class="n">include</span>     <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">uwsgi_params</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+    </div>
+</article>    
+        </section>
+
+        <aside>
+            <nav role="navigation" class="navbar">
+    <h2>Menu</h2>
+    <ul>
+        <li class=""><a href="http://alvarolopez.github.io/">About me</a></li>
+        <li class=""><a href="http://alvarolopez.github.io/pages/contact.html">Contact</a></li>
+        <li class=""><a href="/publications.html">Publications</a></li> 
+        <li class=""><a href="/notes.html">Notes (not a blog)</a></li> 
+        <li>
+            <a href="http://alvarolopez.github.io/feeds/all.atom.xml" title="Atom Feed">Atom feed</a>
+        </li>
+    </ul>
+
+    <h2>Social links</h2>
+    <dl class="social-links">
+        <dt>ORCID</dt>
+        <dd><a href="https://orcid.org/0000-0002-0013-4602" title="ORCID: Open Researcher and Contributor ID">0000-0002-0013-4602</a></dd>
+        <dt>Researchgate</dt>
+        <dd><a href="https://www.researchgate.net/profile/Alvaro_Lopez-Garcia" title="ResearchGate Profile">Alvaro_Lopez-Garcia</a></dd>
+        <dt>Keybase</dt>
+        <dd><a href="https://keybase.io/aloga" title="Keybase.io Profile">aloga</a></dd>
+        <dt>Github</dt>
+        <dd><a href="https://github.com/alvarolopez" title="Github Profile">alvarolopez</a></dd>
+        <dt>Linkedin</dt>
+        <dd><a href="https://linkedin.com/in/lopezgarciaalvaro" title="Linkedin Profile">lopezgarciaalvaro</a></dd>
+        <dt>Twitter</dt>
+        <dd><a href="https://twitter.com/alvaretas" title="Twitter Profile">@alvaretas</a></dd>
+    </dl>            </nav>
+        </aside>
+    </main>
+
+    <footer role="contentinfo">
+<div class="footer-page">
+    My opinions are mine, and only mine.  <br />
+    Copyright &copy; Alvaro Lopez -
+    <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</div>    </footer>
+
+</body>
+</html>
