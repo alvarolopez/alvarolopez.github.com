@@ -20,7 +20,7 @@ of that to build websites
 
 You can find my list of publications [here](/publications.html) or in any of my public profiles:
 
- * [Google Scholar](https://scholar.google.es/citations?hl=es&user=4iZCEnMAAAAJ&view_op=list_works&authuser=1&sortby=pubdate).
+ * [Google Scholar](https://scholar.google.es/citations?user=18bi2PEAAAAJ).
  * [ORCID 0000-0002-0013-4602](https://orcid.org/0000-0002-0013-4602).
  * [Publons](https://publons.com/researcher/2066875/alvaro-lopez-garcia/).
  * [DBLP](https://dblp.uni-trier.de/pid/135/6079.html).
