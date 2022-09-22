@@ -63,6 +63,8 @@ DIRECT_TEMPLATES = ['index', 'publications']
 
 PUBLICATIONS_SRC = 'content/pubs.bib'
 
+PHOTO="/static/alvaro.png"
+
 RESEARCHGATE_USER="Alvaro_Lopez-Garcia"
 KEYBASE_USER="aloga"
 TWITTER_USERNAME="alvaretas"
