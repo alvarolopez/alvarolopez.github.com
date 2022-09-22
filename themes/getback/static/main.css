@@ -1,11 +1,17 @@
 html {
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #080808;
+    font-family: "Roboto", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    color: #e8e8e8;
+    background: #1c1c1d;
 }
 
 body {
     margin: 0;
     padding: 0;
+}
+
+a {
+    color: #2698ba;
 }
 
 .index {
@@ -35,10 +41,17 @@ body {
 .index .content {
     padding-right: 2em;
     width: 750px;
+    min-width: 300px;
 }
 
-.content aside {
-    width: 40%;
+.nav {
+    max-width: 230px;
+    background: #111112;
+    padding: 15px;
+}
+
+.photo {
+    max-width: 200px;
 }
 
 footer {
@@ -48,7 +61,7 @@ footer {
 
 footer .footer-page {
     color: #aaaaaa;
-    background: #f1f1f1;
+    background: #474747;
     position: relative;
     margin: 5em 0 0 0;
     padding: 2em 0 2em 0;
@@ -97,8 +110,8 @@ code, tt {
     font-family: Inconsolata, monospace, sans-serif;
     font-size: 0.85em;
     white-space: pre-wrap;
-    border: 1px solid #E3EDF3;
-    background: #F7FAFB;
+/*     border: 1px solid #E3EDF3; */
+    background: #474747;
     border-radius: 2px;
 }
 
@@ -114,13 +127,13 @@ pre {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin: 1.6em 0;
-    border: 1px solid #E3EDF3;
+/*     border: 1px solid #E3EDF3; */
     width: 100%;
     padding: 10px;
     font-family: Inconsolata, monospace, sans-serif;
     font-size: 0.9em;
     overflow: auto;
-    background: #F7FAFB;
+    background: #474747;
     border-radius: 3px;
 }
 
@@ -130,3 +143,18 @@ pre code, tt {
     border: none;
     padding: 0;
 }
+
+table {
+    padding: 0;
+    margin:0;
+}
+
+td, th {
+    margin: 0;
+    padding: 10px;
+    background: #282827;
+}
+
+td img {
+    max-width: 300px;
+ }
