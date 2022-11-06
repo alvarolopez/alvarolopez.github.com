@@ -1,6 +1,9 @@
     {% if PHOTO %}
+    <div>
     <img src="{{ PHOTO }}" alt="Photo" class="photo"/>
+    </div>
     {% endif %}
+    <div>
     <h2>Menu</h2>
     <ul>
     {% if DISPLAY_PAGES_ON_MENU %}
@@ -29,7 +32,8 @@
         </li>
       {% endif %}
     </ul>
-
+    </div>
+    <div>
     <h2>Social links</h2>
     <dl class="social-links">
       {% if ORCID %}
@@ -61,3 +65,4 @@
         <dd><a href="mailto:{{ EMAIL }}" title="Email">{{ EMAIL }}</span></a></dd>
       {% endif %}
     </dl>
+    </div>

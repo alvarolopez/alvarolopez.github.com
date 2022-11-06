@@ -20,6 +20,7 @@
         href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" />
   {% endif %}
 
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
   <link rel="stylesheet" type="text/css" href="/theme/pigments.css">
   <link rel="stylesheet" type="text/css" href="/theme/main.css">
   <link rel="icon" href="{{ SITEURL }}/favicon.png">
@@ -43,7 +44,7 @@
         {% block content %}{% endblock %}    
         </section>
 
-        <aside class="nav">
+        <aside>
             <nav role="navigation" class="navbar">
                 {% include '_includes/navigation.html' %}
             </nav>
