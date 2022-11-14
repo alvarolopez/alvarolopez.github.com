@@ -195,12 +195,13 @@ pre code, tt {
 table {
     padding: 0;
     margin:0;
+    border-collapse: collapse;
 }
 
 td, th {
     margin: 0;
     padding: 10px;
-    background: #282827;
+    border-bottom: 2px var(--secondary-color) solid;
 }
 
 td img {
