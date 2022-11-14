@@ -14,7 +14,7 @@ I am a staff researcher (_Científico Titular_) at the
 
  * Cloud computing models, distributed systems, advanced computing (with
    special focus on research and science services).
- * Security and privacy.
+ * Security and data privacy.
  * Data science (with focus on security, privacy, ethics and trustworthiness)
  * Socially, environmentally responsible and ethical computing (especially on
    data-driven science, but not only).

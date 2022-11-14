@@ -205,5 +205,6 @@ td, th {
 }
 
 td img {
-    max-width: 300px;
+    max-width: 200px;
+    max-height: 75px;
  }
