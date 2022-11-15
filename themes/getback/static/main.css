@@ -204,6 +204,10 @@ td, th {
     border-bottom: 2px var(--secondary-color) solid;
 }
 
+.center {
+    text-align: center;
+}
+
 td img {
     max-width: 200px;
     max-height: 75px;

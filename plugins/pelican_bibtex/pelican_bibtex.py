@@ -44,7 +44,7 @@ except ImportError:
 class Backend(html.Backend):
     symbols = {
           'ndash': u'&ndash;',
-          'newblock': u'<br />\n',
+          'newblock': u'<br>\n',
           'nbsp': u'&nbsp;'
     }
 

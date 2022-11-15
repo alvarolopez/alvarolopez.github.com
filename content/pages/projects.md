@@ -12,8 +12,8 @@ Title: Projects
 </thead>
 <tbody>
 <tr>
-    <td align="center">
-        <a href="http://ai4eosc.eu"><img alt="ai4eosc" src="/static/ai4eosc.png" title="AI4EOSC logo"><br />AI4EOSC</a> <br /> (Project Coordinator)
+    <td class="center">
+        <a href="http://ai4eosc.eu"><img alt="ai4eosc" src="/static/ai4eosc.png" title="AI4EOSC logo"><br>AI4EOSC</a> <br> (Project Coordinator)
         </td>
     <td>
         AI4EOSC will deliver an advanced AI and data science plaform (providing
@@ -23,54 +23,54 @@ Title: Projects
         href="https://deep-hybrid-datacloud-eu">DEEP-Hybrid-DataCloud
         project</a>
         </td>
-    <td align="center">
+    <td class="center">
         Sep 2022
-        <br /> - <br />
+        <br> - <br>
         Aug 2025
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="https://imagine-ai.eu"><img alt="iMagine" src="/static/imagine.png" title="iMagine logo"> <br /> iMagine</a>
+    <td class="center">
+        <a href="https://imagine-ai.eu"><img alt="iMagine" src="/static/imagine.png" title="iMagine logo"> <br> iMagine</a>
     </td>
     <td>
         iMagine provides a portfolio of ‘free at point of use’ image datasets, high-performance image analysis tools empowered with Artificial Intelligence (AI), and Best Practice documents for scientific image analysis. These services and materials enable better and more efficient processing and analysis of imaging data in marine and freshwater research, accelerating our scientific insights about processes and measures relevant for healthy oceans, seas, coastal and inland waters. iMagine will exploit the <a href="https://deep-hybrid-datacloud-eu">DEEP-Hybrid-DataCloud project</a> services existing in the EOSC Compute Platform.
     </td>
-    <td align="center">
+    <td class="center">
         Sep 2022
-        <br /> - <br />
+        <br> - <br>
         Aug 2025
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="#"><img alt="I4C" src="/static/i4c.png" title="I4C logo"> <br /> Impetus4Change</a>
+    <td class="center">
+        <a href="#"><img alt="I4C" src="/static/i4c.png" title="I4C logo"> <br> Impetus4Change</a>
     </td>
     <td>
         The overarching objective of I4C is to improve the quality, accessibility and usability of near-term climate information and services at local to regional scales to strengthen and support end-user adaptation planning and action. I4C will commit to Open Science through development of open access tools and exploitation of data/model outputs via relevant platforms thereby ensuring improved accessibility and usability of climate knowledge in the context of the EOSC.
     </td>
-    <td align="center">
+    <td class="center">
          Nov 2022
-         <br /> - <br />
+         <br> - <br>
          Oct 2026
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="#"><img alt="CDS" src="/static/cds.png" title="CDS logo"> <br /> CDS Modernization</a>
+    <td class="center">
+        <a href="#"><img alt="CDS" src="/static/cds.png" title="CDS logo"> <br> CDS Modernization</a>
         </td>
     <td>
         The Copernicus Data Store (CDS) Modernization will provide
         state-of-the-art technologies for the current CDS operated nby ECMWF,
         resulting in a more robust infrastructure and services.
     </td>
-    <td align="center">
-         <br /> - <br />
+    <td class="center">
+         <br> - <br>
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="https://www.egi.eu/projects/egi-ace/"><img alt="EGI-ACE" src="/static/egi-ace.png" title="EGI ACE logo"> <br /> EGI-ACE</a>
+    <td class="center">
+        <a href="https://www.egi.eu/projects/egi-ace/"><img alt="EGI-ACE" src="/static/egi-ace.png" title="EGI ACE logo"> <br> EGI-ACE</a>
     </td>
     <td>
         EGI-ACE empowers researchers from all disciplines to collaborate in
@@ -81,15 +81,15 @@ Title: Projects
         compute and storage facilities, PaaS services and data spaces with
         analytics tools and federated access services.
     </td>
-    <td align="center">
+    <td class="center">
         Jan 2021
-         <br /> - <br />
+         <br> - <br>
         Jun 2023
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="https://pti-saludglobal-covid19.corp.csic.es/"><img alt="PTI Salud Global" src="/static/salud-global.png" title="PTI Salud Global logo"> <br /> PTI Salud Global</a>
+    <td class="center">
+        <a href="https://pti-saludglobal-covid19.corp.csic.es/"><img alt="PTI Salud Global" src="/static/salud-global.png" title="PTI Salud Global logo"> <br> PTI Salud Global</a>
     </td>
     <td>
         The Global Health Platform provides a unique global vision approach
@@ -102,13 +102,13 @@ Title: Projects
         information sources, artificial intelligence data and applications, and
         regional coordination.
     </td>
-    <td align="center">
-         <br /> - <br />
+    <td class="center">
+         <br> - <br>
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="https://pti-cienciadigital.csic.es/"><img alt="PTI Ciencia Digital" src="/static/cdigital.png" title="PTI Ciencia Digital"> <br /> PTI Ciencia Digital</a>
+    <td class="center">
+        <a href="https://pti-cienciadigital.csic.es/"><img alt="PTI Ciencia Digital" src="/static/cdigital.png" title="PTI Ciencia Digital"> <br> PTI Ciencia Digital</a>
     </td>
     <td>
         The Digital Science and Innovation Platform mission is to innovate in
@@ -120,13 +120,13 @@ Title: Projects
         aims to promote training in digital competencies to facilitate everyday
         tasks.
     </td>
-    <td align="center">
-         <br /> - <br />
+    <td class="center">
+         <br> - <br>
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="https://pti-teledetect.csic.es/"><img alt="PTI Teledetect" src="/static/teledetect.png" title="PTI Teledetect"> <br /> PTI Teledetect</a>
+    <td class="center">
+        <a href="https://pti-teledetect.csic.es/"><img alt="PTI Teledetect" src="/static/teledetect.png" title="PTI Teledetect"> <br> PTI Teledetect</a>
     </td>
     <td>
         TELEDETECT has the participation of 20 research institutes and 64
@@ -137,8 +137,8 @@ Title: Projects
         data mining), optics and electronics (sensors, controls, integration),
         signal theory (processing, transmission, improvement, fusion),...
     </td>
-    <td align="center">
-         <br /> - <br />
+    <td class="center">
+         <br> - <br>
     </td>
 </tr>
 </tbody>
@@ -156,8 +156,8 @@ Title: Projects
 </thead>
 <tbody>
 <tr>
-    <td align="center">
-        <a href="http://deep-hybrid-datacloud.eu/"><img alt="DEEP-Hybrid-DataCloud" src="/static/deep.png" title="DEEP-Hybrid-DataCloud logo"> <br /> DEEP-Hybrid-DataCloud</a> <br /> (Project Coordinator)
+    <td class="center">
+        <a href="http://deep-hybrid-datacloud.eu/"><img alt="DEEP-Hybrid-DataCloud" src="/static/deep.png" title="DEEP-Hybrid-DataCloud logo"> <br> DEEP-Hybrid-DataCloud</a> <br> (Project Coordinator)
     </td>
     <td>
         The key concept proposed in the DEEP Hybrid DataCloud project is the
@@ -167,28 +167,28 @@ Title: Projects
         resources that are not easily reachable by the researchers at the scale
         needed in the current EU e-infrastructure.
     </td>
-    <td align="center">
+    <td class="center">
         Nov 2017
-         <br /> - <br />
+         <br> - <br>
         Apr 2020
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="https://distancia-covid.csic.es/"> <br />Distancia COVID</a>
+    <td class="center">
+        <a href="https://distancia-covid.csic.es/"> <br>Distancia COVID</a>
     </td>
     <td>
         Impacto de las medidas de distanciamiento social sobre la expansión de la epidemia de COVID-19 en España
     </td>
-    <td align="center">
+    <td class="center">
         2019
-         <br /> - <br />
+         <br> - <br>
         2020
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="http://indigo-datacloud.eu/"><img alt="INDIGO-Datacloud" src="/static/indigo.png" title="INDIGO-DataCloud logo"> <br /> INDIGO-DataCloud</a>
+    <td class="center">
+        <a href="http://indigo-datacloud.eu/"><img alt="INDIGO-Datacloud" src="/static/indigo.png" title="INDIGO-DataCloud logo"> <br> INDIGO-DataCloud</a>
     </td>
     <td>
         The INDIGO-DataCloud project (INDIGO for short) aims at developing a
@@ -199,30 +199,30 @@ Title: Projects
         communities in order to ensure its successful exploitation and
         sustainability.
     </td>
-    <td align="center">
+    <td class="center">
         Apr 2015
-         <br /> - <br />
+         <br> - <br>
         Sep 2017
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="http://aarc-project.eu/"><img alt="AARC-II" src="/static/aarc.png" title="AARC logo"> <br /> AARC-II</a>
+    <td class="center">
+        <a href="http://aarc-project.eu/"><img alt="AARC-II" src="/static/aarc.png" title="AARC logo"> <br> AARC-II</a>
     </td>
     <td>
         The goal of AARC2 is to design an AAI framework to develop
         interoperable AAI, to enable researchers to access the whole research
         and infrastructure service portfolio with one login.
     </td>
-    <td align="center">
+    <td class="center">
         May 2017
-         <br /> - <br />
+         <br> - <br>
         Apr 2019
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="http://www.egi.eu/"><img src="/static/egi-logo.png" alt="EGI logo" /> <br />EGI-Engage</a>
+    <td class="center">
+        <a href="http://www.egi.eu/"><img src="/static/egi-logo.png" alt="EGI logo"> <br>EGI-Engage</a>
     </td>
     <td>
         The mission of EGI-Engage is to accelerate the implementation of the
@@ -236,15 +236,15 @@ Title: Projects
         co-development of software and are technically supported to exploit
         state-of-the-art digital services.
     </td>
-    <td align="center">
+    <td class="center">
         Mar 2015
-         <br /> - <br />
+         <br> - <br>
         Aug 2017
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="http://www.egi.eu/"><img src="/static/egi-logo.png" alt="EGI logo" /> <br />EGI-InSPIRE</a>
+    <td class="center">
+        <a href="http://www.egi.eu/"><img src="/static/egi-logo.png" alt="EGI logo"> <br>EGI-InSPIRE</a>
     </td>
     <td>
         EGI-InSPIRE will collect requirements and provide user-support for the
@@ -259,15 +259,15 @@ Title: Projects
         and the associated accounting information to help define EGI's future
         revenue model.
     </td>
-    <td align="center">
+    <td class="center">
         May 2010
-         <br /> - <br />
+         <br> - <br>
         Dec 2014
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="http://www.euforia-project.eu/EUFORIA/"><img src="/static/euforia.png" alt="EUFORIA logo" /> <br />EUFORIA</a>
+    <td class="center">
+        <a href="http://www.euforia-project.eu/EUFORIA/"><img src="/static/euforia.png" alt="EUFORIA logo"> <br>EUFORIA</a>
     </td>
     <td>
         The EUFORIA project will provide a comprehensive framework and infrastructure for core and edge transport and turbulence simulation, linking grid and High Performance Computing (HPC), to the fusion modelling community.
@@ -278,15 +278,15 @@ computing paradigms as needed (serial and parallel grid computing and HPC).
 Deployment of both a grid service and a High Performance computing services are
 essential to the project.
     </td>
-    <td align="center">
+    <td class="center">
         Jan 2008
-         <br /> - <br />
+         <br> - <br>
         Dec 2010
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="http://www.eu-egee.org/"><img src="/static/egee.png" alt="EGEE logo" /> <br />EGEE-III</a>
+    <td class="center">
+        <a href="http://www.eu-egee.org/"><img src="/static/egee.png" alt="EGEE logo"> <br>EGEE-III</a>
     </td>
     <td>
         The proposed EGEE-III project has two clear objectives that are
@@ -298,15 +298,15 @@ essential to the project.
         sustainable federated infrastructure based on National Grid
         Initiatives.
     </td>
-    <td align="center">
+    <td class="center">
         May 2008
-         <br /> - <br />
+         <br> - <br>
         Apr 2019
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="https://egee2.web.cern.ch/egee2/"><img src="/static/egee.png" alt="EGEE logo" /> <br />EGEE-II</a>
+    <td class="center">
+        <a href="https://egee2.web.cern.ch/egee2/"><img src="/static/egee.png" alt="EGEE logo"> <br>EGEE-II</a>
     </td>
     <td>
         EGEE-II will build on the work of the EGEE project to provide a
@@ -321,15 +321,15 @@ essential to the project.
         reinforcing links with the full spectrum of interested industrial
         partners
     </td>
-    <td align="center">
+    <td class="center">
         Apr 2006
-         <br /> - <br />
+         <br> - <br>
         Apr 2008
     </td>
 </tr>
 <tr>
-    <td align="center">
-        <a href="http://www.interactive-grid.eu/"><img src="/static/inteugrid.png" alt="Int.EU.Grid logo" /><br />Int.Eu.Grid</a>
+    <td class="center">
+        <a href="http://www.interactive-grid.eu/"><img src="/static/inteugrid.png" alt="Int.EU.Grid logo"><br>Int.Eu.Grid</a>
     </td>
     <td>
         The objective of the Interactive European Grid project is the
@@ -342,9 +342,9 @@ essential to the project.
         interactive and simultaneous access to large distributed facilities
         through a friendly interface with powerful visualization.
     </td>
-    <td align="center">
+    <td class="center">
         May 2006
-         <br /> - <br />
+         <br> - <br>
         Apr 2008
     </td>
 </tr>
