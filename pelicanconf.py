@@ -72,5 +72,6 @@ GITHUB_USER="alvarolopez"
 DEFAULT_DATE_FORMAT = '%d %b %Y'
 LINKEDIN_USER = "lopezgarciaalvaro"
 ORCID = "0000-0002-0013-4602"
+MASTODON = "https://mas.to/@aloga"
 #GOOGLE_ANALYTICS = "UA-317422-7"
 #DISQUS_SITENAME = "aloga"

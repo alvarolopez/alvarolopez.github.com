@@ -38,27 +38,31 @@
     <dl class="social-links">
       {% if ORCID %}
         <dt>ORCID</dt>
-        <dd><a href="https://orcid.org/{{ ORCID }}" title="ORCID: Open Researcher and Contributor ID">{{ ORCID }}</a></dd>
+        <dd><a rel="me" href="https://orcid.org/{{ ORCID }}" title="ORCID: Open Researcher and Contributor ID">{{ ORCID }}</a></dd>
       {% endif %}
       {% if RESEARCHGATE_USER %}
         <dt>Researchgate</dt>
-        <dd><a href="https://www.researchgate.net/profile/{{ RESEARCHGATE_USER }}" title="ResearchGate Profile">{{ RESEARCHGATE_USER }}</a></dd>
+        <dd><a rel="me" href="https://www.researchgate.net/profile/{{ RESEARCHGATE_USER }}" title="ResearchGate Profile">{{ RESEARCHGATE_USER }}</a></dd>
       {% endif %}
       {% if KEYBASE_USER %}
         <dt>Keybase</dt>
-        <dd><a href="https://keybase.io/{{ KEYBASE_USER }}" title="Keybase.io Profile">{{ KEYBASE_USER }}</a></dd>
+        <dd><a rel="me" href="https://keybase.io/{{ KEYBASE_USER }}" title="Keybase.io Profile">{{ KEYBASE_USER }}</a></dd>
       {% endif %}
       {% if GITHUB_USER %}
         <dt>Github</dt>
-        <dd><a href="https://github.com/{{ GITHUB_USER }}" title="Github Profile">{{ GITHUB_USER }}</a></dd>
+        <dd><a rel="me" href="https://github.com/{{ GITHUB_USER }}" title="Github Profile">{{ GITHUB_USER }}</a></dd>
       {% endif %}
       {% if LINKEDIN_USER %}
         <dt>Linkedin</dt>
-        <dd><a href="https://linkedin.com/in/{{ LINKEDIN_USER }}" title="Linkedin Profile">{{ LINKEDIN_USER }}</a></dd>
+        <dd><a rel="me" href="https://linkedin.com/in/{{ LINKEDIN_USER }}" title="Linkedin Profile">{{ LINKEDIN_USER }}</a></dd>
       {% endif %}
       {% if TWITTER_USERNAME %}
         <dt>Twitter</dt>
-        <dd><a href="https://twitter.com/{{ TWITTER_USERNAME }}" title="Twitter Profile">@{{ TWITTER_USERNAME }}</a></dd>
+        <dd><a rel="me" href="https://twitter.com/{{ TWITTER_USERNAME }}" title="Twitter Profile">@{{ TWITTER_USERNAME }}</a></dd>
+      {% endif %}
+      {% if MASTODON %}
+        <dt>Mastodon</dt>
+        <dd><a rel="me" href="{{ MASTODON }}" title="Follow me on the Fediverse">{{ MASTODON }}</a></dd>
       {% endif %}
       {% if EMAIL %}
         <dt>Email</dt>
