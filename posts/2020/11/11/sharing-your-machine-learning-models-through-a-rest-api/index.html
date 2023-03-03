@@ -170,36 +170,36 @@ different functions to the defined endpoints. We are currently using the
 the DEEPaaS API so that it detects it and exposes its functionality through the
 API. In order to do so in an easy way, lets create a virtualenv and install
 everything inside:</p>
-<div class="highlight"><pre><span></span><code>$ virtualenv env --python<span class="o">=</span>python3
-    <span class="o">(</span>...<span class="o">)</span>
-$ <span class="nb">source</span> env/bin/activate
-<span class="o">(</span>env<span class="o">)</span> $ pip3 install .
-    <span class="o">(</span>...<span class="o">)</span>
-<span class="o">(</span>env<span class="o">)</span> $ pip3 install deepaas
-    <span class="o">(</span>...<span class="o">)</span>
-<span class="o">(</span>env<span class="o">)</span> $ deepaas-run
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>virtualenv<span class="w"> </span>env<span class="w"> </span>--python<span class="o">=</span>python3
+<span class="w">    </span><span class="o">(</span>...<span class="o">)</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>env/bin/activate
+<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>.
+<span class="w">    </span><span class="o">(</span>...<span class="o">)</span>
+<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>deepaas
+<span class="w">    </span><span class="o">(</span>...<span class="o">)</span>
+<span class="o">(</span>env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>deepaas-run
 
-         <span class="c1">##         ###</span>
-         <span class="c1">##       ######  ##</span>
-     .#####   <span class="c1">#####   #######.  .#####.</span>
-    <span class="c1">##   ## ## //   ##  //  ##  ##   ##</span>
-    <span class="c1">##. .##  ###  ###   // ###  ##   ##</span>
-      <span class="c1">## ##    ####     ####    #####.</span>
-              Hybrid-DataCloud  <span class="c1">##</span>
+<span class="w">         </span><span class="c1">##         ###</span>
+<span class="w">         </span><span class="c1">##       ######  ##</span>
+<span class="w">     </span>.#####<span class="w">   </span><span class="c1">#####   #######.  .#####.</span>
+<span class="w">    </span><span class="c1">##   ## ## //   ##  //  ##  ##   ##</span>
+<span class="w">    </span><span class="c1">##. .##  ###  ###   // ###  ##   ##</span>
+<span class="w">      </span><span class="c1">## ##    ####     ####    #####.</span>
+<span class="w">              </span>Hybrid-DataCloud<span class="w">  </span><span class="c1">##</span>
 
 
-Welcome to the DEEPaaS API API endpoint. You can directly browse to the
-API documentation endpoint to check the API using the builtint Swagger UI
-or you can use any of our endpoints.
+Welcome<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>DEEPaaS<span class="w"> </span>API<span class="w"> </span>API<span class="w"> </span>endpoint.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>directly<span class="w"> </span>browse<span class="w"> </span>to<span class="w"> </span>the
+API<span class="w"> </span>documentation<span class="w"> </span>endpoint<span class="w"> </span>to<span class="w"> </span>check<span class="w"> </span>the<span class="w"> </span>API<span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span>builtint<span class="w"> </span>Swagger<span class="w"> </span>UI
+or<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>use<span class="w"> </span>any<span class="w"> </span>of<span class="w"> </span>our<span class="w"> </span>endpoints.
 
-    API documentation: http://127.0.0.1:5000/ui
-    API specification: http://127.0.0.1:5000/swagger.json
-          V2 endpoint: http://127.0.0.1:5000/v2
+<span class="w">    </span>API<span class="w"> </span>documentation:<span class="w"> </span>http://127.0.0.1:5000/ui
+<span class="w">    </span>API<span class="w"> </span>specification:<span class="w"> </span>http://127.0.0.1:5000/swagger.json
+<span class="w">          </span>V2<span class="w"> </span>endpoint:<span class="w"> </span>http://127.0.0.1:5000/v2
 
 -------------------------------------------------------------------------
 
-<span class="m">2020</span>-02-04 <span class="m">13</span>:10:50.027 <span class="m">21186</span> INFO deepaas <span class="o">[</span>-<span class="o">]</span> Starting DEEPaaS version <span class="m">1</span>.0.0
-<span class="m">2020</span>-02-04 <span class="m">13</span>:10:50.231 <span class="m">21186</span> INFO deepaas.api <span class="o">[</span>-<span class="o">]</span> Serving loaded V2 models: <span class="o">[</span><span class="s1">&#39;iris-deepaas&#39;</span><span class="o">]</span>
+<span class="m">2020</span>-02-04<span class="w"> </span><span class="m">13</span>:10:50.027<span class="w"> </span><span class="m">21186</span><span class="w"> </span>INFO<span class="w"> </span>deepaas<span class="w"> </span><span class="o">[</span>-<span class="o">]</span><span class="w"> </span>Starting<span class="w"> </span>DEEPaaS<span class="w"> </span>version<span class="w"> </span><span class="m">1</span>.0.0
+<span class="m">2020</span>-02-04<span class="w"> </span><span class="m">13</span>:10:50.231<span class="w"> </span><span class="m">21186</span><span class="w"> </span>INFO<span class="w"> </span>deepaas.api<span class="w"> </span><span class="o">[</span>-<span class="o">]</span><span class="w"> </span>Serving<span class="w"> </span>loaded<span class="w"> </span>V2<span class="w"> </span>models:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;iris-deepaas&#39;</span><span class="o">]</span>
 </code></pre></div>
 
 <h1>Accessing the API and making trainings and predictions</h1>
@@ -211,23 +211,23 @@ interact with your model.</p>
 first thing to do is to perform a training. This will call the <code>train()</code>
 function and save the trained SVM for later use. You can do it from the UI, or
 from a command line with:</p>
-<div class="highlight"><pre><span></span><code>curl -s -X POST <span class="s2">&quot;http://127.0.0.1:5000/v2/models/iris-deepaas/train/&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> <span class="p">|</span> python -mjson.tool
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://127.0.0.1:5000/v2/models/iris-deepaas/train/&quot;</span><span class="w"> </span>-H<span class="w">  </span><span class="s2">&quot;accept: application/json&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python<span class="w"> </span>-mjson.tool
 <span class="o">{</span>
-    <span class="s2">&quot;date&quot;</span>: <span class="s2">&quot;2020-02-04 13:14:49.655061&quot;</span>,
-    <span class="s2">&quot;uuid&quot;</span>: <span class="s2">&quot;16a3141af5674a45b61cba124443c18f&quot;</span>,
-    <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;running&quot;</span>
+<span class="w">    </span><span class="s2">&quot;date&quot;</span>:<span class="w"> </span><span class="s2">&quot;2020-02-04 13:14:49.655061&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;uuid&quot;</span>:<span class="w"> </span><span class="s2">&quot;16a3141af5674a45b61cba124443c18f&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;status&quot;</span>:<span class="w"> </span><span class="s2">&quot;running&quot;</span>
 <span class="o">}</span>
 </code></pre></div>
 
 <p>The training will be done asynchronously, so that the API does not block. You
 can check its status from the UI, or with the following call:</p>
-<div class="highlight"><pre><span></span><code>curl -s -X GET <span class="s2">&quot;http://127.0.0.1:5000/v2/models/iris-deepaas/train/&quot;</span> <span class="p">|</span> python -mjson.tool
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;http://127.0.0.1:5000/v2/models/iris-deepaas/train/&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python<span class="w"> </span>-mjson.tool
 <span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">&quot;date&quot;</span>: <span class="s2">&quot;2020-02-04 13:14:49.655061&quot;</span>,
-        <span class="s2">&quot;uuid&quot;</span>: <span class="s2">&quot;16a3141af5674a45b61cba124443c18f&quot;</span>,
-        <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;done&quot;</span>
-    <span class="o">}</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;date&quot;</span>:<span class="w"> </span><span class="s2">&quot;2020-02-04 13:14:49.655061&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;uuid&quot;</span>:<span class="w"> </span><span class="s2">&quot;16a3141af5674a45b61cba124443c18f&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;status&quot;</span>:<span class="w"> </span><span class="s2">&quot;done&quot;</span>
+<span class="w">    </span><span class="o">}</span>
 <span class="o">]</span>
 </code></pre></div>
 
@@ -238,14 +238,14 @@ Sepal Length, Sepal Width, Petal Length and Petal Width. In our example lets
 try to get the results for the <code>[5.1. 3.5, 1.4, 0.2]</code> observation, and get the
 results. Once again, you can make it from the UI or from the command line as
 follows:</p>
-<div class="highlight"><pre><span></span><code>curl -s -X POST <span class="s2">&quot;http://127.0.0.1:5000/v2/models/iris-deepaas/predict/?data=5.1&amp;data=3.5&amp;data=1.4&amp;data=0.2&quot;</span> -H  <span class="s2">&quot;accept: application/json&quot;</span> <span class="p">|</span> python -mjson.tool
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://127.0.0.1:5000/v2/models/iris-deepaas/predict/?data=5.1&amp;data=3.5&amp;data=1.4&amp;data=0.2&quot;</span><span class="w"> </span>-H<span class="w">  </span><span class="s2">&quot;accept: application/json&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python<span class="w"> </span>-mjson.tool
 <span class="o">{</span>
-    <span class="s2">&quot;predictions&quot;</span>: <span class="o">{</span>
-        <span class="s2">&quot;labels&quot;</span>: <span class="o">[</span>
-            <span class="m">0</span>
-        <span class="o">]</span>
-    <span class="o">}</span>,
-    <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;OK&quot;</span>
+<span class="w">    </span><span class="s2">&quot;predictions&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;labels&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">            </span><span class="m">0</span>
+<span class="w">        </span><span class="o">]</span>
+<span class="w">    </span><span class="o">}</span>,
+<span class="w">    </span><span class="s2">&quot;status&quot;</span>:<span class="w"> </span><span class="s2">&quot;OK&quot;</span>
 <span class="o">}</span>
 </code></pre></div>
 
