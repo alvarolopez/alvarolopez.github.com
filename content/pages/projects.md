@@ -13,6 +13,42 @@ Title: Projects
 <tbody>
 <tr>
     <td class="center">
+        <a href="#"><img alt="siesta" src="/static/siesta.png" title="SIESTA logo"><br>SIESTA</a> <br> (Project Coordinator)
+        </td>
+    <td>
+        SIESTA will provide user-friendly tools with the aim of fostering the
+        uptake of sensitive data sharing and processing in the EOSC. The
+        project will deliver trusted cloud-based environments for the
+        management and sharing of sensitive data that are built in a
+        reproducible way, together with a set of services and tools to ease the
+        secure sharing of sensitive data in the EOSC through state-of-the-art
+        anonymization techniques.
+        </td>
+    <td class="center">
+        Jan 2024
+        <br> - <br>
+        Dec 2026
+    </td>
+</tr>
+<tr>
+    <td class="center">
+        <a href="#"><img alt="greendigit" src="/static/greendigit.png" title="GreenDIGIT logo"><br>GreenDIGIT</a>
+        </td>
+    <td>
+        GreenDIGIT brings together 4 major distributed Digital Infrastructures
+        at different lifecycle stages, EGI, SLICES, SoBigData, EBRAINS, to
+        tackle the challenge of environmental impact reduction with the
+        ambition to provide solutions that are reusable across the whole
+        spectrum of digital services on the ESFRI landscape.
+    </td>
+    <td class="center">
+        Mar 2024
+        <br> - <br>
+        Feb 2027
+    </td>
+</tr>
+<tr>
+    <td class="center">
         <a href="http://ai4eosc.eu"><img alt="ai4eosc" src="/static/ai4eosc.png" title="AI4EOSC logo"><br>AI4EOSC</a> <br> (Project Coordinator)
         </td>
     <td>
