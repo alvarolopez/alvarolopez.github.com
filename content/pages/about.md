@@ -3,10 +3,10 @@ Date: 2015-12-09 23:40
 URL:
 save_as: index.html
 
-I am a staff researcher (_Científico Titular_) at the
-[Advanced Computing and e-Science Group](https://computing.ifca.es) of the
+I am a staff researcher (_Científico Titular_), head of the
+[Advanced Computing and e-Science Group](https://computing.ifca.es) at
 [Institute of Physics of Cantabria (IFCA)](http://www.ifca.es), associated with the
-[Spanish National Research Council (CSIC)](http://www.csic.es).
+[Spanish National Research Council (CSIC)](http://www.csic.es) (IFCA, CSIC-UC).
 
 ## Research
 
@@ -33,7 +33,7 @@ You can find a list of my publications [here](/publications.html) or in any of m
 
 You can check my current and past projects [here](/projects.html). Currently I
 am mostly working on distributed computing (Cloud) services for science (with a
-focus on data sciecne) in the context of the [European Open Science
+focus on data science) in the context of the [European Open Science
 Cloud](https://www.eosc.eu).
 
 ### Infrastructure
@@ -42,7 +42,7 @@ I coordinate the [computing (Cloud, batch, HPC, storage)
 infrastructure](https://confluence.ifca.es/display/IC/Computing+Resources) and
 services that [our group](https://computing.ifca.es) is operating. These
 resources are focused on scientific users and researchers, providing
-specialized compute and storage services.
+specialized compute and storage services for their needs.
 
 ## Teaching
 
@@ -61,31 +61,29 @@ I am currently supervising the following PhD students:
  * Judith Sainz-Pardo Díaz (working on privacy aspects of data science).
  * Jaime Céspedes Sisniega (working on MLOps techniques).
  * Ignacio Heredia Cacha (working on resource and placement optimizations for compute services).
+ * Andrés Heredia Canales (working on secure platforms for data processing and DevSecOps).
 
 ## Short bio
 
 Alvaro Lopez Garcia, PhD, ([ORCID 0000-0002-0Y013-4602](https://orcid.org/0000-0002-0013-4602))
 is a CSIC Tenured
-Scientist (_Científico Titular_)
-[Advanced Computing and e-Science Group](https://computing.ifca.es) of the
+Scientist (_Científico Titular_) and head of the
+[Advanced Computing and e-Science Group](https://computing.ifca.es) at the
 [Institute of Physics of Cantabria (IFCA)](http://www.ifca.es), associated with the
 [Spanish National Research Council (CSIC)](http://www.csic.es) (IFCA, CSIC-UC).
 
 His main research interests are focused on the implementation,
 development and promotion of advanced computing services for science and
 research, exploiting distributed infrastructures over the computing
-continuum (i.e. Cloud and Edge computing, High Performance Computing,
-etc.). Some of the tools, services and platforms that have been
-developed in this regard are being used in pan-European production
-e-Infrastructures (like the EGI.eu Compute Service) or are being
-exploited by end users in the context of the European Open Science Cloud
-(EOSC).
+continuum. Some of the tools, services and platforms that have been developed
+in this regard are being used in pan-European production e-Infrastructures
+(like the EGI.eu Compute Service) or are being exploited by end users in the
+context of the European Open Science Cloud (EOSC).
 
-He has participated in more than 20 EU projects (FP7, Horizon 2020,
-Horizon Europe); noteworthy being the technical coordinator of iMagine
-and coordinating the H2020 DEEP-Hybrid-DataCloud and the Horizon Europe
-AI4EOSC actions, all of them focused on delivering advanced and
-innovative services for artificial intelligence over the EOSC.
+He has participated in more than 20 EU projects (FP7, Horizon 2020, Horizon
+Europe); noteworthy being the project coordinator of the H2020
+DEEP-Hybrid-DataCloud and the Horizon Europe AI4EOSC and SIESTA actions, all of
+them focused on delivering advanced and innovative services for EOSC.
 
 <!-- He is the representative of CSIC in the EOSC AISBL (the association signed a -->
 <!-- Memorandum of Understanding with the European Commission to progress the EOSC -->
