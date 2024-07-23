@@ -4,7 +4,7 @@ URL:
 save_as: index.html
 
 I am a staff researcher (_Científico Titular_), head of the
-[Advanced Computing and e-Science Group](https://computing.ifca.es) at
+[Advanced Computing and e-Science Group](https://advancedcomputing.ifca.es) at
 [Institute of Physics of Cantabria (IFCA)](http://www.ifca.es), associated with the
 [Spanish National Research Council (CSIC)](http://www.csic.es) (IFCA, CSIC-UC).
 
@@ -40,7 +40,7 @@ Cloud](https://www.eosc.eu).
 
 I coordinate the [computing (Cloud, batch, HPC, storage)
 infrastructure](https://confluence.ifca.es/display/IC/Computing+Resources) and
-services that [our group](https://computing.ifca.es) is operating. These
+services that [our group](https://advancedcomputing.ifca.es) is operating. These
 resources are focused on scientific users and researchers, providing
 specialized compute and storage services for their needs.
 
@@ -68,7 +68,7 @@ I am currently supervising the following PhD students:
 Alvaro Lopez Garcia, PhD, ([ORCID 0000-0002-0Y013-4602](https://orcid.org/0000-0002-0013-4602))
 is a CSIC Tenured
 Scientist (_Científico Titular_) and head of the
-[Advanced Computing and e-Science Group](https://computing.ifca.es) at the
+[Advanced Computing and e-Science Group](https://advancedcomputing.ifca.es) at the
 [Institute of Physics of Cantabria (IFCA)](http://www.ifca.es), associated with the
 [Spanish National Research Council (CSIC)](http://www.csic.es) (IFCA, CSIC-UC).
 
@@ -96,10 +96,8 @@ them focused on delivering advanced and innovative services for EOSC.
 <!-- e-Ciencia abierta). -->
 
 ## Disclaimer
-This page is kept deliberately simple. This means no complicated JavaScript
-(the only script used is on the [publications page](/publications.html), no
-large images (black and white when possible), no fancy effects. There are no
-tracking cookies, no analytics, no social media buttons, or any kind of
-fingerprinting scripts. [We do not need any of that to build websites](https://drewdevault.com/2018/09/04/Conservative-web-development.html).
+This page is kept deliberately simple. There are no tracking cookies, no
+analytics, no social media buttons, or any kind of fingerprinting scripts.
+[We do not need any of that to build websites](https://drewdevault.com/2018/09/04/Conservative-web-development.html).
 
 
