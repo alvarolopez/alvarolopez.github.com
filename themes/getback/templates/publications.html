@@ -9,7 +9,7 @@
             {% for year in publications|groupby('year')|reverse  %}
             <h3>{{ year.grouper}}</h3>
             <ul class="bib">
-              {% for key, year, author, title, journal, text, bibtex, pdf, slides, poster in year.list %}
+              {% for key, year, author, title, journal, text, bibtex, pdf, slides, poster in year.list|reverse %}
                 <li id="{{ key }}">
                     {{text}} <br/>
                     [&nbsp;<a href="#modalBibTex{{key}}">Bibtex</a>&nbsp;]
