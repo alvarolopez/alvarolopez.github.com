@@ -2,37 +2,38 @@
 {% block title %}Publications{% endblock %}
 {% block content %}
 
-<div id="content">
-    <div class="container">
-        <div class="row">
-            <h2 class="entry-title">Publications (journals, book chapters and conferences)</h2>
-            {% for year in publications|groupby('year')|reverse  %}
-            <h3>{{ year.grouper}}</h3>
-            <ul class="bib">
-              {% for key, year, author, title, journal, text, bibtex, pdf, slides, poster in year.list|reverse %}
-                <li id="{{ key }}">
-                    {{text}} <br/>
-                    [&nbsp;<a href="#modalBibTex{{key}}">Bibtex</a>&nbsp;]
-                    <!-- [&nbsp;<a href="javascript:disp('{{ bibtex|replace('\n', '\\n')|escape|forceescape }}');">Bibtex</a>&nbsp;] -->
-                    {% for label, target in [('PDF', pdf), ('Slides', slides), ('Poster', poster)] %}
-                    {{ "[&nbsp;<a href=\"%s\">%s</a>&nbsp;]" % (target, label) if target }}
-                    {% endfor %}
-                </li>
-              {% endfor %}
-            </ul>
-            {% endfor %}
-            <!-- Iter again over the publications create a div for each one -->
-            {% for key, year, author, title, journal, text, bibtex, pdf, slides, poster in publications %}
-            <div id="modalBibTex{{key}}" class="modalDialog">
-                <div>
-                    <a href="#close" title="Close" class="close">X</a>
-                    <pre>{{ bibtex|safe }}</pre>
-                </div>
+<article class="page">
+    <header class="title">
+        <h2 class="entry-title">Publications (journals, book chapters and conferences)</h2>
+    </header>
+    <section>
+    {% for year in publications|groupby('year')|reverse  %}
+        <h3>{{ year.grouper}}</h3>
+        <ul class="bib">
+          {% for key, year, author, title, journal, text, bibtex, pdf, slides, poster in year.list|reverse %}
+            <li id="{{ key }}">
+                {{text}} <br/>
+                [&nbsp;<a href="#modalBibTex{{key}}">Bibtex</a>&nbsp;]
+                <!-- [&nbsp;<a href="javascript:disp('{{ bibtex|replace('\n', '\\n')|escape|forceescape }}');">Bibtex</a>&nbsp;] -->
+                {% for label, target in [('PDF', pdf), ('Slides', slides), ('Poster', poster)] %}
+                {{ "[&nbsp;<a href=\"%s\">%s</a>&nbsp;]" % (target, label) if target }}
+                {% endfor %}
+            </li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+        <!-- Iter again over the publications create a div for each one -->
+        {% for key, year, author, title, journal, text, bibtex, pdf, slides, poster in publications %}
+        <div id="modalBibTex{{key}}" class="modalDialog">
+            <div>
+                <a href="#close" title="Close" class="close">X</a>
+                <pre>{{ bibtex|safe }}</pre>
             </div>
-            {% endfor %}
-        <div class="row">
-            An asterisk (*) denotes that I am the corresponding author.
         </div>
-    </div>
-</div>
+        {% endfor %}
+    </section>
+    <section>
+        An asterisk (*) denotes that I am the corresponding author.
+    </section>
+</article>
 {% endblock %}
