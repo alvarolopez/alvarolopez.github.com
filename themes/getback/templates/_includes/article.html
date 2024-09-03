@@ -10,6 +10,12 @@
         <span class="post-meta">
             Published on <time datetime="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>
         </span>
+        {% if article.modified %}
+        | 
+        <span class="post-meta">
+            Updated on <time datetime="{{ article.modified.isoformat() }}" pubdate>{{ article.modified }}</time>
+        </span>
+        {% endif %}
     </header>
     <div class="post-content">
         {{ article.content }}
