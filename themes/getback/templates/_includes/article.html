@@ -8,12 +8,12 @@
     <header class="title">  
         <h2>{{ article.title|striptags }}</h2>
         <span class="post-meta">
-            Published on <time datetime="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>
+            Published on <time datetime="{{ article.date.isoformat() }}" pubdate>{{ article.date|strftime('%d %B %Y') }}</time>
         </span>
         {% if article.modified %}
         | 
         <span class="post-meta">
-            Updated on <time datetime="{{ article.modified.isoformat() }}" pubdate>{{ article.modified }}</time>
+            Updated on <time datetime="{{ article.modified.isoformat() }}" pubdate>{{ article.modified|strftime('%d %B %Y') }}</time>
         </span>
         {% endif %}
     </header>
