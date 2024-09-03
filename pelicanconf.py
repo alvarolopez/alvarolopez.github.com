@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Alvaro Lopez'
 SITENAME = u'aloga'
-SITEURL = 'http://alvarolopez.github.io'
+SITEURL = 'http://aloga.me'
 SITESUBTITLE = ''
 
 TIMEZONE = 'Europe/Madrid'
