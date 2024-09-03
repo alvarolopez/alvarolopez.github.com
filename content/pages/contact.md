@@ -1,5 +1,11 @@
 Title: Contact
 
+!!! note
+    I am trying to stop using mass surveillance applications and services as
+    much as I can, as this may have an impact in how you contact me. Please check
+    [this post](/posts/2024/09/01/moving-away-from-mass-surveillance-applications-and-services/)
+    as I will be updating the outcome of this change.
+
 ## Email
 
 The best way to reach me is through email at [aloga@ifca.unican.es](mailto:aloga@ifca.unican.es).

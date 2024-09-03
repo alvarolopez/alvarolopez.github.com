@@ -8,6 +8,12 @@ I am a staff researcher (_Científico Titular_), head of the
 [Institute of Physics of Cantabria (IFCA)](http://www.ifca.es), associated with the
 [Spanish National Research Council (CSIC)](http://www.csic.es) (IFCA, CSIC-UC).
 
+!!! note
+    I am trying to stop using mass surveillance applications and services as
+    much as I can, as this may have an impact in how you contact me. Please check
+    [this post](/posts/2024/09/01/moving-away-from-mass-surveillance-applications-and-services/)
+    as I will be updating the outcome of this change.
+
 ## Research
 
 ### Topics

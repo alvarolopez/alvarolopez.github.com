@@ -268,3 +268,24 @@ td img {
 }
 
 .close:hover { background: #00d9ff; }
+
+.admonition {
+    margin: 2em;
+    padding: 2px 15px ;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
+.warning {
+    border: 1px solid #f0ad4e;
+    background: #fff2e6;
+}
+.note {
+    /* border: 1px solid #5bc0de; */
+    /* background: #d9edf7; */
+    background: #f2ffe6;
+    border: 1px solid #5cb85c;
+}

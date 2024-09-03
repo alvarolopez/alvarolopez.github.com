@@ -75,3 +75,13 @@ ORCID = "0000-0002-0013-4602"
 MASTODON = "https://mas.to/@aloga"
 #GOOGLE_ANALYTICS = "UA-317422-7"
 #DISQUS_SITENAME = "aloga"
+
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.admonition': {},
+    },
+    'output_format': 'html5',
+}
