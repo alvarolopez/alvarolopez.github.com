@@ -1,6 +1,6 @@
 title: Moving away from mass surveillance applications and services
 date: 2024-09-01
-modified: 2024-09-03
+modified: 2024-09-25
 
 !!! warning
     This is a work in progress and a long personal journey. I will update this
@@ -36,5 +36,13 @@ personal server, based on a [Raspberry Pi
 [Devuan GNU+Linux](https://www.devuan.org/) as operating system in order to
 remain free of SystemD. This page and the [aloga.me](http://aloga.me) domain
 (among others) is statlically served from it.
+
+### Skype [25-09-2024]
+
+I used Skype in the past, as some colleagues were using it, but I am no longer
+using Skype as a means of communication. If you want to contact me for an
+video/audio conference, there are much better alternatives. If you want to have
+a chat with me, I would reccomend that you switch to
+[Signal](https://signal.org/).
 
 _To be continued..._

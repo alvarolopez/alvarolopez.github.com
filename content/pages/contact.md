@@ -29,3 +29,11 @@ You can also find me and verify my identity on
 
 My **OLD** GPG key had the ID [`0x50738AE3`](http://pgp.rediris.es/pks/lookup?search=0x50738AE3&fingerprint=on&hash=on&op=vindex),
 with fingerprint `1C3F 3E63 CC6F B57D 7895  03A9 C663 E404 5073 8AE3`. This key has been revoked.
+
+## Skype
+
+I used Skype in the past, as some colleagues were using it, but I am no longer
+using Skype as a means of communication. If you want to contact me for an
+video/audio conference, there are much better alternatives. If you want to have
+a chat with me, I would reccomend that you switch to
+[Signal](https://signal.org/).
