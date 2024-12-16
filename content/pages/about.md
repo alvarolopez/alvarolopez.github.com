@@ -91,19 +91,7 @@ Europe); noteworthy being the project coordinator of the H2020
 DEEP-Hybrid-DataCloud and the Horizon Europe AI4EOSC and SIESTA actions, all of
 them focused on delivering advanced and innovative services for EOSC.
 
-<!-- He is the representative of CSIC in the EOSC AISBL (the association signed a -->
-<!-- Memorandum of Understanding with the European Commission to progress the EOSC -->
-<!-- partnership), co-chair of the EOSC Task Force on Technical Interoperability of -->
-<!-- Data and Services (since 2021), co-chair of the EGI Artificial Intelligence -->
-<!-- technology coordination board (since 2021) and the CSIC representative in the -->
-<!-- Science Europe EOSC Task Force. He is also a CSIC Vocal in the Centro de -->
-<!-- Supercomputación de Galicia (CESGA) Advisory Committee and the CSIC -->
-<!-- representative in the Spanish Network of Open e-Science (Red Española de -->
-<!-- e-Ciencia abierta). -->
-
 ## Disclaimer
 This page is kept deliberately simple. There are no tracking cookies, no
 analytics, no social media buttons, or any kind of fingerprinting scripts.
 [We do not need any of that to build websites](https://drewdevault.com/2018/09/04/Conservative-web-development.html).
-
-
