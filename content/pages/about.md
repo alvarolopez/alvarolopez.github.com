@@ -31,13 +31,13 @@ You can find a list of my publications [here](/publications.html) or in any of m
 
  * [Google Scholar](https://scholar.google.es/citations?user=18bi2PEAAAAJ), probably the most up to date listing.
  * [ORCID 0000-0002-0Y013-4602](https://orcid.org/0000-0002-0013-4602), probably the most accurate listing.
- * [Publons](https://publons.com/researcher/2066875/alvaro-lopez-garcia/).
+ * [WoS](https://www.webofscience.com/wos/author/record/G-4796-2016).
  * [DBLP](https://dblp.uni-trier.de/pid/135/6079.html).
  * [Profile at DIGITAL.CSIC](https://digital.csic.es/cris/rp/rp06835), the [CSIC](http://www.csic.es) institutional repository.
 
 ### Editorial activities
 
-I am an associate editor of the followng journals:
+I serve as an associate editor for the following journals:
 
  * [Springer Nature Scientific Data](https://www.nature.com/sdata/).
  * [Elsevier Future Generation Computer Systems](https://www.sciencedirect.com/journal/future-generation-computer-systems).
