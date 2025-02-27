@@ -27,7 +27,7 @@ I am a staff researcher (_Científico Titular_), head of the
 
 ### Publications
 
-You can find a list of my publications [here](/publications.html) or in any of my public profiles:
+You can find a list of my publications [here](/pages/publications.html) or in any of my public profiles:
 
  * [Google Scholar](https://scholar.google.es/citations?user=18bi2PEAAAAJ), probably the most up to date listing.
  * [ORCID 0000-0002-0Y013-4602](https://orcid.org/0000-0002-0013-4602), probably the most accurate listing.
@@ -45,7 +45,7 @@ I serve as an associate editor for the following journals:
 
 ### Projects
 
-You can check my current and past projects [here](/projects.html). Currently I
+You can check my current and past projects [here](/pages/projects.html). Currently I
 am mostly working on distributed computing (Cloud) services for science (with a
 focus on data science) in the context of the [European Open Science
 Cloud](https://www.eosc.eu).
