@@ -35,6 +35,14 @@ You can find a list of my publications [here](/publications.html) or in any of m
  * [DBLP](https://dblp.uni-trier.de/pid/135/6079.html).
  * [Profile at DIGITAL.CSIC](https://digital.csic.es/cris/rp/rp06835), the [CSIC](http://www.csic.es) institutional repository.
 
+### Editorial activities
+
+I am an associate editor of the followng journals:
+
+ * [Springer Nature Scientific Data](https://www.nature.com/sdata/).
+ * [Elsevier Future Generation Computer Systems](https://www.sciencedirect.com/journal/future-generation-computer-systems).
+ * [Elsevier SoftwareX](https://www.sciencedirect.com/journal/softwarex).
+
 ### Projects
 
 You can check my current and past projects [here](/projects.html). Currently I
