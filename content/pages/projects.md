@@ -13,7 +13,7 @@ Title: Projects
 <tbody>
 <tr>
     <td class="center">
-        <a href="#"><img alt="siesta" src="/static/siesta.png" title="SIESTA logo"><br>SIESTA</a> <br> (Project Coordinator)
+        <a href="https://eosc-siesta.eu"><img alt="siesta" src="/static/siesta.png" title="SIESTA logo"><br>SIESTA</a> <br> (Project Coordinator)
         </td>
     <td>
         SIESTA will provide user-friendly tools with the aim of fostering the
@@ -32,7 +32,7 @@ Title: Projects
 </tr>
 <tr>
     <td class="center">
-        <a href="#"><img alt="greendigit" src="/static/greendigit.png" title="GreenDIGIT logo"><br>GreenDIGIT</a>
+        <a href="https://greendigit-project.eu/"><img alt="greendigit" src="/static/greendigit.png" title="GreenDIGIT logo"><br>GreenDIGIT</a>
         </td>
     <td>
         GreenDIGIT brings together 4 major distributed Digital Infrastructures
