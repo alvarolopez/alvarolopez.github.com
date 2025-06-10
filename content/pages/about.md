@@ -86,18 +86,20 @@ Scientist (_Científico Titular_) and head of the
 [Institute of Physics of Cantabria (IFCA)](http://www.ifca.es), associated with the
 [Spanish National Research Council (CSIC)](http://www.csic.es) (IFCA, CSIC-UC).
 
-His main research interests are focused on the implementation,
-development and promotion of advanced computing services for science and
-research, exploiting distributed infrastructures over the computing
-continuum. Some of the tools, services and platforms that have been developed
-in this regard are being used in pan-European production e-Infrastructures
-(like the EGI.eu Compute Service) or are being exploited by end users in the
-context of the European Open Science Cloud (EOSC).
+His research focuses on the intersection of cloud computing models, distributed
+systems, and advanced computing, with a particular emphasis on enhancing
+research and science services. His research in this area prioritizes data
+security and privacy, the ethical implications, trustworthiness, and privacy
+concerns associated with data-driven methodologies. Additionally, he advocates
+for socially and environmentally responsible computing practices, aiming to
+integrate ethical considerations into all aspects of data-driven science and
+beyond.
 
 He has participated in more than 20 EU projects (FP7, Horizon 2020, Horizon
 Europe); noteworthy being the project coordinator of the H2020
 DEEP-Hybrid-DataCloud and the Horizon Europe AI4EOSC and SIESTA actions, all of
-them focused on delivering advanced and innovative services for EOSC.
+them focused on delivering advanced and innovative services for the European
+Open Science Cloud (EOSC) where he is a recognized contributor.
 
 ## Disclaimer
 This page is kept deliberately simple. There are no tracking cookies, no
